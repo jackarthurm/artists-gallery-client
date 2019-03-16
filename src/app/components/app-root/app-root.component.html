@@ -1,16 +1,15 @@
+<gal-site-header (menuToggled)="sideNav.toggle()"></gal-site-header>
+
 <mat-sidenav-container (backdropClick)="sideNav.close()">
 
-  <mat-sidenav #sideNav>
+  <mat-sidenav #sideNav [fixedInViewport]="false">
     <div>
       <p>sidebar content</p>
     </div>
   </mat-sidenav>
 
-  <button (click)="sideNav.open()">open sidebar</button>
-
-  <gal-site-header></gal-site-header>
   <router-outlet></router-outlet>
-  <gal-site-footer></gal-site-footer>
 
 </mat-sidenav-container>
 
+<gal-site-footer></gal-site-footer>

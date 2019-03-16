@@ -1,11 +1,26 @@
-mat-sidenav-container {
-  position: absolute;
+gal-site-header {
+  position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;  
+  right: 0;
+  height: 40px;
 }
 
+gal-site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+}
+
+mat-sidenav-container {
+  position: absolute;
+  top: 60px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
 
 mat-sidenav {
   width: 33%;

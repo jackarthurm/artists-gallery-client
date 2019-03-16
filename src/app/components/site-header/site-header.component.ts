@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+
 
 @Component({
   selector: 'gal-site-header',
   templateUrl: './site-header.component.html',
   styleUrls: ['./site-header.component.css']
 })
-export class SiteHeaderComponent implements OnInit {
+export class SiteHeaderComponent {
 
-  constructor() { }
+  @Output()
+  menuToggled: EventEmitter<void> = new EventEmitter();
 
-  ngOnInit() {
+  onMenuClicked(evt: Event) {
+
+    this.menuToggled.emit()
+    evt.preventDefault()
   }
-
 }

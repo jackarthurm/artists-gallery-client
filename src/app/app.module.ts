@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatSidenavModule} from '@angular/material'
+import {
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule
+} from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRootComponent } from '@components/app-root/app-root.component';
@@ -25,9 +31,13 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppRootComponent]
 })
-export class AppModule { }
+export class AppModule {}
