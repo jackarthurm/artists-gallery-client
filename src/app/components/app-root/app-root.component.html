@@ -1,5 +1,16 @@
-<div>NavBar goes here!</div>
+<mat-sidenav-container (backdropClick)="sideNav.close()">
 
-<router-outlet></router-outlet>
+  <mat-sidenav #sideNav>
+    <div>
+      <p>text here</p>
+    </div>
+  </mat-sidenav>
 
-<div>Footer goes here!</div>
+  <button (click)="sideNav.open()">OPEN MENU</button>
+
+  <gal-site-header></gal-site-header>
+  <router-outlet></router-outlet>
+  <gal-site-footer></gal-site-footer>
+
+</mat-sidenav-container>
+
