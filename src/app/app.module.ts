@@ -18,6 +18,8 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
 import { SiteHeaderComponent } from './components/site-header/site-header.component';
 import { SiteFooterComponent } from './components/site-footer/site-footer.component';
 import { FbShareLinkComponent } from './components/fb-share-link/fb-share-link.component';
+import { GalleryItemComponent } from './components/gallery-item/gallery-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,11 +30,13 @@ import { FbShareLinkComponent } from './components/fb-share-link/fb-share-link.c
     NotFoundPageComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
-    FbShareLinkComponent
+    FbShareLinkComponent,
+    GalleryItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatCardModule,

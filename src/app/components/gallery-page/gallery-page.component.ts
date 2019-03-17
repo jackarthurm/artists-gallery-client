@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageService, GalleryPage, ImageProperties } from '@app/services/image/image.service';
 
 @Component({
   selector: 'gal-gallery-page',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryPageComponent implements OnInit {
 
-  constructor() { }
+  imageProperties: ImageProperties;
+
+  constructor(private _imagesService: ImageService) {}
 
   ngOnInit() {
-  }
 
+    this._imagesService.getGalleryPage(1).subscribe(
+      (page: GalleryPage) => {
+        this.imageProperties = page.images[0]
+      }
+    )
+  }
 }
