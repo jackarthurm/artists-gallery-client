@@ -3,9 +3,24 @@
 <mat-sidenav-container (backdropClick)="sideNav.close()">
 
   <mat-sidenav #sideNav [fixedInViewport]="false">
-    <div>
-      <p>sidebar content</p>
-    </div>
+
+    <mat-list role="list" class="nav-list">
+      <mat-list-item role="listitem">
+        <button class="nav-link" mat-button routerLink="/about-kate" (click)="sideNav.close()">
+          <p class="mat-body-1">
+            About Kate
+          </p>
+        </button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button class="nav-link" mat-button routerLink="/gallery" (click)="sideNav.close()">
+          <p class="mat-body-1">
+            Kate's work
+          </p>
+        </button>
+      </mat-list-item>
+    </mat-list>
+
   </mat-sidenav>
 
   <router-outlet></router-outlet>

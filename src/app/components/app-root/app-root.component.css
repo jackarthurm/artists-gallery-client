@@ -23,8 +23,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 33%;
-  min-width: 300px;
+  width: 250px;
 }
 
 @media only screen and (max-width: 300px) {
@@ -32,4 +31,8 @@ mat-sidenav {
   mat-sidenav {
     width: 100%;
   }
+}
+
+.nav-link {
+  width: 100%;
 }

@@ -4,7 +4,8 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatListModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +17,7 @@ import { AboutPageComponent } from './components/about-page/about-page.component
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { SiteHeaderComponent } from './components/site-header/site-header.component';
 import { SiteFooterComponent } from './components/site-footer/site-footer.component';
+import { FbShareLinkComponent } from './components/fb-share-link/fb-share-link.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
     AboutPageComponent,
     NotFoundPageComponent,
     SiteHeaderComponent,
-    SiteFooterComponent
+    SiteFooterComponent,
+    FbShareLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppRootComponent]
