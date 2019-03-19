@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { environment } from '@envs/environment';
 
+
 @Component({
   selector: 'gal-fb-share-link',
   templateUrl: './fb-share-link.component.html',
-  styleUrls: ['./fb-share-link.component.css']
+  styleUrls: ['./fb-share-link.component.scss']
 })
 export class FbShareLinkComponent {
 

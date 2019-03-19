@@ -1,8 +1,5 @@
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
-<gal-gallery-item [imageProperties]="imageProperties"></gal-gallery-item>
+<div class="gallery-container">
+  <gal-gallery-item *ngFor="let imageProperties of page.images"
+                    [imageProperties]="imageProperties">
+  </gal-gallery-item>
+</div>

@@ -10,7 +10,8 @@ export const environment: Environment = {
   siteUrl: {
     schema: HTTPSchema.HTTP,
     domain: 'katealicemann.com'
-  }
+  },
+  resizeDebounceTime: 1000
 };
 
 /*

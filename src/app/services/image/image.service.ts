@@ -37,29 +37,21 @@ export class ImageService {
 
   constructor(private _http: HttpClient) {}
 
-  getImage(imageData: ImageProperties): Observable<Blob> {
+  getImage(image: ImageProperties): Observable<Blob> {
     /* Return a placeholder image in blob format */
 
     const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'application/json'
+      'Accept': 'application/octet-stream'
     });
 
-    switch(imageData.sizeType) {
-
-      case ImageSizeType.FULL:
-        return this._http.get<Blob>('https://picsum.photos/3000/4000/', {headers: headers})
-      case ImageSizeType.MEDIUM:
-        return this._http.get<Blob>(
-          'https://picsum.photos/300/400/?random',
-          {
-            headers: headers,
-            responseType: 'blob' as 'json'
-          }
-        )
-
-      case ImageSizeType.THUMBNAIL:
-        return this._http.get<Blob>('https://picsum.photos/32/')
-    }
+    return this._http.get<Blob>(
+      image.imageURL,
+      {
+        headers: headers,
+        responseType: 'blob' as 'json',
+        params: {'random': '1'}
+      }
+    )
   }
 
   getGalleryPage(pageIndex: number): Observable<GalleryPage> {
@@ -69,8 +61,8 @@ export class ImageService {
         pageIndex: pageIndex,
         images: [
           {
-            imageURL: 'https://picsum.photos/3000/4000/',
-            width: 200,
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
             height: 400,
             caption: 'test caption',
             description: 'test description',
@@ -83,8 +75,148 @@ export class ImageService {
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageURL: 'https://picsum.photos/3000/4000/',
-            width: 200,
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
+            height: 400,
+            caption: 'test caption',
+            description: 'test description',
+            media: 'test media',
+            tags: [
+              'tag1',
+              'tag2'
+            ],
+            artistName: 'Kate Alice Mann',
+            sizeType: ImageSizeType.MEDIUM
+          },
+          {
+            imageURL: 'https://picsum.photos/300/400/',
+            width: 300,
             height: 400,
             caption: 'test caption',
             description: 'test description',

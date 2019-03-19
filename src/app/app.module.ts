@@ -5,7 +5,8 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppRootComponent]

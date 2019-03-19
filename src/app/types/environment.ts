@@ -18,4 +18,5 @@ export interface Environment {
   production: boolean;
   siteUrl: SiteURLConfig;
   routeFragments: RouteFragmentsConfig;
+  resizeDebounceTime: number
 }

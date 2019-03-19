@@ -7,7 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'gal-gallery-item',
   templateUrl: './gallery-item.component.html',
-  styleUrls: ['./gallery-item.component.css']
+  styleUrls: ['./gallery-item.component.scss']
 })
 export class GalleryItemComponent implements OnInit, OnDestroy {
 
@@ -35,17 +35,17 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
         this.imageResourceURL = this._sanitizer.bypassSecurityTrustResourceUrl(createdObjectURL);
       },
       (err) => {
-        console.log(err)
+        console.log(err);
       }
     )
   }
 
   ngOnDestroy() {
 
-    console.log(this._createdObjectURLs);
-
     this._createdObjectURLs.forEach(
-      (createdObjectURL: url) => this._urlCreator.revokeObjectURL(createdObjectURL)
-    )
+      (createdObjectURL: url) => this._urlCreator.revokeObjectURL(
+        createdObjectURL
+      )
+    );
   }
 }

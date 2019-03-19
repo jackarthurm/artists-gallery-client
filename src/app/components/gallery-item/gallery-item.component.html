@@ -1,3 +1,13 @@
-<ng-container *ngIf="imageResourceURL">
-  <img [src]="imageResourceURL"/>
-</ng-container>
+<div class="image-container" *ngIf="imageResourceURL;else loading">
+  <img [style.width]="imageProperties.width + 'px'"
+       [style.height]="imageProperties.height + 'px'"
+       [src]="imageResourceURL"
+       aria-label="medium sized picture of artwork"/>
+</div>
+<ng-template #loading>
+  <div class="loading-container"
+       [style.width]="imageProperties.width + 'px'"
+       [style.height]="imageProperties.height + 'px'">
+    <mat-spinner [diameter]="30" aria-label="loading animation"></mat-spinner>
+  </div>
+</ng-template>

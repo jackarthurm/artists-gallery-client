@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'gal-site-footer',
   templateUrl: './site-footer.component.html',
-  styleUrls: ['./site-footer.component.css']
+  styleUrls: ['./site-footer.component.scss']
 })
-export class SiteFooterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class SiteFooterComponent {}
