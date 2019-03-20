@@ -1,4 +1,4 @@
-import { Environment, HTTPSchema } from '@app/types/environment';
+import { Environment, HTTPSchema } from '@models/environment';
 
 
 export const environment: Environment = {
@@ -7,9 +7,15 @@ export const environment: Environment = {
     about: 'about-kate',
     gallery: 'gallery'
   },
-  siteUrl: {
+  siteURL: {
     schema: HTTPSchema.HTTP,
-    domain: 'katealicemann.com'
+    domain: 'katealicemann.com',
+    ext: ''
+  },
+  imagesURL: {
+    schema: HTTPSchema.HTTPS,
+    domain: 'picsum.photos',
+    ext: '/300/400/'
   },
   resizeDebounceTime: 1000
 };

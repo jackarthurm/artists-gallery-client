@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ImageProperties, ImageService } from '@app/services/image/image.service';
-import { url } from '@app/types/shared';
+import { url } from '@models/shared';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
@@ -13,7 +13,7 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
 
   imageResourceURL: SafeResourceUrl;
 
-  private _createdObjectURLs: Array<url> = [];
+  private _createdObjectURL: url;
   private _urlCreator: any = window.URL || window['webkitURL'];
 
   @Input()
@@ -21,18 +21,19 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
 
   constructor(
     private _imageService: ImageService,
-    private _sanitizer:DomSanitizer
+    private _sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
 
-    this._imageService.getImage(this.imageProperties).subscribe(
+    this._imageService.getImage(this.imageProperties.imageID).subscribe(
       (imageBlob: Blob) => {
 
-        const createdObjectURL: url = this._urlCreator.createObjectURL(imageBlob);
-        this._createdObjectURLs.push(createdObjectURL);
+        this._createdObjectURL = this._urlCreator.createObjectURL(imageBlob);
 
-        this.imageResourceURL = this._sanitizer.bypassSecurityTrustResourceUrl(createdObjectURL);
+        this.imageResourceURL = this._sanitizer.bypassSecurityTrustResourceUrl(
+          this._createdObjectURL
+        );
       },
       (err) => {
         console.log(err);
@@ -42,10 +43,8 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    this._createdObjectURLs.forEach(
-      (createdObjectURL: url) => this._urlCreator.revokeObjectURL(
-        createdObjectURL
-      )
-    );
+    if (this._createdObjectURL) {
+      this._urlCreator.revokeObjectURL(this._createdObjectURL)
+    }
   }
 }

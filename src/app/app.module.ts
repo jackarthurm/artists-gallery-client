@@ -6,21 +6,24 @@ import {
   MatIconModule,
   MatButtonModule,
   MatListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRootComponent } from '@components/app-root/app-root.component';
 import { AppRoutingModule } from '@app/app.routing.module';
-import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
-import { AboutPageComponent } from './components/about-page/about-page.component';
-import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-import { SiteHeaderComponent } from './components/site-header/site-header.component';
-import { SiteFooterComponent } from './components/site-footer/site-footer.component';
-import { FbShareLinkComponent } from './components/fb-share-link/fb-share-link.component';
-import { GalleryItemComponent } from './components/gallery-item/gallery-item.component';
+import { GalleryPageComponent } from '@components/gallery-page/gallery-page.component';
+import { AboutPageComponent } from '@components/about-page/about-page.component';
+import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
+import { SiteHeaderComponent } from '@components/site-header/site-header.component';
+import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
+import { FbShareLinkComponent } from '@components/fb-share-link/fb-share-link.component';
+import { GalleryItemComponent } from '@components/gallery-item/gallery-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ImageDetailsComponent } from '@components/image-details/image-details.component';
+import { ImageDetailsDialogComponent } from './components/image-details-dialog/image-details-dialog.component';
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     SiteHeaderComponent,
     SiteFooterComponent,
     FbShareLinkComponent,
-    GalleryItemComponent
+    GalleryItemComponent,
+    ImageDetailsComponent,
+    ImageDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +50,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppRootComponent]
+  bootstrap: [AppRootComponent],
+  entryComponents: [ImageDetailsDialogComponent]
 })
 export class AppModule {}

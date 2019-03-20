@@ -9,6 +9,8 @@ import { environment } from '@envs/environment';
 })
 export class FbShareLinkComponent {
 
-  fbShareLink: string = `https://www.facebook.com/sharer/sharer.php?u=${environment.siteUrl.schema}%3A%2F%2F${environment.siteUrl.domain}%2F&amp;src=sdkpreparse`
-  fbDataHref: string = `${environment.siteUrl.schema}://${environment.siteUrl.domain}`
+  fbShareLink: string = `https://www.facebook.com/sharer/sharer.php
+  ?u=${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2F&amp;
+  src=sdkpreparse`
+  fbDataHref: string = `${environment.siteURL.schema}://${environment.siteURL.domain}`
 }

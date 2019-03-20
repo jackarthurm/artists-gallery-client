@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Title</h1>
+<ng-container *ngIf="imageURL;else loading">
+  <div mat-dialog-content>
+    <img [src]="imageURL"
+         [style.width]="'600px'"
+         aria-label="full sized picture of artwork"/>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <div class="loading-container">
+    <mat-spinner [diameter]="60" aria-label="loading animation"></mat-spinner>
+  </div>
+</ng-template>

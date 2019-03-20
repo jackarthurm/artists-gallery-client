@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GalleryItemComponent } from './gallery-item.component';
 
+
 describe('GalleryItemComponent', () => {
   let component: GalleryItemComponent;
   let fixture: ComponentFixture<GalleryItemComponent>;

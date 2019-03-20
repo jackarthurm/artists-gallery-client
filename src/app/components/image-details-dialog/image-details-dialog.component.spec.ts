@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotFoundPageComponent } from './not-found-page.component';
+import { ImageDetailsDialogComponent } from './image-details-dialog.component';
 
-
-describe('NotFoundPageComponent', () => {
-  let component: NotFoundPageComponent;
-  let fixture: ComponentFixture<NotFoundPageComponent>;
+describe('ImageDetailsDialogComponent', () => {
+  let component: ImageDetailsDialogComponent;
+  let fixture: ComponentFixture<ImageDetailsDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotFoundPageComponent ]
+      declarations: [ ImageDetailsDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotFoundPageComponent);
+    fixture = TestBed.createComponent(ImageDetailsDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

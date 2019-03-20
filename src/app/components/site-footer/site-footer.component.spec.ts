@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SiteFooterComponent } from './site-footer.component';
 
+
 describe('SiteFooterComponent', () => {
   let component: SiteFooterComponent;
   let fixture: ComponentFixture<SiteFooterComponent>;

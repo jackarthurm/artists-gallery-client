@@ -3,9 +3,10 @@ export enum HTTPSchema {
   HTTPS = 'https'
 }
 
-export interface SiteURLConfig {
+export interface URLConfig {
   domain: string;
-  schema: HTTPSchema
+  schema: HTTPSchema,
+  ext: string;
 }
 
 export interface RouteFragmentsConfig {
@@ -16,7 +17,8 @@ export interface RouteFragmentsConfig {
 export interface Environment {
 
   production: boolean;
-  siteUrl: SiteURLConfig;
+  siteURL: URLConfig;
+  imagesURL: URLConfig
   routeFragments: RouteFragmentsConfig;
   resizeDebounceTime: number
 }
