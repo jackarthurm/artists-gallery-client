@@ -63,7 +63,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
         pageIndex: pageIndex,
         images: [
           {
-            imageID: '1',
+            imageID: '10',
             name: 'test name 1',
             width: 300,
             height: 400,
@@ -78,7 +78,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '2',
+            imageID: '20',
             name: 'test name 2',
             width: 300,
             height: 400,
@@ -93,7 +93,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '3',
+            imageID: '30',
             name: 'test name 3',
             width: 300,
             height: 400,
@@ -108,7 +108,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '4',
+            imageID: '40',
             name: 'test name 4',
             width: 300,
             height: 400,
@@ -123,7 +123,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '5',
+            imageID: '50',
             name: 'test name 5',
             width: 300,
             height: 400,
@@ -138,7 +138,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '6',
+            imageID: '60',
             name: 'test name 6',
             width: 300,
             height: 400,
@@ -153,7 +153,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '7',
+            imageID: '70',
             name: 'test name 7',
             width: 300,
             height: 400,
@@ -168,7 +168,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '8',
+            imageID: '80',
             name: 'test name 8',
             width: 300,
             height: 400,
@@ -184,7 +184,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             slug: 'a-specific-picture'
           },
           {
-            imageID: '9',
+            imageID: '90',
             name: 'test name 9',
             width: 300,
             height: 400,
@@ -199,7 +199,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '10',
+            imageID: '100',
             name: 'test name 10',
             width: 300,
             height: 400,
@@ -214,7 +214,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '11',
+            imageID: '110',
             name: 'test name 11',
             width: 300,
             height: 400,
@@ -229,7 +229,7 @@ ${environment.imagesURL.domain}${environment.imagesURL.ext}?image=` + imageID,
             sizeType: ImageSizeType.MEDIUM
           },
           {
-            imageID: '12',
+            imageID: '120',
             name: 'test name 12',
             width: 300,
             height: 400,

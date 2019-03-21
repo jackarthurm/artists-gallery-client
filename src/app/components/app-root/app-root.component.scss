@@ -33,6 +33,15 @@ mat-sidenav {
   }
 }
 
-.nav-link {
-  width: 100%;
+mat-list-item {
+
+  height: 60px !important;
+
+  .nav-link {
+    width: 100%;
+
+    p {
+      font-size: large;
+    }
+  }
 }

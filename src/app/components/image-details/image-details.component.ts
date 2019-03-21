@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ import { ImageDetailsDialogComponent } from '@components/image-details-dialog/im
 })
 export class ImageDetailsComponent {
 
-  private _imageResourceURL: SafeResourceUrl;
+  imageResourceURL: SafeResourceUrl;
   private _createdObjectURL: url;
   private _urlCreator: any = window.URL || window['webkitURL'];
 
@@ -24,7 +24,8 @@ export class ImageDetailsComponent {
     private _dialog: MatDialog,
     private _imageService: ImageService,
     private _sanitizer: DomSanitizer,
-    activatedRoute: ActivatedRoute,
+    private _router: Router,
+    activatedRoute: ActivatedRoute
   ) {
 
     activatedRoute.params.pipe(
@@ -53,8 +54,12 @@ export class ImageDetailsComponent {
 
   openDialog(imageResourceURL: SafeResourceUrl): void {
     const dialogRef = this._dialog.open(ImageDetailsDialogComponent, {
-      width: '50%',
       data: {imageURL: imageResourceURL}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+      this._router.navigate(['/gallery']);
     });
   }
 
