@@ -24,6 +24,7 @@ import { GalleryItemComponent } from '@components/gallery-item/gallery-item.comp
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
 import { ImageDetailsDialogComponent } from './components/image-details-dialog/image-details-dialog.component';
+import { ContactPageComponent } from './components/contact-page/contact-page.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ImageDetailsDialogComponent } from './components/image-details-dialog/i
     FbShareLinkComponent,
     GalleryItemComponent,
     ImageDetailsComponent,
-    ImageDetailsDialogComponent
+    ImageDetailsDialogComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,

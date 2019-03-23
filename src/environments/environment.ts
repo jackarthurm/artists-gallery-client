@@ -4,8 +4,10 @@ import { Environment, HTTPSchema } from '@models/environment';
 export const environment: Environment = {
   production: false,
   routeFragments: {
-    about: 'about-kate',
-    gallery: 'gallery'
+    aboutPage: 'about-kate',
+    galleryPage: 'gallery',
+    contactPage: 'contact',
+    notFoundPage: 'not-found'
   },
   siteURL: {
     schema: HTTPSchema.HTTP,

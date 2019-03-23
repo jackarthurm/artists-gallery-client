@@ -5,17 +5,10 @@
   <mat-sidenav #sideNav [fixedInViewport]="false">
 
     <mat-list role="list" class="nav-list">
-      <mat-list-item role="listitem">
-        <button class="nav-link" mat-button routerLink="/about-kate" (click)="sideNav.close()">
+      <mat-list-item *ngFor="let link of navLinks" role="listitem">
+        <button class="nav-link" mat-button routerLink="{{ link.route }}" (click)="sideNav.close()">
           <p class="mat-body-1">
-            About Kate
-          </p>
-        </button>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <button class="nav-link" mat-button routerLink="/gallery" (click)="sideNav.close()">
-          <p class="mat-body-1">
-            Kate's work
+            {{ link.name }}
           </p>
         </button>
       </mat-list-item>

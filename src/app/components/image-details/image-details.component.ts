@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { uuid, url } from '@models/shared'
 import { ImageService } from '@app/services/image/image.service';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
+import { environment } from '@envs/environment';
 
 
 @Component({
@@ -59,7 +60,7 @@ export class ImageDetailsComponent {
 
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
-      this._router.navigate(['/gallery']);
+      this._router.navigate([`/${environment.routeFragments.galleryPage}`]);
     });
   }
 

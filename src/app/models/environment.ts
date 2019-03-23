@@ -5,20 +5,21 @@ export enum HTTPSchema {
 
 export interface URLConfig {
   domain: string;
-  schema: HTTPSchema,
+  schema: HTTPSchema;
   ext: string;
 }
 
 export interface RouteFragmentsConfig {
-  about: string;
-  gallery: string;
+  aboutPage: string;
+  galleryPage: string;
+  contactPage: string;
+  notFoundPage: string;
 }
 
 export interface Environment {
-
   production: boolean;
   siteURL: URLConfig;
-  imagesURL: URLConfig
+  imagesURL: URLConfig;
   routeFragments: RouteFragmentsConfig;
-  resizeDebounceTime: number
+  resizeDebounceTime: number;
 }

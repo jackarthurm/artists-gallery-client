@@ -4,16 +4,18 @@ import { GalleryPageComponent } from '@components/gallery-page/gallery-page.comp
 import { AboutPageComponent } from '@components/about-page/about-page.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
+import { ContactPageComponent } from '@components/contact-page/contact-page.component';
+import { environment } from '@envs/environment';
 
 
 const routes: Routes = [
     {
       path: '',
       pathMatch: 'full',
-      redirectTo: '/gallery'
+      redirectTo: `/${environment.routeFragments.galleryPage}`
     },
     {
-      path: 'gallery',
+      path: environment.routeFragments.galleryPage,
       pathMatch: 'prefix',
       children: [
         {
@@ -30,19 +32,24 @@ const routes: Routes = [
       ]
     },
     {
-      path: 'about-kate',
+      path: environment.routeFragments.contactPage,
+      pathMatch: 'full',
+      component: ContactPageComponent
+    },
+    {
+      path: environment.routeFragments.aboutPage,
       pathMatch: 'full',
       component: AboutPageComponent
     },
     {
-      path: 'not-found',
+      path: environment.routeFragments.notFoundPage,
       pathMatch: 'full',
       component: NotFoundPageComponent
     },
     {
       path: '**',
       pathMatch: 'full',
-      redirectTo: '/not-found'
+      redirectTo: `/${environment.routeFragments.notFoundPage}`
     }
 ];
 
