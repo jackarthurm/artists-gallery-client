@@ -26,7 +26,9 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this._imageService.getImage(this.imageProperties.imageID).subscribe(
+    this._imageService.getImage(
+      this.imageProperties.reducedImage.location
+    ).subscribe(
       (imageBlob: Blob) => {
 
         this._createdObjectURL = this._urlCreator.createObjectURL(imageBlob);

@@ -15,9 +15,9 @@ export const environment: Environment = {
     ext: ''
   },
   imagesURL: {
-    schema: HTTPSchema.HTTPS,
-    domain: 'picsum.photos',
-    ext: '/300/400/'
+    schema: HTTPSchema.HTTP,
+    domain: 'localhost:8001',
+    ext: '/gallery-items/'
   },
   resizeDebounceTime: 1000
 };

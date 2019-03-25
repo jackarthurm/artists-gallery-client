@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { url } from '@app/models/shared';
+import { ImageDialogData } from '@components/image-details/image-details.component';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -10,13 +11,8 @@ import { url } from '@app/models/shared';
 })
 export class ImageDetailsDialogComponent {
 
-  public imageURL: url;
-
   constructor(
-    public dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {imageURL: url}
-  ) {
-
-    this.imageURL = data.imageURL;
-  }
+    _dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public imageData: ImageDialogData
+  ) {}
 }

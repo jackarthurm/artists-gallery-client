@@ -5,15 +5,25 @@ import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 
 import { uuid, url } from '@models/shared'
-import { ImageService } from '@app/services/image/image.service';
+import {
+  ImageService, 
+  ImageProperties
+} from '@app/services/image/image.service';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
+import { HttpErrorResponse } from '@angular/common/http';
+import * as HttpStatus from 'http-status-codes';
+
+
+export interface ImageDialogData {
+  imageProperties: ImageProperties,
+  localImageURL: SafeResourceUrl
+}
 
 
 @Component({
   selector: 'gal-image-details',
-  templateUrl: './image-details.component.html',
-  styleUrls: ['./image-details.component.scss']
+  template: ''
 })
 export class ImageDetailsComponent {
 
@@ -34,29 +44,53 @@ export class ImageDetailsComponent {
     ).subscribe(
       (imageID: uuid) => {
 
-        this._imageService.getImage(imageID).subscribe(
-          (imageBlob: Blob) => {
+        this._imageService.getGalleryItem(imageID).subscribe(
+          (imageProperties: ImageProperties) => {
 
-            this._createdObjectURL = this._urlCreator.createObjectURL(imageBlob);
-    
-            const imageResourceURL: SafeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl(
-              this._createdObjectURL
-            );
+          this._imageService.getImage(
+            imageProperties.originalImage.location
+          ).subscribe(
+            (imageBlob: Blob) => {
 
-            this.openDialog(imageResourceURL);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+              this._createdObjectURL = this._urlCreator.createObjectURL(imageBlob);
+      
+              const imageResourceURL: SafeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl(
+                this._createdObjectURL
+              );
+
+              this.openDialog(imageProperties, imageResourceURL);
+            },
+            (err: HttpErrorResponse) => {
+
+              switch (err.status) {
+                case HttpStatus.NOT_FOUND:
+                  this._router.navigate(
+                    [`/${environment.routeFragments.notFoundPage}`]
+                  )
+                  break;
+                default:
+                  console.log(err);
+              }
+            }
+          );
+        });
       }
     );
   }
 
-  openDialog(imageResourceURL: SafeResourceUrl): void {
-    const dialogRef = this._dialog.open(ImageDetailsDialogComponent, {
-      data: {imageURL: imageResourceURL}
-    });
+  openDialog(
+    imageProperties: ImageProperties, 
+    imageResourceURL: SafeResourceUrl
+  ): void {
+    const dialogRef = this._dialog.open(
+      ImageDetailsDialogComponent, 
+      {
+        data: {
+          imageProperties: imageProperties,
+          localImageURL: imageResourceURL
+        }
+      }
+    );
 
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');

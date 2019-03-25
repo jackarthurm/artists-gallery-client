@@ -31,7 +31,7 @@ export class GalleryPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this._imagesService.getGalleryPage(1).subscribe(
+    this._imagesService.getGalleryPage(1, 100).subscribe(  // TODO: Pagination
       (page: GalleryPage) => this.page = page
     )
   }

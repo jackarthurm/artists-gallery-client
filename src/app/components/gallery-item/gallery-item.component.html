@@ -1,9 +1,9 @@
-<ng-container *ngIf="imageResourceURL;else loading">
+<ng-container *ngIf="imageResourceURL; else loading">
   <a class="image-link"
      href="" 
-     [routerLink]="[{outlets: {modal: imageProperties.imageID}}]">
-    <img [style.width]="imageProperties.width + 'px'"
-        [style.height]="imageProperties.height + 'px'"
+     [routerLink]="[{outlets: {modal: imageProperties.id}}]">
+    <img [style.width]="imageProperties.reducedImage.width + 'px'"
+        [style.height]="imageProperties.reducedImage.height + 'px'"
         [src]="imageResourceURL"
         aria-label="medium sized picture of artwork"/>
   </a>
