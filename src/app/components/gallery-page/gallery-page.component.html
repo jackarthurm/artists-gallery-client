@@ -1,4 +1,4 @@
-<div class="gallery-container">
+<div class="gallery-container" *ngIf="page">
   <gal-gallery-item *ngFor="let imageProperties of page.images"
                     [imageProperties]="imageProperties">
   </gal-gallery-item>

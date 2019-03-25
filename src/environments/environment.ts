@@ -17,7 +17,7 @@ export const environment: Environment = {
   imagesURL: {
     schema: HTTPSchema.HTTP,
     domain: 'localhost:8001',
-    ext: '/gallery-items/'
+    ext: '/api/gallery-items/'
   },
   resizeDebounceTime: 1000
 };

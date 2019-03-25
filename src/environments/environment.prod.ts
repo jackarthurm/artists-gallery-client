@@ -4,9 +4,9 @@ import { Environment, HTTPSchema } from '@models/environment';
 export const environment: Environment = {
   production: true,
   routeFragments: {
-    aboutPage: '/about-kate',
-    galleryPage: '/gallery',
-    contactPage: '/contact',
+    aboutPage: 'about-kate',
+    galleryPage: 'gallery',
+    contactPage: 'contact',
     notFoundPage: 'not-found'
   },
   siteURL: {
@@ -15,9 +15,9 @@ export const environment: Environment = {
     ext: ''
   },
   imagesURL: {
-    schema: HTTPSchema.HTTPS,
-    domain: 'picsum.photos',
-    ext: '/300/400/'
+    schema: HTTPSchema.HTTP,
+    domain: 'localhost:8001',
+    ext: '/api/gallery-items/'
   },
   resizeDebounceTime: 1000
 };

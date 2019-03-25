@@ -101,6 +101,8 @@ export class ImageService {
   getImage(location: url): Observable<Blob> {
     /* Retrieve an image file in blob format */
 
+    console.log(location);
+
     const headers: HttpHeaders = new HttpHeaders({
       'Accept': 'application/octet-stream'
     });
@@ -120,8 +122,10 @@ export class ImageService {
       'Accept': 'application/json'
     });
 
+    console.log(`${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}${imageID}/`);
+
     return this._http.get<GalleryItemAPIResult>(
-      `http://localhost:8001/gallery-items/${imageID}/`,
+      `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}${imageID}/`,
       {
         headers: headers,
         responseType: 'json'
@@ -139,12 +143,13 @@ export class ImageService {
   ): Observable<GalleryPage> {
 
     const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'application/octet-stream'
+      'Accept': 'application/json'
     });
 
+    console.log(`${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`);
+
     return this._http.get<GalleryItemListAPIResult>(
-      `${environment.imagesURL.schema}://${environment.imagesURL.domain}
-      ${environment.imagesURL.ext}`,
+      `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`,
       {
         headers: headers,
         responseType: 'json',
