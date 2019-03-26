@@ -93,7 +93,6 @@ export class ImageDetailsComponent {
     );
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
       this._router.navigate([`/${environment.routeFragments.galleryPage}`]);
     });
   }
