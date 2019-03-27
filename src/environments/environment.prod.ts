@@ -16,7 +16,7 @@ export const environment: Environment = {
   },
   imagesURL: {
     schema: HTTPSchema.HTTP,
-    domain: 'localhost:8001',
+    domain: 'http://katealicemann.eu-west-1.elasticbeanstalk.com',
     ext: '/api/gallery-items/'
   },
   resizeDebounceTime: 1000
