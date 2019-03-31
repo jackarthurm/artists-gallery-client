@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { uuid, url } from '@app/models/shared';
 import { environment } from '@envs/environment'
 import { map } from 'rxjs/operators';
 
 
 // Model definitions
-export interface ImageFile {
-  location: url;
+export interface Image {
+  url: url;
   height: number;
   width: number;
 }
 
-export interface ImageProperties {
+export interface GalleryItem {
   id: uuid;
-  originalImage: ImageFile;
-  reducedImage: ImageFile;
+  originalImage: Image;
+  largeImage: Image;
+  thumbnailImage: Image;
   title: string;
+  createdDate: Date;
   description: string;
-  media_description: string;
-  artist_name: string;
-  // tags: Array<url>  # TODO
+  mediaDescription: string;
+  artistName: string;
+  tags: Array<string>;
 }
 
 export interface GalleryPage {
@@ -29,7 +31,7 @@ export interface GalleryPage {
   itemCount: number;
   nextPage: url | null;
   previousPage: url | null;
-  images: Array<ImageProperties>
+  items: Array<GalleryItem>
 }
 
 // API schema definition
@@ -40,43 +42,42 @@ interface GalleryItemListAPIResult {
   results: Array<GalleryItemAPIResult>;
 }
 
+interface GalleryItemAPITagResult {
+  name: string;
+}
+
 interface GalleryItemAPIResult {
   id: uuid;
-  original_image: url;
-  original_width: number;
-  original_height: number;
-  reduced_image: url;
-  reduced_width: number;
-  reduced_height: number;
+  original_image: Image;
+  large_image: Image;
+  thumbnail_image: Image;
   title: string;
+  created_date: string | null;
   description: string;
   media_description: string;
   artist_name: string;
-  tags: Array<url>;
+  tags: Array<GalleryItemAPITagResult>;
 }
 
 // Mapping layer
-function imageResult(res: GalleryItemAPIResult): ImageProperties {
+function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
   return {
     id: res.id,
-    originalImage: {
-      location: res.original_image,
-      height: res.original_height,
-      width: res.original_width
-    },
-    reducedImage: {
-      location: res.reduced_image,
-      height: res.reduced_height,
-      width: res.reduced_width
-    },
+    originalImage: res.original_image,
+    largeImage: res.large_image,
+    thumbnailImage: res.thumbnail_image,
     title: res.title,
+    createdDate: new Date(res.created_date),
     description: res.description,
-    media_description: res.media_description,
-    artist_name: res.artist_name
+    mediaDescription: res.media_description,
+    artistName: res.artist_name,
+    tags: res.tags.map(
+      (tag: GalleryItemAPITagResult) => tag.name
+    )
   };
 }
 
-function imagePageResult(
+function galleryPageResult(
   res: GalleryItemListAPIResult, 
   pageIndex: number
 ): GalleryPage {
@@ -86,7 +87,7 @@ function imagePageResult(
     itemCount: res.count,
     nextPage: res.next,
     previousPage: res.previous,
-    images: res.results.map(imageResult)
+    items: res.results.map(galleryItemResult)
   }
 }
 
@@ -116,7 +117,7 @@ export class ImageService {
     )
   }
 
-  getGalleryItem(imageID: uuid): Observable<ImageProperties> {
+  getGalleryItem(imageID: uuid): Observable<GalleryItem> {
 
     const headers: HttpHeaders = new HttpHeaders({
       'Accept': 'application/json'
@@ -132,7 +133,7 @@ export class ImageService {
       }
     ).pipe(
       map(
-        (res: GalleryItemAPIResult) => imageResult(res)
+        (res: GalleryItemAPIResult) => galleryItemResult(res)
       )
     );
   }
@@ -160,10 +161,8 @@ export class ImageService {
       }
     ).pipe(
       map(
-        (page: GalleryItemListAPIResult) => imagePageResult(page, pageIndex)
+        (page: GalleryItemListAPIResult) => galleryPageResult(page, pageIndex)
       )
     );
   }
 }
-
-

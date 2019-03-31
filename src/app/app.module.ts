@@ -23,8 +23,8 @@ import { FbShareLinkComponent } from '@components/fb-share-link/fb-share-link.co
 import { GalleryItemComponent } from '@components/gallery-item/gallery-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
-import { ImageDetailsDialogComponent } from './components/image-details-dialog/image-details-dialog.component';
-import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
+import { ContactPageComponent } from '@components/contact-page/contact-page.component';
 
 
 @NgModule({

@@ -1,18 +1,19 @@
-img {
-  margin: 30px 0 30px 30px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-
 h1 {
   padding: 10px 0 0 30px;
 }
 
 .dialog-content {
-  display: flex !important;
   flex-wrap: wrap;
   flex-direction: row;
+
+  img {
+    width: 80%;
+    overflow-x: auto;
+    margin: 30px 0 30px 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+  }
 
   .image-description {
     width: 200px;
@@ -25,4 +26,3 @@ h1 {
     }
   }
 }
-

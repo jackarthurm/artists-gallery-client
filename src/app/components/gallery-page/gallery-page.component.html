@@ -1,5 +1,19 @@
-<div class="gallery-container" *ngIf="page">
-  <gal-gallery-item *ngFor="let imageProperties of page.images"
-                    [imageProperties]="imageProperties">
-  </gal-gallery-item>
+<div class="gallery-container">
+  <ng-container *ngIf="page; else loading">
+    <ng-container *ngIf="page.items.length; else noImages">
+      <gal-gallery-item *ngFor="let item of page.items"
+                        [galleryItem]="item">
+      </gal-gallery-item>
+    </ng-container>
+  </ng-container>
 </div>
+<ng-template #noImages>
+  <p class="mat-display-1">
+    No images found - TODO
+  </p>
+</ng-template>
+<ng-template #loading>
+  <div class="loading-container">
+    <p>Loading gallery...</p>
+  </div>
+</ng-template>

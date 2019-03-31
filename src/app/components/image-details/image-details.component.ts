@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { uuid, url } from '@models/shared'
 import {
   ImageService, 
-  ImageProperties
+  GalleryItem
 } from '@app/services/image/image.service';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
@@ -16,7 +16,7 @@ import * as HttpStatus from 'http-status-codes';
 
 
 export interface ImageDialogData {
-  imageProperties: ImageProperties,
+  galleryItem: GalleryItem,
   localImageURL: SafeResourceUrl
 }
 
@@ -45,10 +45,10 @@ export class ImageDetailsComponent {
       (imageID: uuid) => {
 
         this._imageService.getGalleryItem(imageID).subscribe(
-          (imageProperties: ImageProperties) => {
+          (galleryItem: GalleryItem) => {
 
           this._imageService.getImage(
-            imageProperties.originalImage.location
+            galleryItem.largeImage.url
           ).subscribe(
             (imageBlob: Blob) => {
 
@@ -58,7 +58,7 @@ export class ImageDetailsComponent {
                 this._createdObjectURL
               );
 
-              this.openDialog(imageProperties, imageResourceURL);
+              this.openDialog(galleryItem, imageResourceURL);
             },
             (err: HttpErrorResponse) => {
 
@@ -79,14 +79,14 @@ export class ImageDetailsComponent {
   }
 
   openDialog(
-    imageProperties: ImageProperties, 
+    galleryItem: GalleryItem, 
     imageResourceURL: SafeResourceUrl
   ): void {
     const dialogRef = this._dialog.open(
       ImageDetailsDialogComponent, 
       {
         data: {
-          imageProperties: imageProperties,
+          galleryItem: galleryItem,
           localImageURL: imageResourceURL
         }
       }

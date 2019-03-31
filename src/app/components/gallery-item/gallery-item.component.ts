@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ImageProperties, ImageService } from '@app/services/image/image.service';
+import { GalleryItem, ImageService } from '@app/services/image/image.service';
 import { url } from '@models/shared';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -17,7 +17,7 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
   private _urlCreator: any = window.URL || window['webkitURL'];
 
   @Input()
-  imageProperties: ImageProperties
+  galleryItem: GalleryItem
 
   constructor(
     private _imageService: ImageService,
@@ -27,7 +27,7 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this._imageService.getImage(
-      this.imageProperties.reducedImage.location
+      this.galleryItem.thumbnailImage.url
     ).subscribe(
       (imageBlob: Blob) => {
 
