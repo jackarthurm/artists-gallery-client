@@ -1,24 +1,4 @@
-<gal-site-header (menuToggled)="sideNav.toggle()"></gal-site-header>
-
-<mat-sidenav-container (backdropClick)="sideNav.close()">
-
-  <mat-sidenav #sideNav [fixedInViewport]="false">
-
-    <mat-list role="list" class="nav-list">
-      <mat-list-item *ngFor="let link of navLinks" role="listitem">
-        <button class="nav-link" mat-button routerLink="{{ link.route }}" (click)="sideNav.close()">
-          <p class="mat-body-1">
-            {{ link.name }}
-          </p>
-        </button>
-      </mat-list-item>
-    </mat-list>
-
-  </mat-sidenav>
-
-  <router-outlet></router-outlet>
-  <router-outlet name="modal"></router-outlet>
-
-</mat-sidenav-container>
-
+<gal-site-header></gal-site-header>
+<router-outlet></router-outlet>
+<router-outlet name="modal"></router-outlet>
 <gal-site-footer></gal-site-footer>

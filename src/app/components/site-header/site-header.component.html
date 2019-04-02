@@ -1,6 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="onMenuClicked($event)">
-    <mat-icon>view_headline</mat-icon>
-  </button>
-  <p class="mat-title title-text">Page Title</p>
+
+  <mat-list role="list" class="nav-list">
+    <mat-list-item *ngFor="let link of navLinks" role="listitem">
+
+      <a mat-flat-button routerLink="{{ link.route }}">
+        <p class="mat-body-1">
+          {{ link.name }}
+        </p>
+      </a>
+
+    </mat-list-item>
+  </mat-list>
+
 </mat-toolbar>
+

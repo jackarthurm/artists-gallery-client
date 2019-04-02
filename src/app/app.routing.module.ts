@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { GalleryPageComponent } from '@components/gallery-page/gallery-page.component';
 import { AboutPageComponent } from '@components/about-page/about-page.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
 import { ContactPageComponent } from '@components/contact-page/contact-page.component';
+import { HomePageComponent } from '@components/home-page/home-page.component';
 import { environment } from '@envs/environment';
 
 
@@ -12,7 +14,12 @@ const routes: Routes = [
     {
       path: '',
       pathMatch: 'full',
-      redirectTo: `/${environment.routeFragments.galleryPage}`
+      redirectTo: `/${environment.routeFragments.homePage}`
+    },
+    {
+      path: environment.routeFragments.homePage,
+      pathMatch: 'full',
+      component: HomePageComponent
     },
     {
       path: environment.routeFragments.galleryPage,

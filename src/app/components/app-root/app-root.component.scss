@@ -13,35 +13,3 @@ gal-site-footer {
   right: 0;
   height: 40px;
 }
-
-mat-sidenav-container {
-  position: absolute;
-  top: 60px;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-}
-
-mat-sidenav {
-  width: 250px;
-}
-
-@media only screen and (max-width: 300px) {
-
-  mat-sidenav {
-    width: 100%;
-  }
-}
-
-mat-list-item {
-
-  height: 60px !important;
-
-  .nav-link {
-    width: 100%;
-
-    p {
-      font-size: large;
-    }
-  }
-}

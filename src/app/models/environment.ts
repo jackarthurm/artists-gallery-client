@@ -10,6 +10,7 @@ export interface URLConfig {
 }
 
 export interface RouteFragmentsConfig {
+  homePage: string;
   aboutPage: string;
   galleryPage: string;
   contactPage: string;

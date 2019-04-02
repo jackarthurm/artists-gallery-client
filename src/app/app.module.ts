@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ContactPageComponent } from '@components/contact-page/contact-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ContactPageComponent } from '@components/contact-page/contact-page.comp
     GalleryItemComponent,
     ImageDetailsComponent,
     ImageDetailsDialogComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { environment } from '@envs/environment';
+
+
+interface NavLink {
+  name: string,
+  route: string
+}
 
 
 @Component({
@@ -8,12 +16,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SiteHeaderComponent {
 
-  @Output()
-  menuToggled: EventEmitter<void> = new EventEmitter();
-
-  onMenuClicked(evt: Event) {
-
-    this.menuToggled.emit()
-    evt.preventDefault()
-  }
+  readonly navLinks: Array<NavLink> = [
+    {
+      name: 'Home', 
+      route: `/${environment.routeFragments.homePage}`
+    },
+    {
+      name: 'Gallery', 
+      route: `/${environment.routeFragments.galleryPage}`
+    },
+    {
+      name: 'About', 
+      route: `/${environment.routeFragments.aboutPage}`
+    },
+    {
+      name: 'Contact', 
+      route: `/${environment.routeFragments.contactPage}`
+    }
+  ];
 }
