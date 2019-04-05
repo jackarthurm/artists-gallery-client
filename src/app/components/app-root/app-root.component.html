@@ -1,4 +1,32 @@
-<gal-site-header></gal-site-header>
-<router-outlet></router-outlet>
-<router-outlet name="modal"></router-outlet>
+<gal-site-header [navLinks]="showSmallScreenLayout ? [] : navLinks" 
+                 (menuClick)="sideNav.toggle()">
+</gal-site-header>
+
+<mat-sidenav-container (backdropClick)="sideNav.close()">
+
+  <mat-sidenav #sideNav 
+               [fixedInViewport]="false"
+               [autoFocus]="false">
+    <mat-list *ngIf="showSmallScreenLayout" role="list" class="nav-list">
+        <mat-list-item *ngFor="let link of navLinks; index as i" 
+                        tabindex="{{ i }}"
+                        role="listitem"
+                        class="nav-list-item">
+          <button class="nav-link" 
+                  mat-button 
+                  routerLink="{{ link.route }}" 
+                  (click)="sideNav.close()">
+            <p class="mat-body-1">
+              {{ link.name }}
+            </p>
+          </button>
+        </mat-list-item>
+      </mat-list>
+  </mat-sidenav>
+
+  <router-outlet></router-outlet>
+  <router-outlet name="modal"></router-outlet>
+
+</mat-sidenav-container>
+
 <gal-site-footer></gal-site-footer>

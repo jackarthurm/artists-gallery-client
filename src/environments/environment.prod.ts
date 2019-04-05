@@ -1,14 +1,40 @@
-import { Environment, HTTPSchema } from '@models/environment';
+import {
+  Environment,
+  HTTPSchema,
+  RouteFragmentsConfig
+} from '@models/environment';
+
+
+const routeFragments: RouteFragmentsConfig = {
+  homePage: 'home',
+  aboutPage: 'about',
+  galleryPage: 'gallery',
+  contactPage: 'contact',
+  notFoundPage: 'not-found'
+}
 
 
 export const environment: Environment = {
   production: true,
-  routeFragments: {
-    aboutPage: 'about-kate',
-    galleryPage: 'gallery',
-    contactPage: 'contact',
-    notFoundPage: 'not-found'
-  },
+  routeFragments: routeFragments,
+  navLinks: [
+    {
+      name: 'Home', 
+      route: `/${routeFragments.homePage}`
+    },
+    {
+      name: 'Gallery', 
+      route: `/${routeFragments.galleryPage}`
+    },
+    {
+      name: 'About', 
+      route: `/${routeFragments.aboutPage}`
+    },
+    {
+      name: 'Contact', 
+      route: `/${routeFragments.contactPage}`
+    }
+  ],
   siteURL: {
     schema: HTTPSchema.HTTP,
     domain: 'katealicemann.com',
@@ -19,5 +45,5 @@ export const environment: Environment = {
     domain: 'katealicemann.eu-west-1.elasticbeanstalk.com',
     ext: '/api/gallery-items/'
   },
-  resizeDebounceTime: 1000
+  resizeDebounceTimeMS: 100
 };

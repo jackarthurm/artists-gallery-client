@@ -1,27 +1,11 @@
-import { Environment, HTTPSchema } from '@models/environment';
+import { Environment } from '@models/environment';
+import { environment as prodEnv } from '@envs/environment.prod'
 
 
-export const environment: Environment = {
-  production: false,
-  routeFragments: {
-    homePage: 'home',
-    aboutPage: 'about',
-    galleryPage: 'gallery',
-    contactPage: 'contact',
-    notFoundPage: 'not-found'
-  },
-  siteURL: {
-    schema: HTTPSchema.HTTP,
-    domain: 'katealicemann.com',
-    ext: ''
-  },
-  imagesURL: {
-    schema: HTTPSchema.HTTP,
-    domain: 'localhost:8001',
-    ext: '/api/gallery-items/'
-  },
-  resizeDebounceTime: 1000
-};
+prodEnv.production = false;
+prodEnv.imagesURL.domain = 'localhost:8001';
+
+export const environment: Environment = prodEnv;
 
 /*
  * For easier debugging in development mode, you can import the following file

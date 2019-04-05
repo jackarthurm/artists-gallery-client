@@ -1,3 +1,6 @@
+import { routeFragment } from '@models/shared';
+
+
 export enum HTTPSchema {
   HTTP = 'http',
   HTTPS = 'https'
@@ -10,17 +13,24 @@ export interface URLConfig {
 }
 
 export interface RouteFragmentsConfig {
-  homePage: string;
-  aboutPage: string;
-  galleryPage: string;
-  contactPage: string;
-  notFoundPage: string;
+  homePage: routeFragment;
+  aboutPage: routeFragment;
+  galleryPage: routeFragment;
+  contactPage: routeFragment;
+  notFoundPage: routeFragment;
 }
+
+export interface NavLink {
+  name: string,
+  route: routeFragment
+}
+
 
 export interface Environment {
   production: boolean;
   siteURL: URLConfig;
   imagesURL: URLConfig;
   routeFragments: RouteFragmentsConfig;
-  resizeDebounceTime: number;
+  navLinks: Array<NavLink>;
+  resizeDebounceTimeMS: number;
 }

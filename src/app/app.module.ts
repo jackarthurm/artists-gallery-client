@@ -7,7 +7,7 @@ import {
   MatButtonModule,
   MatListModule,
   MatProgressSpinnerModule,
-  MatDialogModule
+  MatDialogModule,
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,8 @@ import { ImageDetailsComponent } from '@components/image-details/image-details.c
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ContactPageComponent } from '@components/contact-page/contact-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NavLinksComponent } from './components/nav-links/nav-links.component';
 
 
 @NgModule({
@@ -41,13 +43,15 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ImageDetailsComponent,
     ImageDetailsDialogComponent,
     ContactPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NavLinksComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    LayoutModule,
     MatSidenavModule,
     MatCardModule,
     MatToolbarModule,
