@@ -14,15 +14,15 @@ const routes: Routes = [
     {
       path: '',
       pathMatch: 'full',
-      redirectTo: `/${environment.routeFragments.homePage}`
+      redirectTo: `/${environment.routeURLs.homePage}`
     },
     {
-      path: environment.routeFragments.homePage,
+      path: environment.routeURLs.homePage,
       pathMatch: 'full',
       component: HomePageComponent
     },
     {
-      path: environment.routeFragments.galleryPage,
+      path: environment.routeURLs.galleryPage,
       pathMatch: 'prefix',
       children: [
         {
@@ -39,24 +39,24 @@ const routes: Routes = [
       ]
     },
     {
-      path: environment.routeFragments.contactPage,
+      path: environment.routeURLs.contactPage,
       pathMatch: 'full',
       component: ContactPageComponent
     },
     {
-      path: environment.routeFragments.aboutPage,
+      path: environment.routeURLs.aboutPage,
       pathMatch: 'full',
       component: AboutPageComponent
     },
     {
-      path: environment.routeFragments.notFoundPage,
+      path: environment.routeURLs.notFoundPage,
       pathMatch: 'full',
       component: NotFoundPageComponent
     },
     {
       path: '**',
       pathMatch: 'full',
-      redirectTo: `/${environment.routeFragments.notFoundPage}`
+      redirectTo: `/${environment.routeURLs.notFoundPage}`
     }
 ];
 

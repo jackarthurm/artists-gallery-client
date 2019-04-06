@@ -5,6 +5,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { NavLink } from '@app/models/environment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { NavLink } from '@app/models/environment';
   styleUrls: ['./site-header.component.scss']
 })
 export class SiteHeaderComponent {
+
+  constructor(private _router: Router) {}
 
   @Input()
   navLinks: Array<NavLink>;
@@ -24,5 +27,10 @@ export class SiteHeaderComponent {
 
     this.menuClick.emit()
     evt.preventDefault()
+  }
+
+  navLinkIsActive(link: NavLink) {
+
+    return this._router.url.match(link.url);
   }
 }

@@ -65,7 +65,7 @@ export class ImageDetailsComponent {
               switch (err.status) {
                 case HttpStatus.NOT_FOUND:
                   this._router.navigate(
-                    [`/${environment.routeFragments.notFoundPage}`]
+                    [`/${environment.routeURLs.notFoundPage}`]
                   )
                   break;
                 default:
@@ -93,7 +93,7 @@ export class ImageDetailsComponent {
     );
 
     dialogRef.afterClosed().subscribe(() => {
-      this._router.navigate([`/${environment.routeFragments.galleryPage}`]);
+      this._router.navigate([`/${environment.routeURLs.galleryPage}`]);
     });
   }
 

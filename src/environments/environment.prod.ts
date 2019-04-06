@@ -1,11 +1,11 @@
 import {
   Environment,
   HTTPSchema,
-  RouteFragmentsConfig
+  RouteURLConfig
 } from '@models/environment';
 
 
-const routeFragments: RouteFragmentsConfig = {
+const routeURLs: RouteURLConfig = {
   homePage: 'home',
   aboutPage: 'about',
   galleryPage: 'gallery',
@@ -16,23 +16,23 @@ const routeFragments: RouteFragmentsConfig = {
 
 export const environment: Environment = {
   production: true,
-  routeFragments: routeFragments,
+  routeURLs: routeURLs,
   navLinks: [
     {
       name: 'HOME', 
-      route: `/${routeFragments.homePage}`
+      url: `/${routeURLs.homePage}`
     },
     {
       name: 'GALLERY', 
-      route: `/${routeFragments.galleryPage}`
+      url: `/${routeURLs.galleryPage}`
     },
     {
       name: 'ABOUT', 
-      route: `/${routeFragments.aboutPage}`
+      url: `/${routeURLs.aboutPage}`
     },
     {
       name: 'CONTACT', 
-      route: `/${routeFragments.contactPage}`
+      url: `/${routeURLs.contactPage}`
     }
   ],
   siteURL: {

@@ -1,4 +1,4 @@
-import { routeFragment } from '@models/shared';
+import { routeURL } from '@models/shared';
 
 
 export enum HTTPSchema {
@@ -12,17 +12,17 @@ export interface URLConfig {
   ext: string;
 }
 
-export interface RouteFragmentsConfig {
-  homePage: routeFragment;
-  aboutPage: routeFragment;
-  galleryPage: routeFragment;
-  contactPage: routeFragment;
-  notFoundPage: routeFragment;
+export interface RouteURLConfig {
+  homePage: routeURL;
+  aboutPage: routeURL;
+  galleryPage: routeURL;
+  contactPage: routeURL;
+  notFoundPage: routeURL;
 }
 
 export interface NavLink {
   name: string,
-  route: routeFragment
+  url: routeURL
 }
 
 
@@ -30,7 +30,7 @@ export interface Environment {
   production: boolean;
   siteURL: URLConfig;
   imagesURL: URLConfig;
-  routeFragments: RouteFragmentsConfig;
+  routeURLs: RouteURLConfig;
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
 }

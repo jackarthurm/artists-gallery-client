@@ -19,8 +19,9 @@
                     role="listitem"
                     class="nav-list-item">
       <a class="nav-link" 
-         routerLink="{{ link.route }}"> 
-        <h1 class="mat-headline">
+         routerLink="{{ link.url }}"> 
+        <h1 class="mat-headline" 
+            [style.font-weight]="navLinkIsActive(link) ? '700' : '500'">
           {{ link.name }}
         </h1>
       </a>
