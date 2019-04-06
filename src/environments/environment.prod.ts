@@ -19,19 +19,19 @@ export const environment: Environment = {
   routeFragments: routeFragments,
   navLinks: [
     {
-      name: 'Home', 
+      name: 'HOME', 
       route: `/${routeFragments.homePage}`
     },
     {
-      name: 'Gallery', 
+      name: 'GALLERY', 
       route: `/${routeFragments.galleryPage}`
     },
     {
-      name: 'About', 
+      name: 'ABOUT', 
       route: `/${routeFragments.aboutPage}`
     },
     {
-      name: 'Contact', 
+      name: 'CONTACT', 
       route: `/${routeFragments.contactPage}`
     }
   ],

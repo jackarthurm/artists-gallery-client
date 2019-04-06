@@ -27,7 +27,7 @@ export class AppRootComponent implements OnInit {
 
   readonly navLinks: Array<NavLink> = environment.navLinks;
   
-  showSmallScreenLayout: boolean = false;
+  private _showSmallScreenLayout: boolean = false;
 
   @ViewChild('sideNav')
   sideNav: MatSidenav;
@@ -42,15 +42,39 @@ export class AppRootComponent implements OnInit {
     ).subscribe(
       (state: BreakpointState) => {
 
-        if (state.matches !== this.showSmallScreenLayout) {
-          this.showSmallScreenLayout = state.matches
+        if (state.matches !== this._showSmallScreenLayout) {
+          this._showSmallScreenLayout = state.matches
 
           // If the sidenav is open when the layout switches we close it
-          if (!this.showSmallScreenLayout) {
+          if (!this._showSmallScreenLayout) {
             this.sideNav.close();
           }
         }
       }
     );
+  }
+
+  onSidenavSwipeRight(event: Event): void {
+
+    if (!this._showSmallScreenLayout) {
+      return;
+    }
+
+    this.sideNav.open();
+    event.preventDefault()
+  }
+
+  onSidenavSwipeLeft(event: Event): void {
+
+    if (!this._showSmallScreenLayout) {
+      return;
+    }
+
+    this.sideNav.close()
+    event.preventDefault()
+  }
+
+  get showSmallScreenLayout(): boolean {
+    return this._showSmallScreenLayout;
   }
 }

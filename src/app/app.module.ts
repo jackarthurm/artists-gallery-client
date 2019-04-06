@@ -11,9 +11,12 @@ import {
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from '@app/app.routing.module';
 
 import { AppRootComponent } from '@components/app-root/app-root.component';
-import { AppRoutingModule } from '@app/app.routing.module';
 import { GalleryPageComponent } from '@components/gallery-page/gallery-page.component';
 import { AboutPageComponent } from '@components/about-page/about-page.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
@@ -21,13 +24,10 @@ import { SiteHeaderComponent } from '@components/site-header/site-header.compone
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { FbShareLinkComponent } from '@components/fb-share-link/fb-share-link.component';
 import { GalleryItemComponent } from '@components/gallery-item/gallery-item.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ContactPageComponent } from '@components/contact-page/contact-page.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { NavLinksComponent } from './components/nav-links/nav-links.component';
+import { HomePageComponent } from '@components/home-page/home-page.component';
 
 
 @NgModule({
@@ -44,7 +44,6 @@ import { NavLinksComponent } from './components/nav-links/nav-links.component';
     ImageDetailsDialogComponent,
     ContactPageComponent,
     HomePageComponent,
-    NavLinksComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +58,7 @@ import { NavLinksComponent } from './components/nav-links/nav-links.component';
     MatButtonModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppRootComponent],

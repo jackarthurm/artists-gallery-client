@@ -2,7 +2,9 @@
                  (menuClick)="sideNav.toggle()">
 </gal-site-header>
 
-<mat-sidenav-container (backdropClick)="sideNav.close()">
+<mat-sidenav-container (swiperight)="onSidenavSwipeRight($event)"
+                       (swipeleft)="onSidenavSwipeLeft($event)"
+                       (backdropClick)="sideNav.close()">
 
   <mat-sidenav #sideNav 
                [fixedInViewport]="false"
