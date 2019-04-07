@@ -7,49 +7,42 @@ import {
 import { ContactMessage, ContactService } from '@services/contact/contact.service';
 
 
+const EMAIL_REGEX: string = '^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$';
+
+
 @Component({
   selector: 'gal-contact-page',
-  templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.scss'],
+  templateUrl: './contact-page.component.html',
 })
 export class ContactPageComponent {
 
-  public readonly maxFieldLengths: Map<string, number> = new Map([
-    ['name', 70],
-    ['email', 254],
-    ['subject', 78],
-    ['body', 2000],
-  ]);
+  public readonly maxFieldLengths: {[fieldName: string]: number} = {
+    body: 2000,
+    name: 70,
+    subject: 78,
+  };
 
   private readonly _contactForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
+    body: new FormControl('', [
       Validators.required,
-      Validators.maxLength(
-        this.maxFieldLengths.get('name')
-      ),
+      Validators.maxLength(this.maxFieldLengths.body),
     ]),
     email: new FormControl('', [
       Validators.required,
-      Validators.email,
-      Validators.maxLength(
-        this.maxFieldLengths.get('email')
-      ),
+      Validators.pattern(EMAIL_REGEX),
+    ]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(this.maxFieldLengths.name),
     ]),
     subject: new FormControl('', [
       Validators.required,
-      Validators.maxLength(
-        this.maxFieldLengths.get('subject')
-      ),
-    ]),
-    body: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(
-        this.maxFieldLengths.get('body')
-      ),
+      Validators.maxLength(this.maxFieldLengths.subject),
     ]),
   });
 
-  constructor(private _contactService: ContactService) {}
+  constructor(private contactService: ContactService) {}
 
   public get contactForm(): FormGroup {
     return this._contactForm;
@@ -58,22 +51,25 @@ export class ContactPageComponent {
   public onSubmit(): void {
 
     const contactMessage: ContactMessage = {
-      name: this._contactForm.get('name').value,
-      email: this._contactForm.get('email').value,
-      subject: this._contactForm.get('subject').value,
-      body: this._contactForm.get('body').value,
+      name: this._contactForm.controls.name.value,
+      email: this._contactForm.controls.email.value,
+      subject: this._contactForm.controls.subject.value,
+      body: this._contactForm.controls.body.value,
     };
 
-    this._contactService.createContactMessage(contactMessage).subscribe(
-      this._sendContactMessageSuccess,
-      this._sendContactMessageFailure
+    this.contactService.createContactMessage(contactMessage).subscribe(
+      this.sendContactMessageSuccess,
+      this.sendContactMessageFailure
     );
   }
 
-  private _sendContactMessageFailure(err: Error) {
+  private sendContactMessageFailure(err: Error): void {
 
     console.log(err);
   }
 
-  private _sendContactMessageSuccess() {}
+  private sendContactMessageSuccess(): void {
+
+    this._contactForm.reset();
+  }
 }

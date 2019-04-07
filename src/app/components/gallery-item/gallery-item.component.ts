@@ -6,8 +6,8 @@ import { url } from '@models/shared';
 
 @Component({
   selector: 'gal-gallery-item',
-  templateUrl: './gallery-item.component.html',
   styleUrls: ['./gallery-item.component.scss'],
+  templateUrl: './gallery-item.component.html',
 })
 export class GalleryItemComponent implements OnInit, OnDestroy {
 
@@ -24,7 +24,7 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer
   ) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
 
     this.imageService.getImage(
       this.galleryItem.thumbnailImage.url
@@ -37,13 +37,13 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
           this.createdObjectURL
         );
       },
-      (err) => {
+      (err: Error) => {
         console.log(err);
       }
     );
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
 
     if (this.createdObjectURL) {
       this.urlCreator.revokeObjectURL(this.createdObjectURL);

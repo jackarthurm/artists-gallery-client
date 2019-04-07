@@ -23,14 +23,14 @@ export class SiteHeaderComponent {
   @Output()
   public menuClick: EventEmitter<void> = new EventEmitter();
 
-  public onMenuClicked(evt: Event) {
+  public onMenuClicked(evt: Event): void {
 
     this.menuClick.emit();
     evt.preventDefault();
   }
 
-  public navLinkIsActive(link: NavLink) {
+  public navLinkIsActive(link: NavLink): boolean {
 
-    return this._router.url.match(link.url);
+    return this._router.url.match(link.url) !== null;
   }
 }

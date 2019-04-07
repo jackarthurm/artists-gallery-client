@@ -34,7 +34,7 @@ export class AppRootComponent implements OnInit {
 
   constructor(private _breakpointObserver: BreakpointObserver) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this._breakpointObserver.observe(
       SIDENAV_BREAKPOINTS
     ).pipe(

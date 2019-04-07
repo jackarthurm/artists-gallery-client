@@ -4,8 +4,8 @@ import { GalleryPage, ImageService } from '@app/services/image/image.service';
 
 @Component({
   selector: 'gal-gallery-page',
-  templateUrl: './gallery-page.component.html',
   styleUrls: ['./gallery-page.component.scss'],
+  templateUrl: './gallery-page.component.html',
 })
 export class GalleryPageComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class GalleryPageComponent implements OnInit {
 
   constructor(private _imagesService: ImageService) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
 
     this._imagesService.getGalleryPage(1, 100).subscribe(  // TODO: Pagination
       (page: GalleryPage) => this.page = page

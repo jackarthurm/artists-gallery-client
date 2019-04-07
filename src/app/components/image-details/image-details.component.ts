@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -40,7 +40,9 @@ export class ImageDetailsComponent implements OnDestroy {
   ) {
 
     activatedRoute.params.pipe(
-      map(params => params.id)
+      map(
+        (params: {[param: string]: string}) => params.id
+      )
     ).subscribe(
       (imageID: uuid) => {
 
@@ -82,7 +84,7 @@ export class ImageDetailsComponent implements OnDestroy {
     galleryItem: GalleryItem,
     imageResourceURL: SafeResourceUrl
   ): void {
-    const dialogRef = this.dialog.open(
+    const dialogRef: MatDialogRef<ImageDetailsDialogComponent> = this.dialog.open(
       ImageDetailsDialogComponent,
       {
         data: {
@@ -97,7 +99,7 @@ export class ImageDetailsComponent implements OnDestroy {
     });
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
 
     if (this.createdObjectURL) {
       this.urlCreator.revokeObjectURL(this.createdObjectURL);

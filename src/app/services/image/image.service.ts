@@ -20,7 +20,7 @@ export interface GalleryItem {
   largeImage: Image;
   thumbnailImage: Image;
   title: string;
-  createdDate: Date;
+  createdDate: Date | undefined;
   description: string;
   mediaDescription: string;
   artistName: string;
@@ -30,8 +30,8 @@ export interface GalleryItem {
 export interface GalleryPage {
   pageIndex: number;
   itemCount: number;
-  nextPage: url | null;
-  previousPage: url | null;
+  nextPage?: url;
+  previousPage?: url;
   items: Array<GalleryItem>;
 }
 
@@ -62,13 +62,16 @@ interface GalleryItemAPIResult {
 
 // Mapping layer
 function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
+
+  const createdDate: Date | undefined = res.created_date ? new Date(res.created_date) : undefined;
+
   return {
     id: res.id,
     originalImage: res.original_image,
     largeImage: res.large_image,
     thumbnailImage: res.thumbnail_image,
     title: res.title,
-    createdDate: new Date(res.created_date),
+    createdDate,
     description: res.description,
     mediaDescription: res.media_description,
     artistName: res.artist_name,
@@ -86,8 +89,8 @@ function galleryPageResult(
   return {
     pageIndex,
     itemCount: res.count,
-    nextPage: res.next,
-    previousPage: res.previous,
+    nextPage: res.next || undefined,
+    previousPage: res.previous || undefined,
     items: res.results.map(galleryItemResult),
   };
 }
