@@ -9,7 +9,7 @@ describe('SiteFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SiteFooterComponent ]
+      declarations: [ SiteFooterComponent ],
     })
     .compileComponents();
   }));

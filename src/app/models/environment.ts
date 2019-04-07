@@ -3,12 +3,12 @@ import { routeURL, url } from '@models/shared';
 
 export enum HTTPSchema {
   HTTP = 'http',
-  HTTPS = 'https'
+  HTTPS = 'https',
 }
 
 export interface URLConfig {
-  domain: string;
   schema: HTTPSchema;
+  domain: string;
   ext: string;
 }
 
@@ -21,8 +21,8 @@ export interface RouteURLConfig {
 }
 
 export interface NavLink {
-  name: string,
-  url: routeURL
+  name: string;
+  url: routeURL;
 }
 
 
@@ -38,5 +38,5 @@ export interface Environment {
 
 
 export function makeURL(urlConfig: URLConfig): url {
-  return `${urlConfig.schema}://${urlConfig.domain}${urlConfig.ext}`
+  return `${urlConfig.schema}://${urlConfig.domain}${urlConfig.ext}`;
 }

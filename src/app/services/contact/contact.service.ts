@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '@envs/environment';
+import { Injectable } from '@angular/core';
 import { makeURL } from '@app/models/environment';
+import { environment } from '@envs/environment';
 import { Observable } from 'rxjs';
 
 
@@ -14,23 +14,23 @@ export interface ContactMessage {
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContactService {
 
   constructor(private _http: HttpClient) {}
 
-  createContactMessage(message: ContactMessage): Observable<ContactMessage> {
+  public createContactMessage(message: ContactMessage): Observable<ContactMessage> {
 
     const headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
     });
 
     return this._http.post<ContactMessage>(
       makeURL(environment.contactURL),
       message,
-      {headers: headers}
+      {headers}
     );
   }
 }

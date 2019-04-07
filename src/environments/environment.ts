@@ -1,5 +1,5 @@
+import { environment as prodEnv } from '@envs/environment.prod';
 import { Environment } from '@models/environment';
-import { environment as prodEnv } from '@envs/environment.prod'
 
 
 prodEnv.production = false;

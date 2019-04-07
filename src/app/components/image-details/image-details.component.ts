@@ -1,61 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 
-import { uuid, url } from '@models/shared'
+import { HttpErrorResponse } from '@angular/common/http';
 import {
-  ImageService, 
-  GalleryItem
+  GalleryItem,
+  ImageService
 } from '@app/services/image/image.service';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
-import { HttpErrorResponse } from '@angular/common/http';
+import { url, uuid } from '@models/shared';
 import * as HttpStatus from 'http-status-codes';
 
 
 export interface ImageDialogData {
-  galleryItem: GalleryItem,
-  localImageURL: SafeResourceUrl
+  galleryItem: GalleryItem;
+  localImageURL: SafeResourceUrl;
 }
 
 
 @Component({
   selector: 'gal-image-details',
-  template: ''
+  template: '',
 })
-export class ImageDetailsComponent {
+export class ImageDetailsComponent implements OnDestroy {
 
-  imageResourceURL: SafeResourceUrl;
-  private _createdObjectURL: url;
-  private _urlCreator: any = window.URL || window['webkitURL'];
+  public imageResourceURL: SafeResourceUrl;
+  private createdObjectURL: url;
+  private urlCreator: any = window.URL || (window as any).webkitURL;
 
   constructor(
-    private _dialog: MatDialog,
-    private _imageService: ImageService,
-    private _sanitizer: DomSanitizer,
-    private _router: Router,
+    private dialog: MatDialog,
+    private imageService: ImageService,
+    private sanitizer: DomSanitizer,
+    private router: Router,
     activatedRoute: ActivatedRoute
   ) {
 
     activatedRoute.params.pipe(
-      map(params => params['id'])
+      map(params => params.id)
     ).subscribe(
       (imageID: uuid) => {
 
-        this._imageService.getGalleryItem(imageID).subscribe(
+        this.imageService.getGalleryItem(imageID).subscribe(
           (galleryItem: GalleryItem) => {
 
-          this._imageService.getImage(
+          this.imageService.getImage(
             galleryItem.largeImage.url
           ).subscribe(
             (imageBlob: Blob) => {
 
-              this._createdObjectURL = this._urlCreator.createObjectURL(imageBlob);
-      
-              const imageResourceURL: SafeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl(
-                this._createdObjectURL
+              this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
+
+              const imageResourceURL: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+                this.createdObjectURL
               );
 
               this.openDialog(galleryItem, imageResourceURL);
@@ -64,9 +64,9 @@ export class ImageDetailsComponent {
 
               switch (err.status) {
                 case HttpStatus.NOT_FOUND:
-                  this._router.navigate(
+                  this.router.navigate(
                     [`/${environment.routeURLs.notFoundPage}`]
-                  )
+                  );
                   break;
                 default:
                   console.log(err);
@@ -78,29 +78,29 @@ export class ImageDetailsComponent {
     );
   }
 
-  openDialog(
-    galleryItem: GalleryItem, 
+  public openDialog(
+    galleryItem: GalleryItem,
     imageResourceURL: SafeResourceUrl
   ): void {
-    const dialogRef = this._dialog.open(
-      ImageDetailsDialogComponent, 
+    const dialogRef = this.dialog.open(
+      ImageDetailsDialogComponent,
       {
         data: {
-          galleryItem: galleryItem,
-          localImageURL: imageResourceURL
-        }
+          galleryItem,
+          localImageURL: imageResourceURL,
+        },
       }
     );
 
     dialogRef.afterClosed().subscribe(() => {
-      this._router.navigate([`/${environment.routeURLs.galleryPage}`]);
+      this.router.navigate([`/${environment.routeURLs.galleryPage}`]);
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
 
-    if (this._createdObjectURL) {
-      this._urlCreator.revokeObjectURL(this._createdObjectURL)
+    if (this.createdObjectURL) {
+      this.urlCreator.revokeObjectURL(this.createdObjectURL);
     }
   }
 }

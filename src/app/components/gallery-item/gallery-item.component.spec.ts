@@ -9,7 +9,7 @@ describe('GalleryItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GalleryItemComponent ]
+      declarations: [ GalleryItemComponent ],
     })
     .compileComponents();
   }));

@@ -1,13 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ImageDialogData } from '@components/image-details/image-details.component';
-import { SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'gal-image-details-dialog',
   templateUrl: './image-details-dialog.component.html',
-  styleUrls: ['./image-details-dialog.component.scss']
+  styleUrls: ['./image-details-dialog.component.scss'],
 })
 export class ImageDetailsDialogComponent {
 

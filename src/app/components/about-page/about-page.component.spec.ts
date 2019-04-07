@@ -9,7 +9,7 @@ describe('AboutPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutPageComponent ]
+      declarations: [ AboutPageComponent ],
     })
     .compileComponents();
   }));

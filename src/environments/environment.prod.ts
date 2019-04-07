@@ -10,45 +10,45 @@ const routeURLs: RouteURLConfig = {
   aboutPage: 'about',
   galleryPage: 'gallery',
   contactPage: 'contact',
-  notFoundPage: 'not-found'
-}
+  notFoundPage: 'not-found',
+};
 
 
 export const environment: Environment = {
   production: true,
-  routeURLs: routeURLs,
-  navLinks: [
-    {
-      name: 'HOME', 
-      url: `/${routeURLs.homePage}`
-    },
-    {
-      name: 'GALLERY', 
-      url: `/${routeURLs.galleryPage}`
-    },
-    {
-      name: 'ABOUT', 
-      url: `/${routeURLs.aboutPage}`
-    },
-    {
-      name: 'CONTACT', 
-      url: `/${routeURLs.contactPage}`
-    }
-  ],
   siteURL: {
     schema: HTTPSchema.HTTP,
     domain: 'katealicemann.com',
-    ext: ''
+    ext: '',
   },
   imagesURL: {
     schema: HTTPSchema.HTTP,
     domain: 'admin.katealicemann.com',
-    ext: '/api/gallery-items/'
+    ext: '/api/gallery-items/',
   },
   contactURL: {
     schema: HTTPSchema.HTTP,
     domain: 'admin.katealicemann.com',
-    ext: '/api/contact/'
+    ext: '/api/contact/',
   },
-  resizeDebounceTimeMS: 100
+  routeURLs,
+  navLinks: [
+    {
+      name: 'HOME',
+      url: `/${routeURLs.homePage}`,
+    },
+    {
+      name: 'GALLERY',
+      url: `/${routeURLs.galleryPage}`,
+    },
+    {
+      name: 'ABOUT',
+      url: `/${routeURLs.aboutPage}`,
+    },
+    {
+      name: 'CONTACT',
+      url: `/${routeURLs.contactPage}`,
+    },
+  ],
+  resizeDebounceTimeMS: 100,
 };

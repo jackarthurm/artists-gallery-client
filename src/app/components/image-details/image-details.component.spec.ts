@@ -9,7 +9,7 @@ describe('ImageDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageDetailsComponent ]
+      declarations: [ ImageDetailsComponent ],
     })
     .compileComponents();
   }));

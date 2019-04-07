@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { uuid, url } from '@app/models/shared';
-import { environment } from '@envs/environment'
-import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { makeURL } from '@app/models/environment';
+import { url, uuid } from '@app/models/shared';
+import { environment } from '@envs/environment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 // Model definitions
@@ -32,7 +32,7 @@ export interface GalleryPage {
   itemCount: number;
   nextPage: url | null;
   previousPage: url | null;
-  items: Array<GalleryItem>
+  items: Array<GalleryItem>;
 }
 
 // API schema definition
@@ -74,61 +74,61 @@ function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
     artistName: res.artist_name,
     tags: res.tags.map(
       (tag: GalleryItemAPITagResult) => tag.name
-    )
+    ),
   };
 }
 
 function galleryPageResult(
-  res: GalleryItemListAPIResult, 
+  res: GalleryItemListAPIResult,
   pageIndex: number
 ): GalleryPage {
 
   return {
-    pageIndex: pageIndex,
+    pageIndex,
     itemCount: res.count,
     nextPage: res.next,
     previousPage: res.previous,
-    items: res.results.map(galleryItemResult)
-  }
+    items: res.results.map(galleryItemResult),
+  };
 }
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ImageService {
 
-  constructor(private _http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getImage(location: url): Observable<Blob> {
+  public getImage(location: url): Observable<Blob> {
     /* Retrieve an image file in blob format */
 
     console.log(location);
 
     const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'application/octet-stream'
+      Accept: 'application/octet-stream',
     });
 
-    return this._http.get<Blob>(
+    return this.http.get<Blob>(
       location,
       {
-        headers: headers,
-        responseType: 'blob' as 'json'
+        headers,
+        responseType: 'blob' as 'json',
       }
-    )
+    );
   }
 
-  getGalleryItem(imageID: uuid): Observable<GalleryItem> {
+  public getGalleryItem(imageID: uuid): Observable<GalleryItem> {
 
     const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'application/json'
+      Accept: 'application/json',
     });
 
-    return this._http.get<GalleryItemAPIResult>(
+    return this.http.get<GalleryItemAPIResult>(
       `${makeURL(environment.imagesURL)}${imageID}/`,
       {
-        headers: headers,
-        responseType: 'json'
+        headers,
+        responseType: 'json',
       }
     ).pipe(
       map(
@@ -137,26 +137,26 @@ export class ImageService {
     );
   }
 
-  getGalleryPage(
-    pageIndex: number = 1, 
+  public getGalleryPage(
+    pageIndex: number = 1,
     pageSize: number = 12
   ): Observable<GalleryPage> {
 
     const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'application/json'
+      Accept: 'application/json',
     });
 
     console.log(`${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`);
 
-    return this._http.get<GalleryItemListAPIResult>(
+    return this.http.get<GalleryItemListAPIResult>(
       `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`,
       {
-        headers: headers,
-        responseType: 'json',
+        headers,
         params: {
-          page: pageIndex.toString(), 
-          size: pageSize.toString()
-        }
+          page: pageIndex.toString(),
+          size: pageSize.toString(),
+        },
+        responseType: 'json',
       }
     ).pipe(
       map(

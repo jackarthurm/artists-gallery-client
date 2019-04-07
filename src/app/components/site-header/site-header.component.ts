@@ -1,35 +1,35 @@
 import {
   Component,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
 } from '@angular/core';
-import { NavLink } from '@app/models/environment';
 import { Router } from '@angular/router';
+import { NavLink } from '@app/models/environment';
 
 
 @Component({
   selector: 'gal-site-header',
+  styleUrls: ['./site-header.component.scss'],
   templateUrl: './site-header.component.html',
-  styleUrls: ['./site-header.component.scss']
 })
 export class SiteHeaderComponent {
 
   constructor(private _router: Router) {}
 
   @Input()
-  navLinks: Array<NavLink>;
+  public navLinks: Array<NavLink>;
 
   @Output()
-  menuClick: EventEmitter<void> = new EventEmitter();
+  public menuClick: EventEmitter<void> = new EventEmitter();
 
-  onMenuClicked(evt: Event) {
+  public onMenuClicked(evt: Event) {
 
-    this.menuClick.emit()
-    evt.preventDefault()
+    this.menuClick.emit();
+    evt.preventDefault();
   }
 
-  navLinkIsActive(link: NavLink) {
+  public navLinkIsActive(link: NavLink) {
 
     return this._router.url.match(link.url);
   }

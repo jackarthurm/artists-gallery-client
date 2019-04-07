@@ -9,7 +9,7 @@ describe('FbShareLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FbShareLinkComponent ]
+      declarations: [ FbShareLinkComponent ],
     })
     .compileComponents();
   }));

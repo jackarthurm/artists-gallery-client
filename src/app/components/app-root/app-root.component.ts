@@ -1,40 +1,40 @@
 import {
+  BreakpointObserver,
+  BreakpointState,
+} from '@angular/cdk/layout';
+import {
   Component,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  BreakpointState, 
-  BreakpointObserver,
-} from '@angular/cdk/layout';
-import { debounceTime } from 'rxjs/internal/operators/debounceTime';
-import { environment } from '@envs/environment';
 import { MatSidenav } from '@angular/material';
 import { NavLink } from '@app/models/environment';
+import { environment } from '@envs/environment';
+import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 
 
 const SIDENAV_BREAKPOINTS: Array<string> = [
-  '(max-width: 599px)'
+  '(max-width: 599px)',
 ];
 
 
 @Component({
   selector: 'gal-app-root',
+  styleUrls: ['./app-root.component.scss'],
   templateUrl: './app-root.component.html',
-  styleUrls: ['./app-root.component.scss']
 })
 export class AppRootComponent implements OnInit {
 
-  readonly navLinks: Array<NavLink> = environment.navLinks;
-  
+  public readonly navLinks: Array<NavLink> = environment.navLinks;
+
   private _showSmallScreenLayout: boolean = false;
 
   @ViewChild('sideNav')
-  sideNav: MatSidenav;
+  public sideNav: MatSidenav;
 
   constructor(private _breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this._breakpointObserver.observe(
       SIDENAV_BREAKPOINTS
     ).pipe(
@@ -43,7 +43,7 @@ export class AppRootComponent implements OnInit {
       (state: BreakpointState) => {
 
         if (state.matches !== this._showSmallScreenLayout) {
-          this._showSmallScreenLayout = state.matches
+          this._showSmallScreenLayout = state.matches;
 
           // If the sidenav is open when the layout switches we close it
           if (!this._showSmallScreenLayout) {
@@ -54,24 +54,24 @@ export class AppRootComponent implements OnInit {
     );
   }
 
-  onSidenavSwipeRight(event: Event): void {
+  public onSidenavSwipeRight(event: Event): void {
 
     if (!this._showSmallScreenLayout) {
       return;
     }
 
     this.sideNav.open();
-    event.preventDefault()
+    event.preventDefault();
   }
 
-  onSidenavSwipeLeft(event: Event): void {
+  public onSidenavSwipeLeft(event: Event): void {
 
     if (!this._showSmallScreenLayout) {
       return;
     }
 
-    this.sideNav.close()
-    event.preventDefault()
+    this.sideNav.close();
+    event.preventDefault();
   }
 
   get showSmallScreenLayout(): boolean {
