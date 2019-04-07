@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatSidenavModule,
   MatToolbarModule,
@@ -8,11 +12,11 @@ import {
   MatListModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from '@app/app.routing.module';
 
@@ -50,6 +54,7 @@ import { HomePageComponent } from '@components/home-page/home-page.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     LayoutModule,
     MatSidenavModule,
     MatCardModule,
@@ -59,6 +64,8 @@ import { HomePageComponent } from '@components/home-page/home-page.component';
     MatListModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppRootComponent],

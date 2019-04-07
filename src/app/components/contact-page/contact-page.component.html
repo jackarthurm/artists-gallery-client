@@ -1,3 +1,92 @@
-<p>
-  contact-page works!
-</p>
+<div class="contact-page-container">
+  <mat-card class="contact-form-card">
+
+    <mat-card-header>
+      <div mat-card-avatar class="header-icon-container">
+        <mat-icon class="large-icon">message</mat-icon>
+      </div>
+      <mat-card-title>Contact</mat-card-title>
+      <mat-card-subtitle>Send Kate a message</mat-card-subtitle>
+    </mat-card-header>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+        <div class="contact-form-fields-container">
+
+          <mat-form-field hideRequiredMarker>
+            <input matInput 
+                   formControlName="name" 
+                   placeholder="Your name"
+                   required/>
+            <mat-error *ngIf="contactForm.get('name').hasError('required')">
+              Please enter your name
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('name').hasError('maxlength')">
+              Name cannot be longer than {{ maxFieldLengths.get('name') }} characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field hideRequiredMarker>
+            <input matInput 
+                  formControlName="email"
+                  type="email"
+                  placeholder="Your email address"
+                  required/>
+            <mat-error *ngIf="contactForm.get('email').hasError('required')">
+              Please enter your email address
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('email').hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="!contactForm.get('email').hasError('email') && contactForm.get('email').hasError('maxlength')">
+              Email address cannot be longer than {{ maxFieldLengths.get('email') }} characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field hideRequiredMarker>
+            <input matInput
+                  formControlName="subject" 
+                  placeholder="Subject"
+                  required/>
+            <mat-error *ngIf="contactForm.get('subject').hasError('required')">
+              Please enter a subject
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('subject').hasError('maxlength')">
+              Subject cannot be longer than {{ maxFieldLengths.get('subject') }} characters
+            </mat-error>
+          </mat-form-field>
+            
+          <mat-form-field hideRequiredMarker>
+            <textarea matInput
+                      matTextareaAutosize
+                      matAutosizeMinRows="6"
+                      formControlName="message"
+                      placeholder="Message"
+                      required>
+            </textarea>
+            <mat-hint align="end">
+              {{ contactForm.get('message').value?.length || 0 }}/{{ maxFieldLengths.get('message') }}
+            </mat-hint>
+            <mat-error *ngIf="contactForm.get('message').hasError('required')">
+                Please enter a message
+              </mat-error>
+              <mat-error *ngIf="contactForm.get('message').hasError('maxlength')">
+                Message cannot be longer than {{ maxFieldLengths.get('message') }} characters
+              </mat-error>
+          </mat-form-field>
+
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button 
+                type="submit" 
+                class="submit-button"
+                [disabled]="!contactForm.valid">SUBMIT</button>
+      </mat-card-actions>
+
+    </form>
+
+  </mat-card>
+</div>

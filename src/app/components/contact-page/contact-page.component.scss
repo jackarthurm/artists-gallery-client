@@ -1,0 +1,35 @@
+.contact-form-fields-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-card {
+  min-width: 300px;
+  max-width: 500px;
+  flex: 1;
+  margin: 30px;
+}
+
+.contact-page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  float: right;
+}
+
+.large-icon {
+  font-size: 40px;
+}
+
+.header-icon-container {
+  margin-top: 3px;
+}
+
+mat-form-field {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
