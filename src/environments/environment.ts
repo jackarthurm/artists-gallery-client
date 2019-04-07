@@ -4,6 +4,7 @@ import { environment as prodEnv } from '@envs/environment.prod'
 
 prodEnv.production = false;
 prodEnv.imagesURL.domain = 'localhost:8001';
+prodEnv.contactURL.domain = 'localhost:8001';
 
 export const environment: Environment = prodEnv;
 

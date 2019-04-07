@@ -16,9 +16,10 @@
 
           <mat-form-field hideRequiredMarker>
             <input matInput 
+                   type="text"
                    formControlName="name" 
                    placeholder="Your name"
-                   required/>
+                   required />
             <mat-error *ngIf="contactForm.get('name').hasError('required')">
               Please enter your name
             </mat-error>
@@ -32,7 +33,7 @@
                   formControlName="email"
                   type="email"
                   placeholder="Your email address"
-                  required/>
+                  required />
             <mat-error *ngIf="contactForm.get('email').hasError('required')">
               Please enter your email address
             </mat-error>
@@ -46,9 +47,10 @@
 
           <mat-form-field hideRequiredMarker>
             <input matInput
-                  formControlName="subject" 
-                  placeholder="Subject"
-                  required/>
+                   type="text"
+                   formControlName="subject" 
+                   placeholder="Subject"
+                   required />
             <mat-error *ngIf="contactForm.get('subject').hasError('required')">
               Please enter a subject
             </mat-error>
@@ -59,21 +61,22 @@
             
           <mat-form-field hideRequiredMarker>
             <textarea matInput
-                      matTextareaAutosize
-                      matAutosizeMinRows="6"
-                      formControlName="message"
+                      type="text"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="6"
+                      formControlName="body"
                       placeholder="Message"
                       required>
             </textarea>
             <mat-hint align="end">
-              {{ contactForm.get('message').value?.length || 0 }}/{{ maxFieldLengths.get('message') }}
+              {{ contactForm.get('body').value?.length || 0 }}/{{ maxFieldLengths.get('body') }}
             </mat-hint>
-            <mat-error *ngIf="contactForm.get('message').hasError('required')">
-                Please enter a message
-              </mat-error>
-              <mat-error *ngIf="contactForm.get('message').hasError('maxlength')">
-                Message cannot be longer than {{ maxFieldLengths.get('message') }} characters
-              </mat-error>
+            <mat-error *ngIf="contactForm.get('body').hasError('required')">
+              Please enter a message
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('body').hasError('maxlength')">
+              Message cannot be longer than {{ maxFieldLengths.get('body') }} characters
+            </mat-error>
           </mat-form-field>
 
         </div>

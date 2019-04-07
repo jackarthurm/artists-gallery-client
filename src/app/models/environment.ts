@@ -1,4 +1,4 @@
-import { routeURL } from '@models/shared';
+import { routeURL, url } from '@models/shared';
 
 
 export enum HTTPSchema {
@@ -30,7 +30,13 @@ export interface Environment {
   production: boolean;
   siteURL: URLConfig;
   imagesURL: URLConfig;
+  contactURL: URLConfig;
   routeURLs: RouteURLConfig;
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
+}
+
+
+export function makeURL(urlConfig: URLConfig): url {
+  return `${urlConfig.schema}://${urlConfig.domain}${urlConfig.ext}`
 }

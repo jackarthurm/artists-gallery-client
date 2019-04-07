@@ -4,10 +4,11 @@
 }
 
 .contact-form-card {
-  min-width: 300px;
+  min-width: 200px;
   max-width: 500px;
   flex: 1;
   margin: 30px;
+  overflow: auto;
 }
 
 .contact-page-container {

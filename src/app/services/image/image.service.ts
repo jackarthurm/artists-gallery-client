@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { uuid, url } from '@app/models/shared';
 import { environment } from '@envs/environment'
 import { map } from 'rxjs/operators';
+import { makeURL } from '@app/models/environment';
 
 
 // Model definitions
@@ -123,10 +124,8 @@ export class ImageService {
       'Accept': 'application/json'
     });
 
-    console.log(`${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}${imageID}/`);
-
     return this._http.get<GalleryItemAPIResult>(
-      `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}${imageID}/`,
+      `${makeURL(environment.imagesURL)}${imageID}/`,
       {
         headers: headers,
         responseType: 'json'

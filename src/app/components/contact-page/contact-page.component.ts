@@ -4,6 +4,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { ContactMessage, ContactService } from '@services/contact/contact.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ContactPageComponent {
     ['name', 70],
     ['email', 254],
     ['subject', 78],
-    ['message', 2000],
+    ['body', 2000],
   ]);
 
   private readonly _contactForm: FormGroup = new FormGroup({
@@ -40,13 +41,15 @@ export class ContactPageComponent {
         this.maxFieldLengths.get('subject')
       ),
     ]),
-    message: new FormControl('', [
+    body: new FormControl('', [
       Validators.required,
       Validators.maxLength(
-        this.maxFieldLengths.get('message')
+        this.maxFieldLengths.get('body')
       ),
     ]),
   });
+
+  constructor(private _contactService: ContactService) {}
 
   get contactForm(): FormGroup {
     return this._contactForm;
@@ -54,6 +57,20 @@ export class ContactPageComponent {
 
   onSubmit(): void {
 
-    console.log('Submitted');
+    const contactMessage: ContactMessage = {
+      name: this._contactForm.get('name').value,
+      email: this._contactForm.get('email').value,
+      subject: this._contactForm.get('subject').value,
+      body: this._contactForm.get('body').value
+    }
+
+    this._contactService.createContactMessage(contactMessage).subscribe(
+      this._sendContactMessageSuccess,
+      this._sendContactMessageFailure
+    )
   }
+
+  private _sendContactMessageFailure() {}
+
+  private _sendContactMessageSuccess() {}
 }
