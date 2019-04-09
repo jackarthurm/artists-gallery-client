@@ -1,0 +1,40 @@
+@import '~@angular/material/theming';
+@import 'theme.scss';
+
+
+.home-page-header-container {
+  width: 100%;
+  height: 400px;
+  background-color: mat-color($gal-primary);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title-text {
+  padding-right: 10%;
+
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+
+  animation-delay: 2s;
+  -webkit-animation-delay: 2s;
+
+  transition-timing-function: cubic-bezier(.69,.17,1,.57);
+  -webkit-transition-timing-function: cubic-bezier(.69,.17,1,.57);
+
+  @keyframes slide-in {
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @-webkit-keyframes slide-in {
+    100% {
+      -webkit-transform: translateX(0%);
+    }
+  }
+}

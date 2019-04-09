@@ -51,4 +51,8 @@ export const environment: Environment = {
     },
   ],
   resizeDebounceTimeMS: 100,
+  socialMediaLinks: {
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+  }
 };

@@ -1,6 +1,11 @@
 import { routeURL, url } from '@models/shared';
 
 
+export interface SocialMediaLinks {
+  facebook: url;
+  instagram: url;
+}
+
 export enum HTTPSchema {
   HTTP = 'http',
   HTTPS = 'https',
@@ -34,6 +39,7 @@ export interface Environment {
   routeURLs: RouteURLConfig;
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
+  socialMediaLinks: SocialMediaLinks;
 }
 
 

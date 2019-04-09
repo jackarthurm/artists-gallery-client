@@ -1,4 +1,8 @@
+@import 'theme.scss';
+
+
 body {
+  background-color: $gal-white;
   margin: 0;
   position: absolute;
   top: 0;
@@ -8,4 +12,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loading-spinner {
+  width: 100px;
 }

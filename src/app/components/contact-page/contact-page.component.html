@@ -9,17 +9,28 @@
       <mat-card-subtitle>Send Kate a message</mat-card-subtitle>
     </mat-card-header>
 
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <form #form="ngForm"
+          [formGroup]="contactForm"
+          (ngSubmit)="onSubmit(form)">
 
       <mat-card-content>
         <div class="contact-form-fields-container">
 
-          <mat-form-field hideRequiredMarker>
+          <mat-form-field color="accent" hideRequiredMarker>
             <input matInput
                    type="text"
                    formControlName="name"
                    placeholder="Your name"
                    required />
+            <button mat-button
+                    *ngIf="contactForm.controls.name.value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    tabindex="-1"
+                    (click)="contactForm.controls.name.reset('')">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="contactForm.controls.name.errors?.required">
               Please enter your name
             </mat-error>
@@ -28,12 +39,21 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field hideRequiredMarker>
+          <mat-form-field color="accent" hideRequiredMarker>
             <input matInput
                   formControlName="email"
                   type="email"
                   placeholder="Your email address"
                   required />
+            <button mat-button
+                    *ngIf="contactForm.controls.email.value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    tabindex="-1"
+                    (click)="contactForm.controls.email.reset('')">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="contactForm.controls.email.errors?.required">
               Please enter your email address
             </mat-error>
@@ -42,12 +62,21 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field hideRequiredMarker>
+          <mat-form-field color="accent" hideRequiredMarker>
             <input matInput
                    type="text"
                    formControlName="subject"
                    placeholder="Subject"
                    required />
+            <button mat-button
+                    *ngIf="contactForm.controls.subject.value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    tabindex="-1"
+                    (click)="contactForm.controls.subject.reset('')">
+             <mat-icon>close</mat-icon>
+           </button>
             <mat-error *ngIf="contactForm.controls.subject.errors?.required">
               Please enter a subject
             </mat-error>
@@ -56,7 +85,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field hideRequiredMarker>
+          <mat-form-field color="accent" hideRequiredMarker>
             <textarea matInput
                       type="text"
                       cdkTextareaAutosize
@@ -65,6 +94,15 @@
                       placeholder="Message"
                       required>
             </textarea>
+            <button mat-button
+                    *ngIf="contactForm.controls.body.value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    tabindex="-1"
+                    (click)="contactForm.controls.body.reset('')">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-hint align="end">
               {{ contactForm.controls.body.value?.length || 0 }}/{{ maxFieldLengths.body }}
             </mat-hint>
@@ -81,7 +119,7 @@
 
       <mat-card-actions>
         <button mat-button
-                color="primary"
+                color="accent"
                 type="submit"
                 class="submit-button"
                 [disabled]="!contactForm.valid">SUBMIT</button>

@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { ContactMessage, ContactService } from '@services/contact/contact.service';
-
-
-const EMAIL_REGEX: string = '^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$';
+import { MatDialog } from '@angular/material';
+import { SuccessDialogComponent } from '@components/success-dialog/success-dialog.component';
+import {
+  ContactMessage,
+  ContactService,
+} from '@services/contact/contact.service';
 
 
 @Component({
@@ -23,32 +26,47 @@ export class ContactPageComponent {
     subject: 78,
   };
 
-  private readonly _contactForm: FormGroup = new FormGroup({
-    body: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(this.maxFieldLengths.body),
-    ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern(EMAIL_REGEX),
-    ]),
-    name: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(this.maxFieldLengths.name),
-    ]),
-    subject: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(this.maxFieldLengths.subject),
-    ]),
+  private _contactForm: FormGroup = new FormGroup({
+    body: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(this.maxFieldLengths.body),
+      ]
+    ),
+    email: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.email,
+      ]
+    ),
+    name: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(this.maxFieldLengths.name),
+      ]
+    ),
+    subject: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(this.maxFieldLengths.subject),
+      ]
+    ),
   });
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private successDialog: MatDialog
+  ) {}
 
   public get contactForm(): FormGroup {
     return this._contactForm;
   }
 
-  public onSubmit(): void {
+  public onSubmit(form: FormGroupDirective): void {
 
     const contactMessage: ContactMessage = {
       name: this._contactForm.controls.name.value,
@@ -58,18 +76,29 @@ export class ContactPageComponent {
     };
 
     this.contactService.createContactMessage(contactMessage).subscribe(
-      this.sendContactMessageSuccess,
-      this.sendContactMessageFailure
+      this.sendContactMessageSuccess.bind(this),
+      this.sendContactMessageFailure.bind(this)
     );
+
+    form.resetForm();
   }
 
   private sendContactMessageFailure(err: Error): void {
-
     console.log(err);
   }
 
   private sendContactMessageSuccess(): void {
 
-    this._contactForm.reset();
+    this.openSuccessDialog();
+  }
+
+  private openSuccessDialog(): void {
+    this.successDialog.open(
+      SuccessDialogComponent,
+      {
+        data: {message: 'Contact message sent'},
+        width: '200px',
+      }
+    );
   }
 }

@@ -32,9 +32,13 @@ import { ImageDetailsComponent } from '@components/image-details/image-details.c
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
+import { SuccessDialogComponent } from '@components/success-dialog/success-dialog.component';
+import { MediaLinksBannerComponent } from './components/media-links-banner/media-links-banner.component';
+import { HomePageHeaderComponent } from './components/home-page-header/home-page-header.component';
 
 
 @NgModule({
+  bootstrap: [AppRootComponent],
   declarations: [
     AppRootComponent,
     GalleryPageComponent,
@@ -48,6 +52,13 @@ import { SiteHeaderComponent } from '@components/site-header/site-header.compone
     ImageDetailsDialogComponent,
     ContactPageComponent,
     HomePageComponent,
+    SuccessDialogComponent,
+    MediaLinksBannerComponent,
+    HomePageHeaderComponent,
+  ],
+  entryComponents: [
+    ImageDetailsDialogComponent,
+    SuccessDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,5 @@ import { SiteHeaderComponent } from '@components/site-header/site-header.compone
     MatInputModule,
   ],
   providers: [],
-  bootstrap: [AppRootComponent],
-  entryComponents: [ImageDetailsDialogComponent],
 })
 export class AppModule {}

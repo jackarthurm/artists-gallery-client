@@ -26,3 +26,16 @@ h1 {
     }
   }
 }
+
+.loading-container {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner {
+    width: 20%;
+    margin: 0 auto;
+  }
+}

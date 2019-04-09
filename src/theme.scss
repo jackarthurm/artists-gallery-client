@@ -9,13 +9,45 @@ $typography: mat-typography-config(
 );
 @include mat-core($typography);
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$gal-primary: mat-palette($mat-blue);
-$gal-accent: mat-palette($mat-orange, A200, A100, A400);
+$gal-black: #282828;
+$gal-white: #f4f4f4;
 
-// The warn palette is optional (defaults to red).
+$gal-primary: mat-palette(
+  (
+    50 : $gal-white,
+    100 : $gal-white,
+    200 : $gal-white,
+    300 : $gal-white,
+    400 : $gal-white,
+    500 : $gal-white,
+    600 : $gal-white,
+    700 : $gal-white,
+    800 : $gal-white,
+    900 : $gal-white,
+    A100 : $gal-white,
+    A200 : $gal-white,
+    A400 : $gal-white,
+    A700 : $gal-white,
+    contrast: (
+        50 : $gal-black,
+        100 : $gal-black,
+        200 : $gal-black,
+        300 : $gal-black,
+        400 : $gal-black,
+        500 : $gal-black,
+        600 : $gal-black,
+        700 : $gal-black,
+        800 : $gal-black,
+        900 : $gal-black,
+        A100 : $gal-black,
+        A200 : $gal-black,
+        A400 : $gal-black,
+        A700 : $gal-black,
+    )
+  )
+);
+
+$gal-accent: mat-palette($mat-blue, A200, A100, A400);
 $gal-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
@@ -25,6 +57,3 @@ $gal-theme: mat-light-theme($gal-primary, $gal-accent, $gal-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($gal-theme);
-
-
-$gal-color-white: #FFFFFF;

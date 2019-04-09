@@ -1,6 +1,6 @@
 <ng-container *ngIf="imageResourceURL; else loading">
   <a class="image-link"
-     href="" 
+     href=""
      [routerLink]="[{outlets: {modal: galleryItem.id}}]">
     <img [style.width]="galleryItem.thumbnailImage.width + 'px'"
         [style.height]="galleryItem.thumbnailImage.height + 'px'"
@@ -12,6 +12,6 @@
   <div class="loading-container"
        [style.width]="galleryItem.thumbnailImage.width + 'px'"
        [style.height]="galleryItem.thumbnailImage.height + 'px'">
-    <mat-spinner [diameter]="30" aria-label="loading animation"></mat-spinner>
+    <img class="spinner" src="assets/spinner.svg" aria-label="loading animation" />
   </div>
 </ng-template>

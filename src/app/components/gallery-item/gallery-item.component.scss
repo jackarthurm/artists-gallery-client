@@ -1,6 +1,9 @@
+@import 'theme.scss';
+
+
 .image-link {
   border-style: solid;
-  border-color: black;
+  border-color: $gal-black;
   border-width: 2px;
   display: flex;
 }
@@ -10,8 +13,8 @@
   flex-direction: column;
   justify-content: center;
 
-  mat-spinner {
+  .spinner {
+    width: 20%;
     margin: 0 auto;
   }
 }
-
