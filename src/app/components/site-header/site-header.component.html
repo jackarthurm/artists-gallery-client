@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <ng-container *ngIf="navLinks.length; then navLinkList else navButton" 
+  <ng-container *ngIf="navLinks.length; then navLinkList else navButton"
                 class="nav-links">
   </ng-container>
 </mat-toolbar>
@@ -15,12 +15,12 @@
 <ng-template #navLinkList>
 
   <mat-list role="list" class="nav-list">
-    <mat-list-item *ngFor="let link of navLinks" 
+    <mat-list-item *ngFor="let link of navLinks"
                     role="listitem"
                     class="nav-list-item">
-      <a class="nav-link" 
-         routerLink="{{ link.url }}"> 
-        <h1 class="mat-headline" 
+      <a class="nav-link"
+         routerLink="{{ link.url }}">
+        <h1 class="mat-title"
             [style.font-weight]="navLinkIsActive(link) ? '800' : '400'">
           {{ link.name }}
         </h1>

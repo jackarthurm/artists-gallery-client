@@ -6,10 +6,14 @@ mat-toolbar {
 
 .footer-text {
   margin: 0;
-  flex: 0;
+}
+
+.attribution {
+  color: lightgray;
+  margin-right: auto;
+  padding-left: 30px;
 }
 
 gal-fb-share-link {
-  flex: 0;
   padding-bottom: 4px;
 }

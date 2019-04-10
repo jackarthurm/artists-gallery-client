@@ -9,6 +9,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .title-text {
@@ -17,11 +18,11 @@
   transform: translateX(100%);
   -webkit-transform: translateX(100%);
 
-  animation: slide-in 0.5s forwards;
-  -webkit-animation: slide-in 0.5s forwards;
+  animation: slide-in 0.7s forwards;
+  -webkit-animation: slide-in 0.7s forwards;
 
-  animation-delay: 2s;
-  -webkit-animation-delay: 2s;
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
 
   transition-timing-function: cubic-bezier(.69,.17,1,.57);
   -webkit-transition-timing-function: cubic-bezier(.69,.17,1,.57);
@@ -36,5 +37,13 @@
     100% {
       -webkit-transform: translateX(0%);
     }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  .title-text {
+    width: 100%;
+    padding: 0;
   }
 }

@@ -1,4 +1,4 @@
-<gal-site-header [navLinks]="showSmallScreenLayout ? [] : navLinks" 
+<gal-site-header [navLinks]="showSmallScreenLayout ? [] : navLinks"
                  (menuClick)="sideNav.toggle()">
 </gal-site-header>
 
@@ -6,19 +6,19 @@
                        (swipeleft)="onSidenavSwipeLeft($event)"
                        (backdropClick)="sideNav.close()">
 
-  <mat-sidenav #sideNav 
+  <mat-sidenav #sideNav
                [fixedInViewport]="false"
                [autoFocus]="false">
     <mat-list *ngIf="showSmallScreenLayout" role="list" class="nav-list">
-        <mat-list-item *ngFor="let link of navLinks; index as i" 
+        <mat-list-item *ngFor="let link of navLinks; index as i"
                         tabindex="{{ i }}"
                         role="listitem"
                         class="nav-list-item">
-          <button class="nav-link" 
-                  mat-button 
-                  routerLink="{{ link.url }}" 
+          <button class="nav-link"
+                  mat-button
+                  routerLink="{{ link.url }}"
                   (click)="sideNav.close()">
-            <p class="mat-body-1">
+            <p class="mat-title">
               {{ link.name }}
             </p>
           </button>
