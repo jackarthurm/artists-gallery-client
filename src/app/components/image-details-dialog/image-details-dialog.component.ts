@@ -1,15 +1,14 @@
-import { Component, Inject } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { uuid } from '@app/models/shared';
-import { ImageDialogData } from '@components/image-details/image-details.component';
+
+import * as HttpStatus from 'http-status-codes';
+
+import { url, uuid } from '@app/models/shared';
+import { GalleryItem, ImageService } from '@app/services/image/image.service';
 import { environment } from '@envs/environment';
-
-
-// enum ImageOrientation {
-//   PORTRAIT = 'portrait',
-//   LANDSCAPE = 'landscape',
-// }
 
 
 @Component({
@@ -17,71 +16,98 @@ import { environment } from '@envs/environment';
   styleUrls: ['./image-details-dialog.component.scss'],
   templateUrl: './image-details-dialog.component.html',
 })
-export class ImageDetailsDialogComponent {
+export class ImageDetailsDialogComponent implements OnDestroy {
 
-  // public imageOrientation: ImageOrientation;
+  public galleryItem: GalleryItem;
+  public imageResourceURL: SafeResourceUrl;
 
   private galleryState: Array<uuid>;
   private galleryItemIndex: number;
 
+  private createdObjectURL: url;
+  private urlCreator: any = window.URL || (window as any).webkitURL;
+
   constructor(
+    private imageService: ImageService,
+    private sanitizer: DomSanitizer,
     private router: Router,
-    private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public imageData: ImageDialogData
+    _dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public imageID: uuid
   ) {
 
     this.galleryState = JSON.parse(
       sessionStorage.getItem('gallerystate')
-    );
+    ) || [];
 
-    this.galleryItemIndex = this.galleryState.findIndex(
-      (id: uuid) => id === imageData.galleryItem.id
-    );
+    this.setImage(imageID);
+  }
 
-    // this.imageOrientation = (
-    //   imageData.galleryItem.largeImage.height >= imageData.galleryItem.largeImage.width ?
-    //   ImageOrientation.PORTRAIT : ImageOrientation.LANDSCAPE
-    // );
+  private setImage(imageID: uuid): void {
+
+    this.imageService.getGalleryItem(imageID).subscribe(
+      (galleryItem: GalleryItem) => {
+
+        this.galleryItem = galleryItem;
+
+        this.galleryItemIndex = this.galleryState.findIndex(
+          (id: uuid) => id === galleryItem.id
+        );  // TODO: Handle error if index is not found
+
+        this.imageService.getImage(galleryItem.largeImage.url).subscribe(
+          (imageBlob: Blob) => {
+
+            this.releaseImageResource();
+
+            this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
+
+            this.imageResourceURL = this.sanitizer.bypassSecurityTrustResourceUrl(
+              this.createdObjectURL
+            );
+          },
+          (err: HttpErrorResponse) => {
+
+            switch (err.status) {
+              case HttpStatus.NOT_FOUND:
+                this.router.navigate(
+                  [`/${environment.routeURLs.notFoundPage}`]
+                );
+                break;
+              default:
+                console.log(err);
+            }
+          }
+        );
+      },
+      (err: Error) => console.log(err)
+    );
+  }
+
+  private navigate(offset: number): void {
+
+    const newIndex: number = this.galleryItemIndex + offset;  // TODO: Periodic boundary conditions
+
+    const newID: uuid = this.galleryState[newIndex];
+
+    this.setImage(newID);
   }
 
   public next(): void {
-
-    let newIndex: number = this.galleryItemIndex + 1;
-
-    if (newIndex === this.galleryState.length) {
-      newIndex = 0;  // Wrap the index around
-    }
-
-    const nextID: uuid = this.galleryState[newIndex];
-
-    this.router.navigate(
-      [
-        `/${environment.routeURLs.galleryPage}`,
-        {
-          outlets: {modal: nextID}},
-      ]
-    );
-
-    this.dialogRef.close(true);
+    this.navigate(1);
   }
 
   public previous(): void {
+    this.navigate(-1);
+  }
 
-    let newIndex: number = this.galleryItemIndex - 1;
+  private releaseImageResource(): void {
 
-    if (newIndex === 0) {
-      newIndex = this.galleryState.length - 1;  // Wrap the index around
+    if (this.createdObjectURL) {
+      this.urlCreator.revokeObjectURL(this.createdObjectURL);
     }
+  }
 
-    const previousID: uuid =  this.galleryState[newIndex];
+  public ngOnDestroy(): void {
 
-    this.router.navigate(
-      [
-        `/${environment.routeURLs.galleryPage}`,
-        {outlets: {modal: previousID}},
-      ]
-    );
-
-    this.dialogRef.close(true);
+    this.releaseImageResource();
   }
 }
