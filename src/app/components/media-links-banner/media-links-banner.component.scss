@@ -8,20 +8,58 @@
     height: 60px;
     margin: 0 30px 0 30px;
 
+    // Fade-in animation
     opacity: 0;
     animation: fade-in 2s ease-in forwards;
     -webkit-animation: fade-in 2s ease-in forwards;
+
+    // Grow-on-hover transition
+    -webkit-transition:  -webkit-transform .2s ease-out;
+    -moz-transition: -moz-transform .2s ease-out;
+    -o-transition: -o-transform .2s ease-out;
+    -ms-transition: -ms-transform .2s ease-out;
+    transition: transform .2s ease-out;
+  }
+
+  .icon-link:hover {
+
+    .media-logo {
+      -webkit-transform:scale(1.33);
+      -moz-transform:scale(1.33);
+      -o-transform:scale(1.33);
+      transform: scale(1.33);
+    }
+  }
+
+  #media-logo-1 {
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+  }
+
+  #media-logo-2 {
+    animation-delay: 1.5s;
+    -webkit-animation-delay: 1.5s;
   }
 }
 
-#media-logo-1 {
-  animation-delay: 2s;
-  -webkit-animation-delay: 2s;
+.media-logo-caption {
+  margin-top: 20px;
+  opacity: 0;
+  color: gray;
 }
 
-#media-logo-2 {
-  animation-delay: 3s;
-  -webkit-animation-delay: 3s;
+.icon-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-link:hover {
+
+  .media-logo-caption {
+    // Fade-in-on-hover transition
+    animation: fade-in 0.5s ease-in forwards;
+    -webkit-animation: fade-in 0.5s ease-in forwards;
+  }
 }
 
 @keyframes fade-in {

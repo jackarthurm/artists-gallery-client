@@ -5,13 +5,22 @@ mat-toolbar {
 }
 
 .footer-text {
+  color: gray;
   margin: 0;
 }
 
 .attribution {
-  color: lightgray;
   margin-right: auto;
-  padding-left: 30px;
+  padding-left: 10px;
+}
+
+.copyright {
+  padding-right: 10px;
+}
+
+.separator {
+  font-size: 32px;
+  font-family: '"Montserrat", sans-serif';
 }
 
 gal-fb-share-link {

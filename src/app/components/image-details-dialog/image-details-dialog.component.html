@@ -1,14 +1,11 @@
-<h1 mat-dialog-title>{{ imageData.galleryItem.title }}</h1>
+<!-- <h1 mat-dialog-title>{{ imageData.galleryItem.title }}</h1> -->
 <ng-container *ngIf="imageData.localImageURL; else loading">
-  <div mat-dialog-content class="dialog-content">
+  <div class="dialog-content">
     <img [src]="imageData.localImageURL"
-         aria-label="full sized picture of artwork"/>
-    <div *ngIf="imageData.galleryItem.description" class="image-description">
-      <p class="mat-body-1" aria-label="image description">
-        {{ imageData.galleryItem.description }}
-      </p>
-    </div>
-    <div *ngIf="imageData.galleryItem.mediaDescription" class="image-media-description">
+         aria-label="large picture of artwork"
+         [style.max-width]="imageData.galleryItem.largeImage.width + 'px'"
+         [style.max-height]="imageData.galleryItem.largeImage.height + 'px'" />
+    <!-- <div *ngIf="imageData.galleryItem.mediaDescription" class="image-media-description">
       <p class="mat-body-1" aria-label="description of image media">
         {{ imageData.galleryItem.mediaDescription }}
       </p>
@@ -17,7 +14,7 @@
       <p class="mat-body-1" aria-label="name of artist">
         {{ imageData.galleryItem.artistName }}
       </p>
-    </div>
+    </div> -->
   </div>
 </ng-container>
 <ng-template #loading>

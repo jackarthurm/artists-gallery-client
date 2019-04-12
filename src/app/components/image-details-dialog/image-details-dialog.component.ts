@@ -5,8 +5,8 @@ import { ImageDialogData } from '@components/image-details/image-details.compone
 
 @Component({
   selector: 'gal-image-details-dialog',
-  templateUrl: './image-details-dialog.component.html',
   styleUrls: ['./image-details-dialog.component.scss'],
+  templateUrl: './image-details-dialog.component.html',
 })
 export class ImageDetailsDialogComponent {
 

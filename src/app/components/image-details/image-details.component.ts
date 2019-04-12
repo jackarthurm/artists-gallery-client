@@ -91,6 +91,8 @@ export class ImageDetailsComponent implements OnDestroy {
           galleryItem,
           localImageURL: imageResourceURL,
         },
+        height: '85%',
+        width: '85%',
       }
     );
 
