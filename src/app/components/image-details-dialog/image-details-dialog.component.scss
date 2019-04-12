@@ -9,12 +9,17 @@ h1 {
   justify-content: center;
 
   img {
-    margin-top: 30px;
-    width: 100%;
+    width: 75%;  // TODO: Or the width that corresponds to the viewport height
 
     border-style: solid;
     border-color: black;
     border-width: 2px;
+  }
+
+  button {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
   }
 }
 

@@ -84,6 +84,7 @@ export class ImageDetailsComponent implements OnDestroy {
     galleryItem: GalleryItem,
     imageResourceURL: SafeResourceUrl
   ): void {
+
     const dialogRef: MatDialogRef<ImageDetailsDialogComponent> = this.dialog.open(
       ImageDetailsDialogComponent,
       {
@@ -91,13 +92,14 @@ export class ImageDetailsComponent implements OnDestroy {
           galleryItem,
           localImageURL: imageResourceURL,
         },
-        height: '85%',
-        width: '85%',
       }
     );
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate([`/${environment.routeURLs.galleryPage}`]);
+    dialogRef.afterClosed().subscribe((didNavigate: boolean) => {
+
+      if (!didNavigate) {
+        this.router.navigate([`/${environment.routeURLs.galleryPage}`]);
+      }
     });
   }
 

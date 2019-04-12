@@ -106,8 +106,6 @@ export class ImageService {
   public getImage(location: url): Observable<Blob> {
     /* Retrieve an image file in blob format */
 
-    console.log(location);
-
     const headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/octet-stream',
     });
@@ -148,8 +146,6 @@ export class ImageService {
     const headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
     });
-
-    console.log(`${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`);
 
     return this.http.get<GalleryItemListAPIResult>(
       `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`,
