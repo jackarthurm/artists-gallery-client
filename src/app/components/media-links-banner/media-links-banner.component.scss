@@ -24,10 +24,10 @@
   .icon-link:hover {
 
     .media-logo {
-      -webkit-transform:scale(1.33);
-      -moz-transform:scale(1.33);
-      -o-transform:scale(1.33);
-      transform: scale(1.33);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
+      -o-transform: scale(1.15);
+      transform: scale(1.15);
     }
 
     .media-logo-caption {
@@ -46,12 +46,19 @@
     animation-delay: 1.5s;
     -webkit-animation-delay: 1.5s;
   }
+
+  #media-logo-3 {
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+  }
 }
 
 .media-logo-caption {
   margin-top: 20px;
   opacity: 0;
   color: gray;
+  width: 100%;
+  text-align: center;
 }
 
 .icon-link {

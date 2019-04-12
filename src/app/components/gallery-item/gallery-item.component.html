@@ -3,9 +3,9 @@
      href=""
      [routerLink]="[{outlets: {modal: galleryItem.id}}]">
     <img [style.width]="galleryItem.thumbnailImage.width + 'px'"
-        [style.height]="galleryItem.thumbnailImage.height + 'px'"
-        [src]="imageResourceURL"
-        aria-label="medium sized picture of artwork"/>
+         [style.height]="galleryItem.thumbnailImage.height + 'px'"
+         [src]="imageResourceURL"
+         aria-label="medium sized picture of artwork" />
   </a>
 </ng-container>
 <ng-template #loading>

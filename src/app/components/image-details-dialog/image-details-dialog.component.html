@@ -9,7 +9,10 @@
     <img [src]="imageResourceURL"
          aria-label="large picture of artwork"
          [style.max-width]="galleryItem.largeImage.width + 'px'" />
-    <button mat-icon-button cdkFocusInitial (click)="next()" (keyup.right)="keyUpFunction($event)">
+    <button mat-icon-button
+            cdkFocusInitial
+            (click)="next()"
+            (keyup.right)="keyUpFunction($event)">
       <mat-icon class="large-icon">navigate_next</mat-icon>
     </button>
     <!-- <div *ngIf="imageData.galleryItem.mediaDescription" class="image-media-description">

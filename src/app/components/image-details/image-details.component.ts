@@ -30,7 +30,10 @@ export class ImageDetailsComponent {
         const dialogRef: MatDialogRef<ImageDetailsDialogComponent> = dialog.open(
           ImageDetailsDialogComponent,
           {
+            backdropClass: 'darker-backdrop',
             data: imageID,
+            minHeight: '250px',
+            minWidth: '250px',
           }
         );
 

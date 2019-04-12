@@ -36,7 +36,7 @@ export class ImageDetailsDialogComponent implements OnDestroy {
   ) {
 
     this.galleryState = JSON.parse(
-      sessionStorage.getItem('gallerystate')
+      sessionStorage.getItem('gallerystate') as string
     ) || [];
 
     this.setImage(imageID);

@@ -4,6 +4,7 @@ import { routeURL, url } from '@models/shared';
 export interface SocialMediaLinks {
   facebook: url;
   instagram: url;
+  linkedin: url;
 }
 
 export enum HTTPSchema {
