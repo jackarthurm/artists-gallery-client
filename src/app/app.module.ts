@@ -17,7 +17,6 @@ import { MatCardModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from '@app/app.routing.module';
 
 import { AboutPageComponent } from '@components/about-page/about-page.component';
@@ -26,15 +25,15 @@ import { ContactPageComponent } from '@components/contact-page/contact-page.comp
 import { FbShareLinkComponent } from '@components/fb-share-link/fb-share-link.component';
 import { GalleryItemComponent } from '@components/gallery-item/gallery-item.component';
 import { GalleryPageComponent } from '@components/gallery-page/gallery-page.component';
+import { HomePageHeaderComponent } from '@components/home-page-header/home-page-header.component';
 import { HomePageComponent } from '@components/home-page/home-page.component';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
+import { MediaLinksBannerComponent } from '@components/media-links-banner/media-links-banner.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
 import { SuccessDialogComponent } from '@components/success-dialog/success-dialog.component';
-import { MediaLinksBannerComponent } from './components/media-links-banner/media-links-banner.component';
-import { HomePageHeaderComponent } from './components/home-page-header/home-page-header.component';
 
 
 @NgModule({

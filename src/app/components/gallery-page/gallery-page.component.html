@@ -1,7 +1,7 @@
 <div class="gallery-container">
-  <ng-container *ngIf="page; else loading">
-    <ng-container *ngIf="page.items.length; else noImages">
-      <gal-gallery-item *ngFor="let item of page.items"
+  <ng-container *ngIf="galleryItems; else loading">
+    <ng-container *ngIf="galleryItems.length; else noImages">
+      <gal-gallery-item *ngFor="let item of galleryItems"
                         [galleryItem]="item">
       </gal-gallery-item>
     </ng-container>
@@ -9,7 +9,7 @@
 </div>
 <ng-template #noImages>
   <p class="mat-display-1">
-    No images found - TODO
+    No images found
   </p>
 </ng-template>
 <ng-template #loading>

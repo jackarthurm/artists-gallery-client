@@ -6,10 +6,10 @@ import {
 
 
 const routeURLs: RouteURLConfig = {
-  homePage: 'home',
   aboutPage: 'about',
-  galleryPage: 'gallery',
   contactPage: 'contact',
+  galleryPage: 'gallery',
+  homePage: 'home',
   notFoundPage: 'not-found',
 };
 
@@ -31,6 +31,11 @@ export const environment: Environment = {
     domain: 'admin.katealicemann.com',
     ext: '/api/contact/',
   },
+  socialMediaLinksURL: {
+    schema: HTTPSchema.HTTP,
+    domain: 'admin.katealicemann.com',
+    ext: '/api/social-media-links/',
+  },
   routeURLs,
   navLinks: [
     {
@@ -51,9 +56,4 @@ export const environment: Environment = {
     },
   ],
   resizeDebounceTimeMS: 100,
-  socialMediaLinks: {
-    facebook: 'https://facebook.com',
-    instagram: 'https://instagram.com',
-    linkedin: 'https://linkedin.com',
-  },
 };

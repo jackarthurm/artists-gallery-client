@@ -1,12 +1,6 @@
 import { routeURL, url } from '@models/shared';
 
 
-export interface SocialMediaLinks {
-  facebook: url;
-  instagram: url;
-  linkedin: url;
-}
-
 export enum HTTPSchema {
   HTTP = 'http',
   HTTPS = 'https',
@@ -19,10 +13,10 @@ export interface URLConfig {
 }
 
 export interface RouteURLConfig {
-  homePage: routeURL;
   aboutPage: routeURL;
-  galleryPage: routeURL;
   contactPage: routeURL;
+  galleryPage: routeURL;
+  homePage: routeURL;
   notFoundPage: routeURL;
 }
 
@@ -37,10 +31,10 @@ export interface Environment {
   siteURL: URLConfig;
   imagesURL: URLConfig;
   contactURL: URLConfig;
+  socialMediaLinksURL: URLConfig;
   routeURLs: RouteURLConfig;
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
-  socialMediaLinks: SocialMediaLinks;
 }
 
 

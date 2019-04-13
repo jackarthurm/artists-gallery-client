@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GalleryPage, ImageService, GalleryItem } from '@app/services/image/image.service';
+import { GalleryItem, GalleryPage, ImageService } from '@app/services/image/image.service';
 
 
 @Component({
@@ -9,20 +9,20 @@ import { GalleryPage, ImageService, GalleryItem } from '@app/services/image/imag
 })
 export class GalleryPageComponent implements OnInit {
 
-  public page: GalleryPage;
+  public galleryItems: Array<GalleryItem>;
 
-  constructor(private _imagesService: ImageService) {}
+  constructor(private imagesService: ImageService) {}
 
   public ngOnInit(): void {
 
-    this._imagesService.getGalleryPage(1, 100).subscribe(  // TODO: Pagination
+    this.imagesService.getGalleryPage(1, 100).subscribe(  // TODO: Pagination
       (page: GalleryPage) => {
-        this.page = page;
+        this.galleryItems = page.items;
 
         sessionStorage.setItem(
           'gallerystate',
           JSON.stringify(
-            this.page.items.map(
+            this.galleryItems.map(
               (item: GalleryItem) => item.id
             )
           )
