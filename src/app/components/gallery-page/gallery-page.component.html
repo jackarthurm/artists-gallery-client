@@ -1,19 +1,28 @@
 <div class="gallery-container">
   <ng-container *ngIf="galleryItems; else loading">
-    <ng-container *ngIf="galleryItems.length; else noImages">
-      <gal-gallery-item *ngFor="let item of galleryItems"
-                        [galleryItem]="item">
-      </gal-gallery-item>
-    </ng-container>
+    <mat-grid-list *ngIf="galleryItems.length; else noImages"
+                   cols="3"
+                   rowHeight="2:3"
+                   gutterSize="10px"
+                   role="list">
+      <mat-grid-tile *ngFor="let item of galleryItems" role="listitem">
+        <gal-gallery-item [galleryItem]="item">
+        </gal-gallery-item>
+      </mat-grid-tile>
+    </mat-grid-list>
   </ng-container>
 </div>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <img class="spinner"
+         src="assets/spinner.svg"
+         aria-label="loading animation" />
+  </div>
+</ng-template>
+
 <ng-template #noImages>
   <p class="mat-display-1">
     No images found
   </p>
-</ng-template>
-<ng-template #loading>
-  <div class="loading-container">
-    <p>Loading gallery...</p>
-  </div>
 </ng-template>

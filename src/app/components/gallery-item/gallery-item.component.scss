@@ -1,17 +1,16 @@
 @import 'theme.scss';
 
 
-.image-link {
-  border-style: solid;
-  border-color: $gal-black;
-  border-width: 2px;
-  display: flex;
+.thumbnail-image {
+  border: 2px solid $gal-black;
+  width: calc(100% - 4px);  // Account for border width on both sides
 }
 
 .loading-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 
   .spinner {
     width: 20%;

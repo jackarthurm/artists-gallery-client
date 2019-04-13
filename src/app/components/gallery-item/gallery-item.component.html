@@ -1,17 +1,17 @@
 <ng-container *ngIf="imageResourceURL; else loading">
-  <a class="image-link"
-     href=""
-     [routerLink]="[{outlets: {modal: galleryItem.id}}]">
-    <img [style.width]="galleryItem.thumbnailImage.width + 'px'"
-         [style.height]="galleryItem.thumbnailImage.height + 'px'"
-         [src]="imageResourceURL"
-         aria-label="medium sized picture of artwork" />
+  <a href=""
+     [routerLink]="[{outlets: {image: galleryItem.id}}]">
+    <img [src]="imageResourceURL"
+         class="thumbnail-image"
+         aria-label="thumbnail picture of artwork"
+         [style.max-width]="galleryItem.thumbnailImage.width + 'px'"
+         [style.max-height]="galleryItem.thumbnailImage.height + 'px'" />
   </a>
 </ng-container>
 <ng-template #loading>
   <div class="loading-container"
-       [style.width]="galleryItem.thumbnailImage.width + 'px'"
-       [style.height]="galleryItem.thumbnailImage.height + 'px'">
+       [style.max-width]="galleryItem.thumbnailImage.width + 'px'"
+       [style.max-height]="galleryItem.thumbnailImage.height + 'px'">
     <img class="spinner" src="assets/spinner.svg" aria-label="loading animation" />
   </div>
 </ng-template>

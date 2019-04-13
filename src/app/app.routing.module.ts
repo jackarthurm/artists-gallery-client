@@ -34,7 +34,7 @@ const routes: Routes = [
           path: ':id',
           pathMatch: 'full',
           component: ImageDetailsComponent,
-          outlet: 'modal',
+          outlet: 'image',
         },
       ],
     },

@@ -6,6 +6,7 @@ import {
   MatButtonModule,
   MatDialogModule,
   MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -76,6 +77,7 @@ import { SuccessDialogComponent } from '@components/success-dialog/success-dialo
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatGridListModule,
   ],
   providers: [],
 })
