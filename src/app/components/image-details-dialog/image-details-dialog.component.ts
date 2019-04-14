@@ -12,6 +12,15 @@ import { GalleryItem, ImageService } from '@app/services/image/image.service';
 import { environment } from '@envs/environment';
 
 
+function wrapIndexPeriodic(index: number, bound: number): number {
+
+  // A modulo operation restricts the index to the range [-bound, bound]
+  // We then add the index to get a positive value and apply another modulo
+  // to ensure the index is within the range [0, bound]
+  return (index % bound + bound) % bound;
+}
+
+
 @Component({
   selector: 'gal-image-details-dialog',
   styleUrls: ['./image-details-dialog.component.scss'],
@@ -105,7 +114,10 @@ export class ImageDetailsDialogComponent implements OnDestroy {
 
   private navigate(offset: number): void {
 
-    const newIndex: number = this.galleryItemIndex + offset;  // TODO: Periodic boundary conditions
+    const newIndex: number = wrapIndexPeriodic(
+      this.galleryItemIndex + offset,
+      this.galleryState.length
+    );
 
     const newID: uuid = this.galleryState[newIndex];
 
