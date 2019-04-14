@@ -30,7 +30,8 @@ mat-sidenav {
   width: 250px;
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: $gal-min-width) {
+  // This only applies to tiny screens smaller then the site min-width
 
   mat-sidenav {
     width: 100%;

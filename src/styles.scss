@@ -13,6 +13,7 @@ body {
   align-items: center;
   justify-content: center;
   color: $gal-black;
+  min-width: $gal-min-width;
 }
 
 .loading-spinner {

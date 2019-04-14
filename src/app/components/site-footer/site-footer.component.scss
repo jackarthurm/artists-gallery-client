@@ -2,28 +2,58 @@ mat-toolbar {
   width: 100%;
   height: 100%;
   justify-content: space-between;
-}
 
-.footer-text {
-  color: gray;
-  margin: 0;
-}
+  .footer-text-container {
+    display: flex;
 
-.attribution {
-  margin-right: auto;
-  padding-left: 10px;
-}
+    .footer-text {
+      color: gray;
+      margin: 0;
+    }
 
-.copyright {
-  padding-right: 10px;
-}
+    .attribution {
+      margin-right: auto;
+      padding-left: 10px;
+    }
 
-.separator {
-  font-size: 32px;
-  font-family: '"Montserrat", sans-serif';
-}
+    .copyright {
+      padding-right: 10px;
+    }
 
-gal-fb-share-link {
-  padding-bottom: 4px;
-  margin-right: 10px;
+    .separator {
+      font-size: 32px;
+      font-family: '"Montserrat", sans-serif';
+    }
+  }
+
+  @media only screen and (max-width: 550px) {
+
+    .footer-text-container {
+      flex-direction: column;
+
+      .footer-text {
+        font-size: 8pt;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      .attribution {
+        margin-top: -2px;
+      }
+
+      .copyright {
+        margin-bottom: -2px;
+      }
+
+      .separator {
+        display: none;
+      }
+    }
+  }
+
+  gal-fb-share-link {
+    padding-bottom: 4px;
+    margin-right: 10px;
+  }
 }
