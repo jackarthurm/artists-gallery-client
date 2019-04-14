@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import * as HttpStatus from 'http-status-codes';
+import { Key } from 'ts-key-enum';
 
 import { url, uuid } from '@app/models/shared';
 import { GalleryItem, ImageService } from '@app/services/image/image.service';
@@ -40,6 +41,26 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     ) || [];
 
     this.setImage(imageID);
+  }
+
+  @HostListener('document:keyup', ['$event'])
+  public handleKeyupEvent(event: KeyboardEvent): void {
+    switch (event.key) {
+      case Key.ArrowLeft:
+        this.previous();
+        break;
+      case Key.ArrowRight:
+        this.next();
+        break;
+    }
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  public handleKeypressEvent(event: KeyboardEvent): void {
+    switch (event.key) {
+      case Key.Enter:
+        this.next();
+    }
   }
 
   private setImage(imageID: uuid): void {

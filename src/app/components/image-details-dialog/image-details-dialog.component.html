@@ -1,18 +1,21 @@
 <!-- <h1 mat-dialog-title>{{ imageData.galleryItem.title }}</h1> -->
 <ng-container *ngIf="imageResourceURL; else loading">
   <div class="dialog-content"
-       (keyup.arrowleft)="previous()"
-       (keyup.arrowright)="next()">
-    <button mat-icon-button (click)="previous()">
+       (swiperight)="previous()"
+       (swipeleft)="next()">
+    <button mat-icon-button
+            class="nav-click-area"
+            (click)="previous()">
       <mat-icon class="large-icon">navigate_before</mat-icon>
     </button>
     <img [src]="imageResourceURL"
          aria-label="large picture of artwork"
-         [style.max-width]="galleryItem.largeImage.width + 'px'" />
+         [style.max-width]="galleryItem.largeImage.width + 'px'"
+         (click)="next()" />
     <button mat-icon-button
             cdkFocusInitial
-            (click)="next()"
-            (keyup.right)="keyUpFunction($event)">
+            class="nav-click-area"
+            (click)="next()">
       <mat-icon class="large-icon">navigate_next</mat-icon>
     </button>
     <!-- <div *ngIf="imageData.galleryItem.mediaDescription" class="image-media-description">
@@ -27,6 +30,7 @@
     </div> -->
   </div>
 </ng-container>
+
 <ng-template #loading>
   <div class="loading-container">
     <img src="assets/spinner.svg"

@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 import { uuid } from '@app/models/shared';
-import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
+import {
+  ImageDetailsDialogComponent,
+} from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
 
 
@@ -32,8 +34,6 @@ export class ImageDetailsComponent {
           {
             backdropClass: 'darker-backdrop',
             data: imageID,
-            minHeight: '250px',
-            minWidth: '250px',
           }
         );
 
