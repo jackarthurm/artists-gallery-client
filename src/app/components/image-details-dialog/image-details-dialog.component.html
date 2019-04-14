@@ -4,6 +4,8 @@
        (swiperight)="previous()"
        (swipeleft)="next()">
     <button mat-icon-button
+            matTooltip="Go to previous image"
+            aria-label="Go to previous image"
             class="nav-click-area"
             (click)="previous()">
       <mat-icon class="large-icon">navigate_before</mat-icon>
@@ -14,6 +16,8 @@
          (click)="next()" />
     <button mat-icon-button
             cdkFocusInitial
+            matTooltip="Go to next image"
+            aria-label="Go to next image"
             class="nav-click-area"
             (click)="next()">
       <mat-icon class="large-icon">navigate_next</mat-icon>

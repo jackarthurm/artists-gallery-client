@@ -26,7 +26,8 @@
                     *ngIf="contactForm.controls.name.value"
                     matSuffix
                     mat-icon-button
-                    aria-label="Clear"
+                    matTooltip="Clear field"
+                    aria-label="Clear field"
                     tabindex="-1"
                     (click)="contactForm.controls.name.reset('')">
               <mat-icon>close</mat-icon>
@@ -49,7 +50,8 @@
                     *ngIf="contactForm.controls.email.value"
                     matSuffix
                     mat-icon-button
-                    aria-label="Clear"
+                    matTooltip="Clear field"
+                    aria-label="Clear field"
                     tabindex="-1"
                     (click)="contactForm.controls.email.reset('')">
               <mat-icon>close</mat-icon>
@@ -72,7 +74,8 @@
                     *ngIf="contactForm.controls.subject.value"
                     matSuffix
                     mat-icon-button
-                    aria-label="Clear"
+                    matTooltip="Clear field"
+                    aria-label="Clear field"
                     tabindex="-1"
                     (click)="contactForm.controls.subject.reset('')">
              <mat-icon>close</mat-icon>
@@ -98,7 +101,8 @@
                     *ngIf="contactForm.controls.body.value"
                     matSuffix
                     mat-icon-button
-                    aria-label="Clear"
+                    matTooltip="Clear field"
+                    aria-label="Clear field"
                     tabindex="-1"
                     (click)="contactForm.controls.body.reset('')">
               <mat-icon>close</mat-icon>
@@ -118,11 +122,17 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <button mat-button
+        <button mat-icon-button
+                matTooltip="Send message"
+                aria-label="Send message"
                 color="accent"
                 type="submit"
                 class="submit-button"
-                [disabled]="!contactForm.valid">SUBMIT</button>
+                [disabled]="!contactForm.valid">
+          <mat-icon>
+            send
+          </mat-icon>
+        </button>
       </mat-card-actions>
 
     </form>

@@ -13,6 +13,7 @@ import {
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -78,6 +79,7 @@ import { SuccessDialogComponent } from '@components/success-dialog/success-dialo
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
+    MatTooltipModule,
   ],
   providers: [],
 })
