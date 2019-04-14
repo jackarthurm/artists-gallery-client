@@ -31,11 +31,11 @@ import { HomePageHeaderComponent } from '@components/home-page-header/home-page-
 import { HomePageComponent } from '@components/home-page/home-page.component';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
+import { InfoDialogComponent } from '@components/info-dialog/info-dialog.component';
 import { MediaLinksBannerComponent } from '@components/media-links-banner/media-links-banner.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
-import { SuccessDialogComponent } from '@components/success-dialog/success-dialog.component';
 
 
 @NgModule({
@@ -53,13 +53,13 @@ import { SuccessDialogComponent } from '@components/success-dialog/success-dialo
     ImageDetailsDialogComponent,
     ContactPageComponent,
     HomePageComponent,
-    SuccessDialogComponent,
+    InfoDialogComponent,
     MediaLinksBannerComponent,
     HomePageHeaderComponent,
   ],
   entryComponents: [
     ImageDetailsDialogComponent,
-    SuccessDialogComponent,
+    InfoDialogComponent,
   ],
   imports: [
     BrowserModule,

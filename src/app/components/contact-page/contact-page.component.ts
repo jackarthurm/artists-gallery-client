@@ -6,7 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { SuccessDialogComponent } from '@components/success-dialog/success-dialog.component';
+import {
+  InfoDialogComponent,
+  InfoType,
+} from '@components/info-dialog/info-dialog.component';
 import {
   ContactMessage,
   ContactService,
@@ -59,7 +62,7 @@ export class ContactPageComponent {
 
   constructor(
     private contactService: ContactService,
-    private successDialog: MatDialog
+    private infoDialog: MatDialog
   ) {}
 
   public get contactForm(): FormGroup {
@@ -84,7 +87,8 @@ export class ContactPageComponent {
   }
 
   private sendContactMessageFailure(err: Error): void {
-    console.log(err);
+
+    this.openErrorDialog();
   }
 
   private sendContactMessageSuccess(): void {
@@ -93,11 +97,28 @@ export class ContactPageComponent {
   }
 
   private openSuccessDialog(): void {
-    this.successDialog.open(
-      SuccessDialogComponent,
+    this.infoDialog.open(
+      InfoDialogComponent,
       {
-        data: {message: 'Contact message sent'},
+        data: {
+          infoType: InfoType.success,
+          message: 'Contact message sent',
+        },
         width: '200px',
+      }
+    );
+  }
+
+  private openErrorDialog(): void {
+    this.infoDialog.open(
+      InfoDialogComponent,
+      {
+        data: {
+          infoType: InfoType.error,
+          message: `Failed to send contact message.
+                    Please check your internet connection or try again later.`,
+        },
+        width: '300px',
       }
     );
   }
