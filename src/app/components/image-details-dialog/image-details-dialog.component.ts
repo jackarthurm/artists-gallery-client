@@ -14,9 +14,10 @@ import { environment } from '@envs/environment';
 
 function wrapIndexPeriodic(index: number, bound: number): number {
 
-  // A modulo operation restricts the index to the range [-bound, bound]
-  // We then add the index to get a positive value and apply another modulo
-  // to ensure the index is within the range [0, bound]
+  // A modulo operation restricts the index to the range [-bound, bound].
+  // We then add the index to get a positive value in the region
+  // [0, 2 * bound] and finally apply another modulo operation
+  // to bring the index within the range [0, bound]
   return (index % bound + bound) % bound;
 }
 
