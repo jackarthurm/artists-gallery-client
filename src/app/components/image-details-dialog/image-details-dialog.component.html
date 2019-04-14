@@ -15,6 +15,13 @@
          [style.max-width]="galleryItem.largeImage.width + 'px'"
          (click)="next()" />
     <button mat-icon-button
+            matTooltip="Close image view"
+            aria-label="Close image view"
+            class="close-button"
+            (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button mat-icon-button
             cdkFocusInitial
             matTooltip="Go to next image"
             aria-label="Go to next image"

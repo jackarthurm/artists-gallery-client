@@ -41,7 +41,7 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     private imageService: ImageService,
     private sanitizer: DomSanitizer,
     private router: Router,
-    _dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
+    private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
   ) {
 
@@ -130,6 +130,10 @@ export class ImageDetailsDialogComponent implements OnDestroy {
 
   public previous(): void {
     this.navigate(-1);
+  }
+
+  public close(): void {
+    this.dialogRef.close();
   }
 
   private releaseImageResource(): void {

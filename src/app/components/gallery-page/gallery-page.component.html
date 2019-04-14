@@ -5,7 +5,8 @@
                    rowHeight="2:3"
                    gutterSize="10px"
                    role="list">
-      <mat-grid-tile *ngFor="let item of galleryItems" role="listitem">
+      <mat-grid-tile *ngFor="let item of galleryItems"
+                     role="listitem">
         <gal-gallery-item [galleryItem]="item">
         </gal-gallery-item>
       </mat-grid-tile>
