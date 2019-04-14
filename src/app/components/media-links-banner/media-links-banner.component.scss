@@ -3,22 +3,62 @@
   justify-content: center;
   width: 100%;
 
-  .media-logo {
+  .icon-link {
+    text-decoration: none;
+    color: inherit;
     flex: 0;
-    height: 60px;
-    margin: 0 30px 0 30px;
 
-    // Fade-in animation
-    opacity: 0;
-    animation: fade-in 2s ease-in forwards;
-    -webkit-animation: fade-in 2s ease-in forwards;
+    .media-logo {
+      flex: 0;
+      height: 60px;
+      margin: 0 30px 0 30px;
 
-    // Grow-on-hover transition
-    -webkit-transition:  -webkit-transform .2s ease-out;
-    -moz-transition: -moz-transform .2s ease-out;
-    -o-transition: -o-transform .2s ease-out;
-    -ms-transition: -ms-transform .2s ease-out;
-    transition: transform .2s ease-out;
+      // Fade-in animation
+      opacity: 0;
+      animation: fade-in 2s ease-in forwards;
+      -webkit-animation: fade-in 2s ease-in forwards;
+
+      // Grow-on-hover transition
+      -webkit-transition:  -webkit-transform .2s ease-out;
+      -moz-transition: -moz-transform .2s ease-out;
+      -o-transition: -o-transform .2s ease-out;
+      -ms-transition: -ms-transform .2s ease-out;
+      transition: transform .2s ease-out;
+    }
+
+    #media-logo-1 {
+      animation-delay: 1s;
+      -webkit-animation-delay: 1s;
+    }
+
+    #media-logo-2 {
+      animation-delay: 1.5s;
+      -webkit-animation-delay: 1.5s;
+    }
+
+    #media-logo-3 {
+      animation-delay: 2s;
+      -webkit-animation-delay: 2s;
+    }
+
+    .media-logo-caption {
+      margin-top: 20px;
+      opacity: 0;
+      color: gray;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 599px) {
+      .media-logo {
+        height: 29px;
+        margin: 0 20px 0 20px;
+      }
+
+      .media-logo-caption {
+        font-size: 10pt;
+      }
+    }
   }
 
   .icon-link:hover {
@@ -36,34 +76,6 @@
       -webkit-animation: fade-in 0.5s ease-in forwards;
     }
   }
-
-  #media-logo-1 {
-    animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-  }
-
-  #media-logo-2 {
-    animation-delay: 1.5s;
-    -webkit-animation-delay: 1.5s;
-  }
-
-  #media-logo-3 {
-    animation-delay: 2s;
-    -webkit-animation-delay: 2s;
-  }
-}
-
-.media-logo-caption {
-  margin-top: 20px;
-  opacity: 0;
-  color: gray;
-  width: 100%;
-  text-align: center;
-}
-
-.icon-link {
-  text-decoration: none;
-  color: inherit;
 }
 
 @keyframes fade-in {

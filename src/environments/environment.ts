@@ -2,7 +2,7 @@ import { environment as prodEnv } from '@envs/environment.prod';
 import { Environment } from '@models/environment';
 
 
-const domain: string = 'localhost:8001';
+const domain: string = 'jack-laptop:8001';
 
 prodEnv.production = false;
 prodEnv.imagesURL.domain = domain;

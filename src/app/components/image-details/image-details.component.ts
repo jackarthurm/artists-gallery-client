@@ -34,6 +34,7 @@ export class ImageDetailsComponent {
           {
             backdropClass: 'darker-backdrop',
             data: imageID,
+            maxWidth: '100%',
           }
         );
 
