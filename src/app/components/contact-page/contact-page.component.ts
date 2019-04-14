@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   FormGroupDirective,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+
+import * as EmailValidator from 'email-validator';
+
 import {
   InfoDialogComponent,
   InfoType,
@@ -14,6 +19,14 @@ import {
   ContactMessage,
   ContactService,
 } from '@services/contact/contact.service';
+
+
+function emailWithTLDValidator(
+  control: AbstractControl
+): ValidationErrors | null {
+
+  return EmailValidator.validate(control.value) ? null : {email: true};
+}
 
 
 @Component({
@@ -41,7 +54,7 @@ export class ContactPageComponent {
       '',
       [
         Validators.required,
-        Validators.email,
+        emailWithTLDValidator,
       ]
     ),
     name: new FormControl(
