@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { GalleryItem, ImageService } from '@app/services/image/image.service';
 import { url } from '@models/shared';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -37,8 +38,9 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
           this.createdObjectURL
         );
       },
-      (err: Error) => {
-        console.log(err);
+      (_err: Error) => {
+        // We ignore the error, this means the image
+        // will appear to be stuck loading
       }
     );
   }

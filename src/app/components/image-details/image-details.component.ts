@@ -43,9 +43,6 @@ export class ImageDetailsComponent {
             [`/${environment.routeURLs.galleryPage}`]
           )
         );
-      },
-      (err: Error) => {
-        console.log(err);
       }
     );
   }

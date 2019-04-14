@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 export enum InfoType {
   success,
-  warning,
   error,
 }
 
@@ -28,13 +27,6 @@ const infoTypeMapping: Map<InfoType, InfoTypeConfig> = new Map(
       },
     ],
     [
-      InfoType.warning,
-      {
-        iconName: 'warning',
-        colorName: 'warn',
-      },
-    ],
-    [
       InfoType.error,
       {
         iconName: 'error',
@@ -51,7 +43,6 @@ const infoTypeMapping: Map<InfoType, InfoTypeConfig> = new Map(
   templateUrl: './info-dialog.component.html',
 })
 export class InfoDialogComponent {
-
 
   public infoTypeConfig: InfoTypeConfig | undefined;
   public message: string;
