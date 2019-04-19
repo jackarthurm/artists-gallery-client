@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+
+import * as HttpStatus from 'http-status-codes';
+
 import {
   LinksService,
   SocialMediaLinks
@@ -28,7 +32,10 @@ export class MediaLinksBannerComponent implements OnInit {
 
     this.linksService.getSocialMediaLinks().subscribe(
       (links: SocialMediaLinks) => this.socialMediaLinks = links,
-      (_err: Error) => this.openErrorDialog()
+      (_err: HttpErrorResponse) => {
+
+        this.openErrorDialog();
+      }
     );
   }
 

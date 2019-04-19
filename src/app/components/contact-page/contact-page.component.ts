@@ -92,11 +92,12 @@ export class ContactPageComponent {
     };
 
     this.contactService.createContactMessage(contactMessage).subscribe(
-      this.sendContactMessageSuccess.bind(this),
+      () => {
+        form.resetForm();
+        this.sendContactMessageSuccess();
+      },
       this.sendContactMessageFailure.bind(this)
     );
-
-    form.resetForm();
   }
 
   private sendContactMessageFailure(err: Error): void {
