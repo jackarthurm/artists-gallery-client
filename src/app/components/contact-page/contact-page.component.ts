@@ -42,7 +42,9 @@ export class ContactPageComponent {
     subject: 78,
   };
 
-  private _contactForm: FormGroup = new FormGroup({
+  private _isLoading: boolean = false;
+
+  private contactForm: FormGroup = new FormGroup({
     body: new FormControl(
       '',
       [
@@ -78,36 +80,47 @@ export class ContactPageComponent {
     private infoDialog: MatDialog
   ) {}
 
-  public get contactForm(): FormGroup {
-    return this._contactForm;
-  }
-
   public onSubmit(form: FormGroupDirective): void {
 
     const contactMessage: ContactMessage = {
-      name: this._contactForm.controls.name.value,
-      email: this._contactForm.controls.email.value,
-      subject: this._contactForm.controls.subject.value,
-      body: this._contactForm.controls.body.value,
+      name: this.contactForm.controls.name.value,
+      email: this.contactForm.controls.email.value,
+      subject: this.contactForm.controls.subject.value,
+      body: this.contactForm.controls.body.value,
     };
+
+    this._isLoading = true;
+    this.contactForm.disable();
 
     this.contactService.createContactMessage(contactMessage).subscribe(
       () => {
+        this._isLoading = false;
+        this.contactForm.enable();
         form.resetForm();
-        this.sendContactMessageSuccess();
+        this.openSuccessDialog();
       },
-      this.sendContactMessageFailure.bind(this)
+      (_err: Error) => {
+        this._isLoading = false;
+        this.contactForm.enable();
+        this.openErrorDialog();
+      }
     );
   }
 
-  private sendContactMessageFailure(err: Error): void {
-
-    this.openErrorDialog();
+  private get isLoading(): boolean {
+    return this._isLoading;
   }
 
-  private sendContactMessageSuccess(): void {
+  private set isLoading(value: boolean) {
 
-    this.openSuccessDialog();
+    if (value) {
+      this.contactForm.disable();
+    }
+    else {
+      this.contactForm.enable();
+    }
+
+    this._isLoading = value;
   }
 
   private openSuccessDialog(): void {

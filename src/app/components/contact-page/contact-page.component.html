@@ -29,7 +29,8 @@
                     matTooltip="Clear field"
                     aria-label="Clear field"
                     tabindex="-1"
-                    (click)="contactForm.controls.name.reset('')">
+                    (click)="contactForm.controls.name.reset('')"
+                    [disabled]="isLoading">
               <mat-icon>close</mat-icon>
             </button>
             <mat-error *ngIf="contactForm.controls.name.errors?.required">
@@ -53,13 +54,14 @@
                     matTooltip="Clear field"
                     aria-label="Clear field"
                     tabindex="-1"
-                    (click)="contactForm.controls.email.reset('')">
+                    (click)="contactForm.controls.email.reset('')"
+                    [disabled]="isLoading">
               <mat-icon>close</mat-icon>
             </button>
             <mat-error *ngIf="contactForm.controls.email.errors?.required">
               Please enter your email address
             </mat-error>
-            <mat-error *ngIf="contactForm.controls.email.errors?.email">
+            <mat-error *ngIf="!contactForm.controls.email.errors?.required && contactForm.controls.email.errors?.email">
               Please enter a valid email address
             </mat-error>
           </mat-form-field>
@@ -77,7 +79,8 @@
                     matTooltip="Clear field"
                     aria-label="Clear field"
                     tabindex="-1"
-                    (click)="contactForm.controls.subject.reset('')">
+                    (click)="contactForm.controls.subject.reset('')"
+                    [disabled]="isLoading">
              <mat-icon>close</mat-icon>
            </button>
             <mat-error *ngIf="contactForm.controls.subject.errors?.required">
@@ -104,7 +107,8 @@
                     matTooltip="Clear field"
                     aria-label="Clear field"
                     tabindex="-1"
-                    (click)="contactForm.controls.body.reset('')">
+                    (click)="contactForm.controls.body.reset('')"
+                    [disabled]="isLoading">
               <mat-icon>close</mat-icon>
             </button>
             <mat-hint align="end">
@@ -128,14 +132,23 @@
                 color="accent"
                 type="submit"
                 class="submit-button"
-                [disabled]="!contactForm.valid">
-          <mat-icon>
+                [disabled]="isLoading || !contactForm.valid">
+          <mat-icon *ngIf="!isLoading; else loadingIcon">
             send
           </mat-icon>
         </button>
+
       </mat-card-actions>
 
     </form>
 
   </mat-card>
 </div>
+
+<ng-template #loadingIcon>
+  <img *ngIf="isLoading; else sendButton"
+        matTooltip="Loading…"
+        class="spinner"
+        src="assets/spinner.svg"
+        aria-label="loading animation" />
+</ng-template>

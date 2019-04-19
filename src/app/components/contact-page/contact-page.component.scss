@@ -21,8 +21,9 @@
   justify-content: center;
 }
 
-.submit-button {
+.submit-button, .spinner {
   float: right;
+  width: 24px;
 }
 
 .header-icon-container {
@@ -33,4 +34,9 @@
 mat-form-field {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+mat-card-actions {
+  margin-left: 0;
+  margin-right: 0;
 }
