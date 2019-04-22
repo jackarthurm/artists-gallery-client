@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 import * as HttpStatus from 'http-status-codes';
 import { Key } from 'ts-key-enum';
 
-import { url, uuid } from '@app/models/shared';
-import { GalleryItem, ImageService } from '@app/services/image/image.service';
 import { environment } from '@envs/environment';
+import { url, uuid } from '@models/shared';
+import { GalleryItem, ImageService } from '@services/image/image.service';
 
 
 function wrapIndexPeriodic(index: number, bound: number): number {

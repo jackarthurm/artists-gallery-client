@@ -5,7 +5,8 @@ import {
   Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavLink } from '@app/models/environment';
+
+import { NavLink } from '@models/environment';
 
 
 @Component({

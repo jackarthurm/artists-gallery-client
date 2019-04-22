@@ -7,18 +7,14 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { MatDialog } from '@angular/material';
 
 import * as EmailValidator from 'email-validator';
 
 import {
-  InfoDialogComponent,
-  InfoType,
-} from '@components/info-dialog/info-dialog.component';
-import {
   ContactMessage,
   ContactService,
 } from '@services/contact/contact.service';
+import { InfoDialogService } from '@services/info-dialog/info-dialog.service';
 
 
 function emailWithTLDValidator(
@@ -77,7 +73,7 @@ export class ContactPageComponent {
 
   constructor(
     private contactService: ContactService,
-    private infoDialog: MatDialog
+    private infoDialogService: InfoDialogService
   ) {}
 
   public onSubmit(form: FormGroupDirective): void {
@@ -97,21 +93,26 @@ export class ContactPageComponent {
         this._isLoading = false;
         this.contactForm.enable();
         form.resetForm();
-        this.openSuccessDialog();
+        this.infoDialogService.openSuccessDialog(
+          `Contact message sent.`
+        );
       },
       (_err: Error) => {
         this._isLoading = false;
         this.contactForm.enable();
-        this.openErrorDialog();
+        this.infoDialogService.openErrorDialog(
+          `Failed to send contact message.
+           Please check your internet connection or try again later.`
+        );
       }
     );
   }
 
-  private get isLoading(): boolean {
+  public get isLoading(): boolean {
     return this._isLoading;
   }
 
-  private set isLoading(value: boolean) {
+  public set isLoading(value: boolean) {
 
     if (value) {
       this.contactForm.disable();
@@ -121,32 +122,5 @@ export class ContactPageComponent {
     }
 
     this._isLoading = value;
-  }
-
-  private openSuccessDialog(): void {
-    this.infoDialog.open(
-      InfoDialogComponent,
-      {
-        data: {
-          infoType: InfoType.success,
-          message: 'Contact message sent',
-        },
-        width: '200px',
-      }
-    );
-  }
-
-  private openErrorDialog(): void {
-    this.infoDialog.open(
-      InfoDialogComponent,
-      {
-        data: {
-          infoType: InfoType.error,
-          message: `Failed to send contact message.
-                    Please check your internet connection or try again later.`,
-        },
-        width: '300px',
-      }
-    );
   }
 }

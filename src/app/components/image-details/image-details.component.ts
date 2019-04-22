@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { map } from 'rxjs/operators';
 
-import { uuid } from '@app/models/shared';
 import {
   ImageDetailsDialogComponent,
 } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
+import { uuid } from '@models/shared';
 
 
 @Component({

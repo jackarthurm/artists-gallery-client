@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
 
-import { GalleryItem, GalleryPage, ImageService } from '@app/services/image/image.service';
-import { InfoDialogComponent, InfoType } from '../info-dialog/info-dialog.component';
+import {
+  GalleryItem,
+  GalleryPage,
+  ImageService,
+} from '@services/image/image.service';
+import {
+  InfoDialogService,
+} from '@services/info-dialog/info-dialog.service';
 
 
 @Component({
@@ -16,7 +21,8 @@ export class GalleryPageComponent implements OnInit {
 
   constructor(
     private imagesService: ImageService,
-    private infoDialog: MatDialog) {}
+    private infoDialogService: InfoDialogService
+  ) {}
 
   public ngOnInit(): void {
 
@@ -33,22 +39,10 @@ export class GalleryPageComponent implements OnInit {
           )
         );
       },
-      (_err: Error) => this.openErrorDialog()
-    );
-  }
-
-  private openErrorDialog(): void {
-
-    this.infoDialog.open(
-      InfoDialogComponent,
-      {
-        data: {
-          infoType: InfoType.error,
-          message: `Failed to contact server.
-                    Please check your internet connection or try again later.`,
-        },
-        width: '300px',
-      }
+      (_err: Error) => this.infoDialogService.openErrorDialog(
+        `Failed to contact server. Please check your
+        internet connection or try again later.`
+      )
     );
   }
 }

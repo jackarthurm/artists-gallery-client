@@ -1,17 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
 
-import * as HttpStatus from 'http-status-codes';
-
-import {
-  LinksService,
-  SocialMediaLinks
-} from '@app/services/links/links.service';
-import {
-  InfoDialogComponent,
-  InfoType,
-} from '@components/info-dialog/info-dialog.component';
+import { ConfigService } from '@services/config/config.service';
+import { SocialMediaLinks } from '@services/links/links.service';
 
 
 @Component({
@@ -24,33 +14,11 @@ export class MediaLinksBannerComponent implements OnInit {
   public socialMediaLinks: SocialMediaLinks;
 
   constructor(
-    private linksService: LinksService,
-    private infoDialog: MatDialog
+    private configService: ConfigService
   ) {}
 
   public ngOnInit(): void {
 
-    this.linksService.getSocialMediaLinks().subscribe(
-      (links: SocialMediaLinks) => this.socialMediaLinks = links,
-      (_err: HttpErrorResponse) => {
-
-        this.openErrorDialog();
-      }
-    );
-  }
-
-  private openErrorDialog(): void {
-
-    this.infoDialog.open(
-      InfoDialogComponent,
-      {
-        data: {
-          infoType: InfoType.error,
-          message: `Failed to contact server.
-                    Please check your internet connection or try again later.`,
-        },
-        width: '300px',
-      }
-    );
+    this.socialMediaLinks = this.configService.socialMediaLinks;
   }
 }

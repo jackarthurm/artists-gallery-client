@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
@@ -36,6 +36,8 @@ import { MediaLinksBannerComponent } from '@components/media-links-banner/media-
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
+import { ConfigService } from '@services/config/config.service';
+import { SocialMediaLinks } from '@services/links/links.service';
 
 
 @NgModule({
@@ -81,6 +83,17 @@ import { SiteHeaderComponent } from '@components/site-header/site-header.compone
     MatGridListModule,
     MatTooltipModule,
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+    {
+        provide: APP_INITIALIZER,
+        useFactory: (configService: ConfigService): () => Promise<SocialMediaLinks> =>
+          configService.initApp.bind(
+            configService
+          ),
+        deps: [ConfigService],
+        multi: true,
+    },
+  ],
 })
 export class AppModule {}

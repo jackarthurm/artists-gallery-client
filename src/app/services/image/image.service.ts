@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { makeURL } from '@app/models/environment';
-import { url, uuid } from '@app/models/shared';
-import { environment } from '@envs/environment';
+
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
+
+import { environment } from '@envs/environment';
+import { makeURL } from '@models/environment';
+import { url, uuid } from '@models/shared';
 
 
 // Model definitions
@@ -63,7 +65,9 @@ interface GalleryItemAPIResult {
 // Mapping layer
 function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
 
-  const createdDate: Date | undefined = res.created_date ? new Date(res.created_date) : undefined;
+  const createdDate: Date | undefined = res.created_date ? new Date(
+    res.created_date
+  ) : undefined;
 
   return {
     id: res.id,
@@ -116,6 +120,8 @@ export class ImageService {
         headers,
         responseType: 'blob' as 'json',
       }
+    ).pipe(
+      retry(environment.requestRetryAttempts)
     );
   }
 
@@ -132,6 +138,7 @@ export class ImageService {
         responseType: 'json',
       }
     ).pipe(
+      retry(environment.requestRetryAttempts),
       map(
         (res: GalleryItemAPIResult) => galleryItemResult(res)
       )
@@ -153,7 +160,9 @@ export class ImageService {
     });
 
     return this.http.get<GalleryItemListAPIResult>(
-      `${environment.imagesURL.schema}://${environment.imagesURL.domain}${environment.imagesURL.ext}`,
+      `${environment.imagesURL.schema}://
+${environment.imagesURL.domain}
+${environment.imagesURL.ext}`,
       {
         headers,
         params: {
@@ -163,6 +172,7 @@ export class ImageService {
         responseType: 'json',
       }
     ).pipe(
+      retry(environment.requestRetryAttempts),
       map(
         (page: GalleryItemListAPIResult) => galleryPageResult(page, pageIndex)
       )

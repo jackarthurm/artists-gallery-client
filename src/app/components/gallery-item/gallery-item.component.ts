@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { GalleryItem, ImageService } from '@app/services/image/image.service';
+
 import { url } from '@models/shared';
-import { MatDialog } from '@angular/material';
+import { GalleryItem, ImageService } from '@services/image/image.service';
 
 
 @Component({

@@ -35,6 +35,7 @@ export interface Environment {
   routeURLs: RouteURLConfig;
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
+  requestRetryAttempts: number;
 }
 
 

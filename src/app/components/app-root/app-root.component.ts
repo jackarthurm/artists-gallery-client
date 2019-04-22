@@ -7,10 +7,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { MatSidenav } from '@angular/material';
-import { NavLink } from '@app/models/environment';
-import { environment } from '@envs/environment';
+
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
+
+import { MatSidenav } from '@angular/material';
+import { environment } from '@envs/environment';
+import { NavLink } from '@models/environment';
 
 
 const SIDENAV_BREAKPOINTS: Array<string> = [
