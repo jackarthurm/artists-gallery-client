@@ -20,7 +20,7 @@ export class GalleryPageComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.imagesService.getGalleryPage(1, 100).subscribe(  // TODO: Pagination
+    this.imagesService.getInitialGalleryPage().subscribe(  // TODO: Pagination
       (page: GalleryPage) => {
         this.galleryItems = page.items;
 

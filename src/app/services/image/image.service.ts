@@ -138,9 +138,14 @@ export class ImageService {
     );
   }
 
+  public getInitialGalleryPage(): Observable<GalleryPage> {
+
+    return this.getGalleryPage(1, 100);  // TODO: Pagination
+  }
+
   public getGalleryPage(
-    pageIndex: number = 1,
-    pageSize: number = 12
+    pageIndex: number,
+    pageSize: number
   ): Observable<GalleryPage> {
 
     const headers: HttpHeaders = new HttpHeaders({

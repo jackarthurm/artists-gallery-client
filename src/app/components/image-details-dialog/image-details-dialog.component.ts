@@ -32,8 +32,8 @@ export class ImageDetailsDialogComponent implements OnDestroy {
   public galleryItem: GalleryItem;
   public imageResourceURL: SafeResourceUrl;
 
-  private galleryState: Array<uuid>;
   private galleryItemIndex: number;
+  private galleryState: Array<uuid>;
 
   private createdObjectURL: url;
   private urlCreator: any = window.URL || (window as any).webkitURL;
