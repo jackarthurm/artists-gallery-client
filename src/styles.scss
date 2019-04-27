@@ -25,5 +25,12 @@ body {
 }
 
 .darker-backdrop {
-  background: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.image-detail-dialog-panel {
+
+  mat-dialog-container {
+    padding: 0;
+  }
 }

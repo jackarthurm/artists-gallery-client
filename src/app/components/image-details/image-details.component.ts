@@ -35,7 +35,7 @@ export class ImageDetailsComponent {
           {
             backdropClass: 'darker-backdrop',
             data: imageID,
-            maxWidth: '100%',
+            panelClass: 'image-detail-dialog-panel',
           }
         );
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { environment } from '@envs/environment';
 
 
@@ -10,7 +11,8 @@ import { environment } from '@envs/environment';
 export class FbShareLinkComponent {
 
   public fbShareLink: string = `https://www.facebook.com/sharer/sharer.php
-  ?u=${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2F&amp;
-  src=sdkpreparse`;
-  public fbDataHref: string = `${environment.siteURL.schema}://${environment.siteURL.domain}`;
+?u=${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2F&amp;
+src=sdkpreparse`;
+  public fbDataHref: string = `${environment.siteURL.schema}://
+${environment.siteURL.domain}`;
 }

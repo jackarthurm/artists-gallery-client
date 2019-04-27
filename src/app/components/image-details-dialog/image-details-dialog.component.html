@@ -1,4 +1,4 @@
-<!-- <h1 mat-dialog-title>{{ imageData.galleryItem.title }}</h1> -->
+<!-- <h1 mat-dialog-title>{{ imageData.galleryItem.title }}</h1>
 <ng-container *ngIf="imageResourceURL; else loading">
   <div class="dialog-content"
        (swiperight)="previous()"
@@ -12,7 +12,8 @@
     </button>
     <img [src]="imageResourceURL"
          aria-label="large picture of artwork"
-         [style.max-width]="galleryItem.largeImage.width + 'px'"
+         [style.max-width]="imageAspectRatio <= 1 ? galleryItem.largeImage.width + 'px' : 'auto'"
+         [style.max-height]="imageAspectRatio > 1 ? galleryItem.largeImage.height + 'px' : 'auto'"
          (click)="next()" />
     <button mat-icon-button
             matTooltip="Close image view"
@@ -28,7 +29,7 @@
             class="nav-click-area"
             (click)="next()">
       <mat-icon class="large-icon">navigate_next</mat-icon>
-    </button>
+    </button> -->
     <!-- <div *ngIf="imageData.galleryItem.mediaDescription" class="image-media-description">
       <p class="mat-body-1" aria-label="description of image media">
         {{ imageData.galleryItem.mediaDescription }}
@@ -39,8 +40,8 @@
         {{ imageData.galleryItem.artistName }}
       </p>
     </div> -->
-  </div>
-</ng-container>
+  <!-- </div>
+</ng-container> -->
 
 <ng-template #loading>
   <div class="loading-container">
@@ -49,3 +50,37 @@
          aria-label="loading animation" />
   </div>
 </ng-template>
+
+<ng-container *ngIf="imageResourceURL; else loading">
+  <div class="dialog-content"
+       (swiperight)="previous()"
+       (swipeleft)="next()">
+    <img [src]="imageResourceURL"
+         class="gallery-image"
+         aria-label="large picture of artwork"
+         (click)="next()" />
+  </div>
+  <button mat-icon-button
+          matTooltip="Go to previous image"
+          aria-label="Go to previous image"
+          class="nav-click prev-button"
+          (click)="previous()">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <button mat-icon-button
+          cdkFocusInitial
+          matTooltip="Go to next image"
+          aria-label="Go to next image"
+          class="nav-click next-button"
+          (click)="next()">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+  <button mat-icon-button
+          matTooltip="Close image view"
+          aria-label="Close image view"
+          class="nav-click close-button"
+          (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h1 class="mat-title gallery-image-title">{{ galleryItem.title }}</h1>
+</ng-container>

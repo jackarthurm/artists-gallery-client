@@ -2,8 +2,8 @@
 
 
 .thumbnail-image {
-  border: 2px solid $gal-black;
-  width: calc(100% - 4px);  // Account for border width on both sides
+  width: 100%;
+  object-fit: scale-down;
 }
 
 .loading-container {

@@ -2,59 +2,72 @@
 @import 'theme.scss';
 
 
-h1 {
-  padding: 10px 0 0 30px;
-}
+.nav-click {
 
-.dialog-content {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  position: absolute;
+  top: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
 
-  img {
-    width: 75%;  // TODO: Or the width that corresponds to the viewport height
-
-    border-style: solid;
-    border-color: $gal-black;
-    border-width: 2px;
-
-    cursor: pointer;
+  mat-icon {
+    color: $gal-white;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
   }
 
-  .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
+  :hover {
+    color: mat-color($gal-accent);
+  }
 
-    mat-icon {
-      color: $gal-black;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  &.prev-button {
+    left: 2%;
+  }
+
+  &.next-button {
+    right: 2%;
+  }
+
+  &.close-button {
+    top: 2%;
+    right: 2%;
 
     :hover {
       color: mat-color($gal-warn);
     }
   }
+}
 
-  .nav-click-area {
+@media only screen and (max-width: 599px) {
+
+  .nav-click {
+    top: calc(50% - 16px);
+    width: 32px;
+    height: 32px;
 
     mat-icon {
-      color: $gal-black;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
+      font-size: 32px;
     }
 
-    :hover {
-      color: mat-color($gal-accent);
+    &.prev-button {
+      left: 5px;
+    }
+
+    &.next-button {
+      right: 5px;
     }
   }
+}
+
+.gallery-image-title {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.gallery-image {
+  object-fit: scale-down;
+  max-width: 100%;
+  max-height: 85vh;
 }
 
 .loading-container {

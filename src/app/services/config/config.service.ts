@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { catchError, mergeMap, tap } from 'rxjs/operators';
+import { catchError, concatMap, tap } from 'rxjs/operators';
 
 import { url } from '@models/shared';
 import { InfoDialogService } from '@services/info-dialog/info-dialog.service';
@@ -59,7 +59,7 @@ export class ConfigService {
           this._socialMediaLinks = links;
         }
       ),
-      mergeMap(
+      concatMap(
         () => of()
       )
     ).toPromise<void>();

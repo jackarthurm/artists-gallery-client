@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import * as HttpStatus from 'http-status-codes';
+import { concatMap, tap } from 'rxjs/operators';
 import { Key } from 'ts-key-enum';
 
 import { environment } from '@envs/environment';
@@ -30,7 +31,7 @@ function wrapIndexPeriodic(index: number, bound: number): number {
 export class ImageDetailsDialogComponent implements OnDestroy {
 
   public galleryItem: GalleryItem;
-  public imageResourceURL: SafeResourceUrl;
+  public imageResourceURL: SafeResourceUrl | undefined;
 
   private galleryItemIndex: number;
   private galleryState: Array<uuid>;
@@ -73,43 +74,47 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     }
   }
 
+  private notFound(): void {
+
+    this.router.navigate(
+      [`/${environment.routeURLs.notFoundPage}`]
+    );
+  }
+
   private setImage(imageID: uuid): void {
 
-    this.imageService.getGalleryItem(imageID).subscribe(
-      (galleryItem: GalleryItem) => {
+    this.imageService.getGalleryItem(imageID).pipe(
+      tap(
+        (galleryItem: GalleryItem) => {
 
-        this.galleryItem = galleryItem;
+          this.galleryItem = galleryItem;
 
-        this.galleryItemIndex = this.galleryState.findIndex(
-          (id: uuid) => id === galleryItem.id
-        );  // TODO: Handle error if index is not found
+          this.galleryItemIndex = this.galleryState.findIndex(
+            (id: uuid) => id === galleryItem.id
+          );  // TODO: Handle error if index is not found
+        }
+      ),
+      concatMap(
+        (galleryItem: GalleryItem) => this.imageService.getImage(
+          galleryItem.largeImage.url
+        )
+      )
+    ).subscribe(
+      (imageBlob: Blob) => {
 
-        this.imageService.getImage(galleryItem.largeImage.url).subscribe(
-          (imageBlob: Blob) => {
-
-            this.releaseImageResource();
-
-            this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
-
-            this.imageResourceURL = this.sanitizer.bypassSecurityTrustResourceUrl(
-              this.createdObjectURL
-            );
-          },
-          (err: HttpErrorResponse) => {
-
-            switch (err.status) {
-              case HttpStatus.NOT_FOUND:
-                this.router.navigate(
-                  [`/${environment.routeURLs.notFoundPage}`]
-                );
-                break;
-              default:
-                console.log(err);
-            }
-          }
-        );
+        this.releaseImageResource();
+        this.createImageResource(imageBlob);
       },
-      (err: Error) => console.log(err)
+      (err: HttpErrorResponse) => {
+
+        switch (err.status) {
+          case HttpStatus.NOT_FOUND:
+            this.notFound();
+            break;
+          default:
+            throw err;
+        }
+      }
     );
   }
 
@@ -137,10 +142,32 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     this.dialogRef.close();
   }
 
+  public get imageAspectRatio(): number | undefined {
+
+    if (this.galleryItem) {
+      return (
+        this.galleryItem.largeImage.height / this.galleryItem.largeImage.width
+      );
+    }
+
+    return undefined;
+  }
+
+  private createImageResource(imageBlob: Blob): void {
+
+    this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
+
+    this.imageResourceURL = this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.createdObjectURL
+    );
+  }
+
   private releaseImageResource(): void {
 
     if (this.createdObjectURL) {
       this.urlCreator.revokeObjectURL(this.createdObjectURL);
+
+      this.imageResourceURL = undefined;
     }
   }
 
