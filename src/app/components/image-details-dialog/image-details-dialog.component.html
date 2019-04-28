@@ -1,16 +1,14 @@
-<ng-template #loading>
-  <div class="loading-container">
-    <img src="assets/spinner.svg"
-         class="spinner"
-         aria-label="loading animation" />
-  </div>
-</ng-template>
-
-<ng-container *ngIf="imageResourceURL; else loading">
+<ng-container>
   <div class="dialog-content"
        (swiperight)="previous()"
        (swipeleft)="next()">
-    <img [src]="imageResourceURL"
+    <div *ngIf="!imageResourceURL" class="loading-container">
+      <img src="assets/spinner.svg"
+           class="spinner"
+           aria-label="loading animation" />
+    </div>
+    <img *ngIf="imageResourceURL"
+         [src]="imageResourceURL"
          class="gallery-image"
          aria-label="large picture of artwork" />
   </div>
@@ -36,6 +34,14 @@
           (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
-  <h1 class="mat-title gallery-image-title">{{ galleryItem.title }}</h1>
-  <p class="mat-body gallery-image-year">{{ galleryItem.createdDate?.getFullYear() }}</p>
+  <ng-container *ngIf="imageResourceURL">
+    <h1 class="mat-title image-caption-text"
+        id="gallery-image-title">
+      {{ galleryItem.title }}
+    </h1>
+    <p class="mat-body image-caption-text"
+      id="gallery-image-year">
+      {{ galleryItem.createdDate?.getFullYear() }}
+    </p>
+  </ng-container>
 </ng-container>
