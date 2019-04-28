@@ -32,5 +32,7 @@ body {
 
   mat-dialog-container {
     padding: 0;
+    margin: 5px;
+    overflow-x: hidden;
   }
 }

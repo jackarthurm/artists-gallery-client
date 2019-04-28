@@ -32,6 +32,14 @@
     top: 2%;
     right: 2%;
 
+    mat-icon {
+      font-size: 40px;
+      margin: 0;
+      padding: 10px;
+      width: 67%;
+      height: 67%;
+    }
+
     :hover {
       color: mat-color($gal-warn);
     }
@@ -60,13 +68,18 @@
 }
 
 .gallery-image-title {
-  margin: 16px 0;
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+.gallery-image-year {
+  margin: 0 0 16px 0;
   text-align: center;
 }
 
 .gallery-image {
   object-fit: scale-down;
-  max-width: 100%;
+  max-width: calc(100% + 1px);  // Fix for blank edge strip of pixels
   max-height: 85vh;
 }
 
