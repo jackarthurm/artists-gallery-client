@@ -10,7 +10,6 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatProgressSpinnerModule,
   MatSidenavModule,
   MatToolbarModule,
   MatTooltipModule,
@@ -38,6 +37,7 @@ import { SiteFooterComponent } from '@components/site-footer/site-footer.compone
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
 import { ConfigService } from '@services/config/config.service';
 import { SocialMediaLinks } from '@services/links/links.service';
+import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -58,6 +58,7 @@ import { SocialMediaLinks } from '@services/links/links.service';
     InfoDialogComponent,
     MediaLinksBannerComponent,
     HomePageHeaderComponent,
+    LoadingSpinnerComponent,
   ],
   entryComponents: [
     ImageDetailsDialogComponent,
@@ -76,7 +77,6 @@ import { SocialMediaLinks } from '@services/links/links.service';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatProgressSpinnerModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

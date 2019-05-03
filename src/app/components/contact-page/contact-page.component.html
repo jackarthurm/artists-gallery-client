@@ -146,9 +146,5 @@
 </div>
 
 <ng-template #loadingIcon>
-  <img *ngIf="isLoading; else sendButton"
-        matTooltip="Loading…"
-        class="spinner"
-        src="assets/spinner.svg"
-        aria-label="loading animation" />
+  <gal-loading-spinner></gal-loading-spinner>
 </ng-template>
