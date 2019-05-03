@@ -9,15 +9,27 @@
 }
 
 .about-card {
-  min-height: 200px;
-  max-width: 500px;
+  min-height: 150px;
+  max-width: 570px;
   margin: 30px;
   overflow: auto;
   align-self: center;
+
+  mat-card-header > .mat-card-header-text {
+    margin: 0 16px 0 0;
+  }
 }
 
 .image {
-  max-width: 600px;
+  max-width: 400px;
   align-self: center;
   margin-bottom: 30px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 599px) {
+
+  .about-card {
+    margin: 10px;
+  }
 }
