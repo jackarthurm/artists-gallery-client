@@ -57,4 +57,5 @@ export const environment: Environment = {
   ],
   resizeDebounceTimeMS: 100,
   requestRetryAttempts: 2,
+  galleryStateSessionStorageKey: 'gallerystate',
 };

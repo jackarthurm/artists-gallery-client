@@ -8,6 +8,7 @@ import {
 import {
   InfoDialogService,
 } from '@services/info-dialog/info-dialog.service';
+import { environment } from '@envs/environment';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class GalleryPageComponent implements OnInit {
         this.galleryItems = page.items;
 
         sessionStorage.setItem(
-          'gallerystate',
+          environment.galleryStateSessionStorageKey,
           JSON.stringify(
             this.galleryItems.map(
               (item: GalleryItem) => item.id

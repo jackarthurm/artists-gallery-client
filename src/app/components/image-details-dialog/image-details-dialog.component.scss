@@ -38,6 +38,7 @@
       padding: 10px;
       width: 67%;
       height: 67%;
+      justify-content: center;
     }
 
     :hover {
@@ -46,7 +47,7 @@
   }
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 699px) {
 
   .nav-click {
     top: calc(50% - 16px);
@@ -57,13 +58,20 @@
       font-size: 32px;
     }
 
-    &.prev-button {
-      left: 5px;
+    &.close-button {
+
+      mat-icon {
+        justify-content: center;
+      }
     }
 
-    &.next-button {
-      right: 5px;
-    }
+    // &.prev-button {
+    //   left: 5px;
+    // }
+
+    // &.next-button {
+    //   right: 5px;
+    // }
   }
 }
 

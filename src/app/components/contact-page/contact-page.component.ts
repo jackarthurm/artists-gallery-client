@@ -40,7 +40,7 @@ export class ContactPageComponent {
 
   private _isLoading: boolean = false;
 
-  private contactForm: FormGroup = new FormGroup({
+  public contactForm: FormGroup = new FormGroup({
     body: new FormControl(
       '',
       [

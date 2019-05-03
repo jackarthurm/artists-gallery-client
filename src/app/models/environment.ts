@@ -36,6 +36,7 @@ export interface Environment {
   navLinks: Array<NavLink>;
   resizeDebounceTimeMS: number;
   requestRetryAttempts: number;
+  galleryStateSessionStorageKey: string;
 }
 
 

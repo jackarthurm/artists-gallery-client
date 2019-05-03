@@ -48,8 +48,12 @@ export class ImageDetailsDialogComponent implements OnDestroy {
   ) {
 
     this.galleryState = JSON.parse(
-      sessionStorage.getItem('gallerystate') as string
+      sessionStorage.getItem(
+        environment.galleryStateSessionStorageKey
+      ) as string
     ) || [];
+
+    // TODO: If gallery state not cached, retrieve a new one
 
     this.setImage(imageID);
   }
