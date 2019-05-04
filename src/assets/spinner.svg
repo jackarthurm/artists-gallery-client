@@ -1,23 +1,17 @@
-<svg class="spinner" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" >
+<svg class="spinner" 
+     viewBox="0 0 100 100" 
+     xmlns="http://www.w3.org/2000/svg">
   <style>
     .spinner {
-      animation: 5s linear infinite;
-      -webkit-animation: 5s linear infinite;
+      animation: rotator 5s linear infinite;
+      -webkit-animation: rotator 5s linear infinite;
+      -moz-animation: rotator 5s linear infinite;
+
       transform-origin: center;
-      width: 100%;
-      height: 100%;
+      -moz-transform-origin: center;
     }
 
     @keyframes rotator {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @-moz-keyframes rotator {
       0% {
         transform: rotate(0deg);
       }
@@ -35,12 +29,26 @@
       }
     }
 
+    @-moz-keyframes rotator {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     .path {
       stroke-dasharray: 265;
       stroke-dashoffset: 0;
-      transform-origin: center;
       stroke: #282828;
+
       animation: dash 1s ease-in-out infinite;
+      -webkit-animation: dash 1s ease-in-out infinite;
+      -moz-animation: dash 1s ease-in-out infinite;
+
+      transform-origin: center;
+      -moz-transform-origin: center;
     }
 
     @keyframes dash {
@@ -57,7 +65,7 @@
       }
     }
 
-    @-moz-keyframes dash {
+    @-webkit-keyframes dash {
       0% {
         stroke-dashoffset: 265;
       }
@@ -71,7 +79,7 @@
       }
     }
 
-    @-webkit-keyframes dash {
+    @-moz-keyframes dash {
       0% {
         stroke-dashoffset: 265;
       }
