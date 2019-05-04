@@ -1,5 +1,6 @@
 <ng-container *ngIf="imageResourceURL; else loading">
   <a href=""
+     class="image-link"
      [routerLink]="[{outlets: {image: galleryItem.id}}]"
      tabindex="0">
     <img [src]="imageResourceURL"

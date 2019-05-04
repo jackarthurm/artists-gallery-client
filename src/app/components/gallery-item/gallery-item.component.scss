@@ -1,9 +1,14 @@
 @import 'theme.scss';
 
 
-.thumbnail-image {
-  width: 100%;
-  object-fit: scale-down;
+.image-link {
+
+  display: flex;
+
+  .thumbnail-image {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .loading-container {
