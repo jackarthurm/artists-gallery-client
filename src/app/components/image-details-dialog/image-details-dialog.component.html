@@ -3,9 +3,7 @@
        (swiperight)="previous()"
        (swipeleft)="next()">
     <div *ngIf="!imageResourceURL" class="loading-container">
-      <img src="assets/spinner.svg"
-           class="spinner"
-           aria-label="loading animation" />
+      <gal-loading-spinner></gal-loading-spinner>
     </div>
     <img *ngIf="imageResourceURL"
          [src]="imageResourceURL"
