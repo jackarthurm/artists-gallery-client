@@ -24,26 +24,33 @@ body {
   animation: rotator 5s linear infinite;
   -webkit-animation: rotator 5s linear infinite;
   -moz-animation: rotator 5s linear infinite;
+  -o-animation: rotator 5s linear infinite;
   -ms-animation: rotator 5s linear infinite;
 
   transform-origin: 50px 50px 0;
+  -webkit-transform-origin: 50px 50px 0;
   -moz-transform-origin: 50px 50px 0;
+  -o-transform-origin: 50px 50px 0;
+  -ms-transform-origin: 50px 50px 0;
+}
 
-  .path {
+.path {
   
-    stroke-dasharray: 265;
-    stroke-dashoffset: 0;
-    stroke: #282828;
-  
-    animation: dash 1s ease-in-out infinite;
-    -webkit-animation: dash 1s ease-in-out infinite;
-    -moz-animation: dash 1s ease-in-out infinite;
-    -ms-animation: dash 1s ease-in-out infinite;
-  
-    transform-origin: 50px 50px 0;
-    -moz-transform-origin: 50px 50px 0;
-  }
-  
+  stroke-dasharray: 265;
+  stroke-dashoffset: 0;
+  stroke: #282828;
+
+  animation: dash 1s ease-in-out infinite;
+  -webkit-animation: dash 1s ease-in-out infinite;
+  -moz-animation: dash 1s ease-in-out infinite;
+  -o-animation: dash 1s ease-in-out infinite;
+  -ms-animation: dash 1s ease-in-out infinite;
+
+  transform-origin: 50px 50px 0;
+  -webkit-transform-origin: 50px 50px 0;
+  -moz-transform-origin: 50px 50px 0;
+  -o-transform-origin: 50px 50px 0;
+  -ms-transform-origin: 50px 50px 0;
 }
 
 .large-icon {
@@ -91,6 +98,24 @@ body {
   }
 }
 
+@-o-keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes dash {
   0% {
     stroke-dashoffset: 265;
@@ -120,6 +145,34 @@ body {
 }
 
 @-moz-keyframes dash {
+  0% {
+    stroke-dashoffset: 265;
+  }
+  50% {
+    stroke-dashoffset: 65;
+    transform: rotate(90deg);
+  }
+  100% {
+    stroke-dashoffset: 265;
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes dash {
+  0% {
+    stroke-dashoffset: 265;
+  }
+  50% {
+    stroke-dashoffset: 65;
+    transform: rotate(90deg);
+  }
+  100% {
+    stroke-dashoffset: 265;
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes dash {
   0% {
     stroke-dashoffset: 265;
   }

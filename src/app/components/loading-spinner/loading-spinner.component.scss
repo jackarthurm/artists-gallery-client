@@ -7,11 +7,17 @@
   height: 100%;
 
   transform-origin: center;
+  -webkit-transform-origin: center;
   -moz-transform-origin: center;
+  -o-transform-origin: center;
+  -ms-transform-origin: center;
 
   .path {
   
     transform-origin: center;
+    -webkit-transform-origin: center;
     -moz-transform-origin: center;
+    -o-transform-origin: center;
+    -ms-transform-origin: center;
   }
 }

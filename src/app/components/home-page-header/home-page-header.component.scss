@@ -19,15 +19,27 @@
 
   transform: translateX(100%);
   -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  -ms-transform: translateX(100%);
 
   animation: slide-in 0.7s forwards;
   -webkit-animation: slide-in 0.7s forwards;
+  -moz-animation: slide-in 0.7s forwards;
+  -o-animation: slide-in 0.7s forwards;
+  -ms-animation: slide-in 0.7s forwards;
 
   animation-delay: 0.7s;
   -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  -o-animation-delay: 0.7s;
+  -ms-animation-delay: 0.7s;
 
   transition-timing-function: cubic-bezier(.69,.17,1,.57);
   -webkit-transition-timing-function: cubic-bezier(.69,.17,1,.57);
+  -moz-transition-timing-function: cubic-bezier(.69,.17,1,.57);
+  -o-transition-timing-function: cubic-bezier(.69,.17,1,.57);
+  -ms-transition-timing-function: cubic-bezier(.69,.17,1,.57);
 
   @keyframes slide-in {
     100% {
@@ -38,6 +50,24 @@
   @-webkit-keyframes slide-in {
     100% {
       -webkit-transform: translateX(0%);
+    }
+  }
+
+  @-moz-keyframes slide-in {
+    100% {
+      -moz-transform: translateX(0%);
+    }
+  }
+
+  @-o-keyframes slide-in {
+    100% {
+      -o-transform: translateX(0%);
+    }
+  }
+
+  @-ms-keyframes slide-in {
+    100% {
+      -ms-transform: translateX(0%);
     }
   }
 }
