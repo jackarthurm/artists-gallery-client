@@ -20,9 +20,18 @@
   </head>
   <body>
     <gal-app-root>
-      <div class="loading-container" aria-label="loading message">
-        <gal-loading-spinner></gal-loading-spinner>
-      </div>
+      <svg class="loading-spinner" 
+           viewBox="0 0 100 100" 
+           xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" 
+                fill="none" 
+                stroke-width="10" 
+                stroke-linecap="butt" 
+                cx="50" 
+                cy="50" 
+                r="40">
+        </circle>
+      </svg>
     </gal-app-root>
   </body>
 </html>
