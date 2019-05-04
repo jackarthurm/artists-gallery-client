@@ -13,7 +13,26 @@
   overflow-x: hidden;
 }
 
-.title-text {
+.title-text-image {
+
+  text {
+    word-spacing: 0px;
+    fill: $gal-black;
+    fill-opacity: 1;
+    stroke: none;
+  
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    font-variant: normal;
+    font-stretch: normal;
+    text-align: start;
+    line-height: 125%;
+    writing-mode: lr-tb;
+    text-anchor: start;
+    font-family: Montserrat;
+  }
+
   padding-right: 10%;
   max-width: 850px;
 
