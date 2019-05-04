@@ -3,7 +3,7 @@
        (swiperight)="previous()"
        (swipeleft)="next()">
     <div *ngIf="!imageResourceURL" class="loading-container">
-      <gal-loading-spinner></gal-loading-spinner>
+      <gal-loading-spinner class="spinner"></gal-loading-spinner>
     </div>
     <img *ngIf="imageResourceURL"
          [src]="imageResourceURL"
