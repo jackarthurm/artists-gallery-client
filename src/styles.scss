@@ -32,25 +32,25 @@ body {
   -moz-transform-origin: 50px 50px 0;
   -o-transform-origin: 50px 50px 0;
   -ms-transform-origin: 50px 50px 0;
-}
 
-.path {
+  .path {
   
-  stroke-dasharray: 265;
-  stroke-dashoffset: 0;
-  stroke: #282828;
-
-  animation: dash 1s ease-in-out infinite;
-  -webkit-animation: dash 1s ease-in-out infinite;
-  -moz-animation: dash 1s ease-in-out infinite;
-  -o-animation: dash 1s ease-in-out infinite;
-  -ms-animation: dash 1s ease-in-out infinite;
-
-  transform-origin: 50px 50px 0;
-  -webkit-transform-origin: 50px 50px 0;
-  -moz-transform-origin: 50px 50px 0;
-  -o-transform-origin: 50px 50px 0;
-  -ms-transform-origin: 50px 50px 0;
+    stroke-dasharray: 265;
+    stroke-dashoffset: 0;
+    stroke: $gal-black;
+  
+    animation: dash 1s ease-in-out infinite;
+    -webkit-animation: dash 1s ease-in-out infinite;
+    -moz-animation: dash 1s ease-in-out infinite;
+    -o-animation: dash 1s ease-in-out infinite;
+    -ms-animation: dash 1s ease-in-out infinite;
+  
+    transform-origin: 50px 50px 0;
+    -webkit-transform-origin: 50px 50px 0;
+    -moz-transform-origin: 50px 50px 0;
+    -o-transform-origin: 50px 50px 0;
+    -ms-transform-origin: 50px 50px 0;
+  }
 }
 
 .large-icon {
