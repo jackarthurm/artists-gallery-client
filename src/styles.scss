@@ -68,6 +68,10 @@ body {
     margin: 5px;
     overflow-x: hidden;
     background-color: $gal-white;
+
+    // We remove the rounded corners at the top as we don't want to change the image
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
