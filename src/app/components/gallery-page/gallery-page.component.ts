@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-  GalleryItem,
-  GalleryPage,
-  ImageService,
-} from '@services/image/image.service';
+import { GalleryItem, GalleryPage } from '@app/models/image';
+import { ImageService } from '@services/image/image.service';
 import {
   InfoDialogService,
 } from '@services/info-dialog/info-dialog.service';
-import { environment } from '@envs/environment';
+import { setGalleryState } from '@utils/gallery-state';
 
 
 @Component({
@@ -31,14 +28,7 @@ export class GalleryPageComponent implements OnInit {
       (page: GalleryPage) => {
         this.galleryItems = page.items;
 
-        sessionStorage.setItem(
-          environment.galleryStateSessionStorageKey,
-          JSON.stringify(
-            this.galleryItems.map(
-              (item: GalleryItem) => item.id
-            )
-          )
-        );
+        setGalleryState(this.galleryItems);
       },
       (_err: Error) => this.infoDialogService.openErrorDialog(
         `Failed to contact server. Please check your

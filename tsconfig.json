@@ -27,6 +27,7 @@
       "@components/*": ["app/components/*"],
       "@data/*": ["app/data/*"],
       "@models/*": ["app/models/*"],
+      "@utils/*": ["app/utils/*"],
     }
   }
 }

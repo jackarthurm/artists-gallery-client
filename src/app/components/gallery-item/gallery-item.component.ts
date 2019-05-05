@@ -6,8 +6,9 @@ import {
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+import { GalleryItem } from '@models/image';
 import { url } from '@models/shared';
-import { GalleryItem, ImageService } from '@services/image/image.service';
+import { ImageService } from '@services/image/image.service';
 
 
 @Component({

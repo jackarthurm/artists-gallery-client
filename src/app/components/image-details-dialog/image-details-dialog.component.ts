@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, HostListener, Inject, OnDestroy } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -9,8 +9,10 @@ import { concatMap, tap } from 'rxjs/operators';
 import { Key } from 'ts-key-enum';
 
 import { environment } from '@envs/environment';
+import { GalleryItem, GalleryPage } from '@models/image';
 import { url, uuid } from '@models/shared';
-import { GalleryItem, ImageService } from '@services/image/image.service';
+import { ImageService } from '@services/image/image.service';
+import { getGalleryState, setGalleryState } from '@utils/gallery-state';
 
 
 function wrapIndexPeriodic(index: number, bound: number): number {
@@ -28,7 +30,7 @@ function wrapIndexPeriodic(index: number, bound: number): number {
   styleUrls: ['./image-details-dialog.component.scss'],
   templateUrl: './image-details-dialog.component.html',
 })
-export class ImageDetailsDialogComponent implements OnDestroy {
+export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   public galleryItem: GalleryItem;
   public imageResourceURL: SafeResourceUrl | undefined;
@@ -45,17 +47,28 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     private router: Router,
     private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
-  ) {
+  ) {}
 
-    this.galleryState = JSON.parse(
-      sessionStorage.getItem(
-        environment.galleryStateSessionStorageKey
-      ) as string
-    ) || [];
+  public ngOnInit(): void {
 
-    // TODO: If gallery state not cached, retrieve a new one
+    const galleryState: Array<uuid> | undefined = getGalleryState();
 
-    this.setImage(imageID);
+    if (galleryState !== undefined) {
+
+      this.galleryState = galleryState;
+      this.setImage(this.imageID);
+    }
+    else {
+
+      // If the gallery state isn't cached we retrieve the default one and cache it
+      this.imageService.getInitialGalleryPage().subscribe(
+        (page: GalleryPage) => {
+          this.galleryState = setGalleryState(page.items);
+          this.setImage(this.imageID);
+        },
+        (_err: Error) => console.log('Failed to retrieve initial gallery page')
+      );
+    }
   }
 
   @HostListener('document:keyup', ['$event'])
