@@ -1,3 +1,6 @@
+@import 'theme.scss';
+
+
 .banner-container {
   display: flex;
   justify-content: center;
@@ -57,7 +60,7 @@
     .media-logo-caption {
       margin-top: 20px;
       opacity: 0;
-      color: gray;
+      color: $gal-gray;
       width: 100%;
       text-align: center;
     }
