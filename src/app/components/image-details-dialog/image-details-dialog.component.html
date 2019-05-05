@@ -8,6 +8,7 @@
     <img *ngIf="imageResourceURL"
          [src]="imageResourceURL"
          class="gallery-image"
+         (click)="openImage()"
          aria-label="large picture of artwork" />
   </div>
   <button mat-icon-button

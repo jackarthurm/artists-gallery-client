@@ -146,6 +146,13 @@ export class ImageDetailsDialogComponent implements OnDestroy {
     this.dialogRef.close();
   }
 
+  public openImage(): void {
+
+    if (this.createdObjectURL) {
+      window.location.href = this.createdObjectURL;
+    }
+  }
+
   public get imageAspectRatio(): number | undefined {
 
     if (this.galleryItem) {
