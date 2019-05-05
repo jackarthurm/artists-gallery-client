@@ -57,14 +57,12 @@
   }
 }
 
-mat-grid-tile:hover {
+gal-gallery-item:hover + .gallery-item-info {
 
-  .gallery-item-info {
-    // Fade-in-on-hover transition
-    animation: fade-in 0.5s ease-in forwards;
-    -webkit-animation: fade-in 0.5s ease-in forwards;
-    -moz-animation: fade-in 0.5s ease-in forwards;
-    -o-animation: fade-in 0.5s ease-in forwards;
-    -ms-animation: fade-in 0.5s ease-in forwards;
-  }
+  // Fade-in-on-hover transition
+  animation: fade-in 0.5s ease-in forwards;
+  -webkit-animation: fade-in 0.5s ease-in forwards;
+  -moz-animation: fade-in 0.5s ease-in forwards;
+  -o-animation: fade-in 0.5s ease-in forwards;
+  -ms-animation: fade-in 0.5s ease-in forwards;
 }
