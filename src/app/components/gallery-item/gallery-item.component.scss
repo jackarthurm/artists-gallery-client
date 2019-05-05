@@ -1,4 +1,3 @@
-@import 'theme.scss';
 
 
 .image-link {
@@ -11,38 +10,6 @@
     width: 100%;
     object-fit: cover;
   }
-
-  .gallery-item-info {
-    position: absolute;
-    width: 96%;
-    text-align: center;
-    color: $gal-white;
-    opacity: 0;
-
-    padding: 8px 0 8px 0;
-
-    .item-title {
-      margin: 0;
-    }
-
-    .created-date {
-      margin: 0;
-      font-size: 8pt;
-      color: $gal-gray;
-    }
-  }
-}
-
-.image-link:hover {
-
-  .gallery-item-info {
-    // Fade-in-on-hover transition
-    animation: fade-in 0.5s ease-in forwards;
-    -webkit-animation: fade-in 0.5s ease-in forwards;
-    -moz-animation: fade-in 0.5s ease-in forwards;
-    -o-animation: fade-in 0.5s ease-in forwards;
-    -ms-animation: fade-in 0.5s ease-in forwards;
-  }
 }
 
 .loading-container {
@@ -54,51 +21,5 @@
   .spinner {
     width: 20%;
     margin: 0 auto;
-  }
-}
-
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-ms-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

@@ -9,6 +9,15 @@
                      role="listitem">
         <gal-gallery-item [galleryItem]="item">
         </gal-gallery-item>
+        <div class="gallery-item-info darker-backdrop"
+             [style.max-width]="item.thumbnailImage.width + 'px'">
+          <p class="mat-body item-title">
+            {{ item.title }}
+          </p>
+          <p class="mat-body created-date">
+            {{ item.createdDate?.getFullYear() }}
+          </p>
+        </div>
       </mat-grid-tile>
     </mat-grid-list>
   </ng-container>

@@ -9,15 +9,6 @@
          aria-label="thumbnail picture of artwork"
          [style.max-width]="galleryItem.thumbnailImage.width + 'px'"
          [style.max-height]="galleryItem.thumbnailImage.height + 'px'" />
-    <div class="gallery-item-info darker-backdrop"
-         [style.width]="thumbnailImageElement.width + 'px'">
-      <p class="mat-body item-title">
-        {{ galleryItem.title }}
-      </p>
-      <p class="mat-body created-date">
-        {{ galleryItem.createdDate?.getFullYear() }}
-      </p>
-    </div>
   </a>
 </ng-container>
 <ng-template #loading>

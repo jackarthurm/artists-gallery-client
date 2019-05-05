@@ -1,4 +1,9 @@
-import { Component, Input, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { url } from '@models/shared';
@@ -22,8 +27,7 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
 
   constructor(
     private imageService: ImageService,
-    private sanitizer: DomSanitizer,
-    private cdRef: ChangeDetectorRef
+    private sanitizer: DomSanitizer
   ) {}
 
   public ngOnInit(): void {
@@ -38,8 +42,6 @@ export class GalleryItemComponent implements OnInit, OnDestroy {
         this.imageResourceURL = this.sanitizer.bypassSecurityTrustResourceUrl(
           this.createdObjectURL
         );
-
-        this.cdRef.detectChanges();
       },
       (_err: Error) => {
         // We ignore the error, this means the image
