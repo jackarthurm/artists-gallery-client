@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import * as HttpStatus from 'http-status-codes';
+import { Subscription } from 'rxjs';
 import { concatMap, tap } from 'rxjs/operators';
 import { Key } from 'ts-key-enum';
 
@@ -40,6 +41,8 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   private createdObjectURL: url;
   private urlCreator: any = window.URL || (window as any).webkitURL;
+
+  private imageSubscription: Subscription;
 
   constructor(
     private imageService: ImageService,
@@ -100,7 +103,9 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   private setImage(imageID: uuid): void {
 
-    this.imageService.getGalleryItem(imageID).pipe(
+    this.cancelRetrieveImageData();
+
+    this.imageSubscription = this.imageService.getGalleryItem(imageID).pipe(
       tap(
         (galleryItem: GalleryItem) => {
 
@@ -195,8 +200,16 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     }
   }
 
+  private cancelRetrieveImageData(): void {
+
+    if (this.imageSubscription && !this.imageSubscription.closed) {
+      this.imageSubscription.unsubscribe();
+    }
+  }
+
   public ngOnDestroy(): void {
 
     this.releaseImageResource();
+    this.cancelRetrieveImageData();
   }
 }

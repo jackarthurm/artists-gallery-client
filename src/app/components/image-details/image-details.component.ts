@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,13 +9,16 @@ import {
 } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
 import { uuid } from '@models/shared';
+import { Subscription } from 'rxjs';
 
 
 @Component({
   selector: 'gal-image-details',
   template: '',
 })
-export class ImageDetailsComponent {
+export class ImageDetailsComponent implements OnDestroy {
+
+  private imageSubscription: Subscription;
 
   constructor(
     dialog: MatDialog,
@@ -23,7 +26,9 @@ export class ImageDetailsComponent {
     activatedRoute: ActivatedRoute
   ) {
 
-    activatedRoute.params.pipe(
+    this.cancelRetrieveImageData();
+
+    this.imageSubscription = activatedRoute.params.pipe(
       map(
         (params: {[param: string]: string}) => params.id
       )
@@ -46,5 +51,17 @@ export class ImageDetailsComponent {
         );
       }
     );
+  }
+
+  private cancelRetrieveImageData(): void {
+
+    if (this.imageSubscription && !this.imageSubscription.closed) {
+      this.imageSubscription.unsubscribe();
+    }
+  }
+
+  public ngOnDestroy(): void {
+
+    this.cancelRetrieveImageData();
   }
 }
