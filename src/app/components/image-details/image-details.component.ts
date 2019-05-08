@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import {
@@ -9,7 +10,6 @@ import {
 } from '@components/image-details-dialog/image-details-dialog.component';
 import { environment } from '@envs/environment';
 import { uuid } from '@models/shared';
-import { Subscription } from 'rxjs';
 
 
 @Component({
