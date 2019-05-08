@@ -17,6 +17,7 @@ export interface GalleryItem {
   createdDate: Date | undefined;
   description: string;
   mediaDescription: string;
+  sizeDescription: string;
   artistName: string;
   tags: Array<string>;
 }

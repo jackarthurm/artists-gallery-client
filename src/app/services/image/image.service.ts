@@ -31,6 +31,7 @@ interface GalleryItemAPIResult {
   created_date: string | null;
   description: string;
   media_description: string;
+  size_description: string;
   artist_name: string;
   tags: Array<GalleryItemAPITagResult>;
 }
@@ -51,6 +52,7 @@ function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
     createdDate,
     description: res.description,
     mediaDescription: res.media_description,
+    sizeDescription: res.size_description,
     artistName: res.artist_name,
     tags: res.tags.map(
       (tag: GalleryItemAPITagResult) => tag.name
