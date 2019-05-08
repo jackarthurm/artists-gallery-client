@@ -29,13 +29,13 @@
   }
 
   &.close-button {
-    top: 2%;
+    top: 0%;
     right: 2%;
 
     mat-icon {
       font-size: 40px;
       margin: 0;
-      padding: 10px;
+      padding: 20px;
       width: 67%;
       height: 67%;
       justify-content: center;
@@ -60,9 +60,9 @@
 
     &.close-button {
 
-      mat-icon {
-        justify-content: center;
-      }
+      top: 0%;
+      right: 0%;
+      margin-right: 32px;
     }
   }
 }
@@ -72,11 +72,11 @@
 
   // Fade-in animation
   opacity: 0;
-  animation: fade-in 1s ease-in forwards;
-  -webkit-animation: fade-in 1s ease-in forwards;
-  -moz-animation: fade-in 1s ease-in forwards;
-  -o-animation: fade-in 1s ease-in forwards;
-  -ms-animation: fade-in 1s ease-in forwards;
+  animation: fade-in 0.5s ease-in forwards;
+  -webkit-animation: fade-in 0.5s ease-in forwards;
+  -moz-animation: fade-in 0.5s ease-in forwards;
+  -o-animation: fade-in 0.5s ease-in forwards;
+  -ms-animation: fade-in 0.5s ease-in forwards;
 }
 
 #gallery-image-title {
@@ -90,6 +90,7 @@
 }
 
 #gallery-image-year {
+  font-size: 9pt;
   margin: 4px 0 16px 0;
   color: $gal-gray;
 
