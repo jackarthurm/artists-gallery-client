@@ -171,17 +171,6 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     }
   }
 
-  public get imageAspectRatio(): number | undefined {
-
-    if (this.galleryItem) {
-      return (
-        this.galleryItem.largeImage.height / this.galleryItem.largeImage.width
-      );
-    }
-
-    return undefined;
-  }
-
   private createImageResource(imageBlob: Blob): void {
 
     this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
