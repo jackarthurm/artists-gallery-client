@@ -1,11 +1,36 @@
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  gal-home-page-header {
+    height: 100%;
+    max-height: 400px;
+  }
+}
+
 .media-links {
-  margin: 80px 0 40px 0;
+  margin: 60px 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .image-container {
   width: 100%;
+  display: flex;
+  align-items: flex-end;
 
   img {
     width: 100%;
+    object-fit: scale-down;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+
+  .media-links {
+    margin: 30px 0 30px 0;
   }
 }
