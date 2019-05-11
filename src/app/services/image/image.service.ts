@@ -80,24 +80,6 @@ export class ImageService {
 
   constructor(private http: HttpClient) {}
 
-  public getImage(location: url): Observable<Blob> {
-    /* Retrieve an image file in blob format */
-
-    const headers: HttpHeaders = new HttpHeaders({
-      Accept: 'application/octet-stream',
-    });
-
-    return this.http.get<Blob>(
-      location,
-      {
-        headers,
-        responseType: 'blob' as 'json',
-      }
-    ).pipe(
-      retry(environment.requestRetryAttempts)
-    );
-  }
-
   public getGalleryItem(imageID: uuid): Observable<GalleryItem> {
 
     const headers: HttpHeaders = new HttpHeaders({
