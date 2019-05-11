@@ -4,8 +4,8 @@
 
 .home-page-header-container {
   width: 100%;
-  max-height: 33vh;
-  min-height: 150px;
+  height: 33vh;
+  min-height: 220px;
   background-color: mat-color($gal-primary);
   display: flex;
   justify-content: flex-end;
@@ -91,16 +91,23 @@
   }
 }
 
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 1024px) {
 
   .home-page-header-container {
-    justify-content: center;
-    max-height: 33vh;
     min-height: 200px;
+    height: 33vh;
+    justify-content: center;
   }
 
   .title-text-image {
     width: 100%;
     padding: 0;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+
+  .home-page-header-container {
+    min-height: 170px;
   }
 }
