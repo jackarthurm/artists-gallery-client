@@ -2,13 +2,12 @@
   <div class="dialog-content"
        (swiperight)="previous()"
        (swipeleft)="next()">
-    <div *ngIf="!imageResourceURL" class="loading-container">
+    <div *ngIf="!galleryItem" class="loading-container">
       <gal-loading-spinner class="spinner"></gal-loading-spinner>
     </div>
-    <img *ngIf="imageResourceURL"
-         [src]="imageResourceURL"
+    <img *ngIf="galleryItem"
+         [src]="galleryItem.largeImage.url"
          class="gallery-image"
-         (click)="openImage()"
          aria-label="large picture of artwork" />
   </div>
   <button mat-icon-button
@@ -33,14 +32,29 @@
           (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
-  <ng-container *ngIf="imageResourceURL">
-    <h1 class="mat-title image-caption-text"
-        id="gallery-image-title">
-      {{ galleryItem.title }}
-    </h1>
-    <p class="mat-body image-caption-text"
-      id="gallery-image-year">
-      {{ galleryItem.createdDate?.getFullYear() }}
-    </p>
-  </ng-container>
+  <div *ngIf="galleryItem" class="image-details-container">
+    <div class="image-actions">
+      <button mat-icon-button (click)="downloadImage()">
+        <mat-icon>get_app</mat-icon>
+      </button>
+    </div>
+    <div class="image-caption">
+      <h1 class="mat-title image-caption-text"
+          id="gallery-image-title">
+        {{ galleryItem.title }}
+      </h1>
+      <p class="mat-body image-caption-text"
+        id="gallery-image-year">
+        {{ galleryItem.createdDate?.getFullYear() }}
+      </p>
+    </div>
+    <div class="image-actions">
+      <button [disabled]="!galleryItem" 
+              mat-icon-button 
+              matTooltip="Open image file" 
+              (click)="downloadImage()">
+        <mat-icon>open_in_browser</mat-icon>
+      </button>
+    </div>
+  </div>
 </ng-container>
