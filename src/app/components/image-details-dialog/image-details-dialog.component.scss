@@ -92,7 +92,7 @@
 }
 
 #gallery-image-title {
-  margin: 16px 0 0 0;
+  margin: 8px 0 0 0;
 
   animation-delay: 0s;
   -webkit-animation-delay: 0s;
@@ -103,7 +103,7 @@
 
 #gallery-image-year {
   font-size: 9pt;
-  margin: 4px 0 16px 0;
+  margin: 4px 0 8px 0;
   color: $gal-gray;
 
   animation-delay: 1s;
@@ -116,7 +116,7 @@
 .gallery-image {
   object-fit: scale-down;
   max-width: calc(100% + 1px);  // Fix for blank edge strip of pixels
-  max-height: calc(85vh - 100px);  // Leave some fixed space for the caption
+  max-height: 60vh;  // Leaving some fixed space for the margin
 }
 
 .loading-container {
