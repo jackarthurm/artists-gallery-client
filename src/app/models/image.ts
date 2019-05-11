@@ -10,7 +10,6 @@ export interface Image {
 
 export interface GalleryItem {
   id: uuid;
-  originalImage: Image;
   largeImage: Image;
   thumbnailImage: Image;
   title: string;

@@ -24,7 +24,6 @@ interface GalleryItemAPITagResult {
 
 interface GalleryItemAPIResult {
   id: uuid;
-  original_image: Image;
   large_image: Image;
   thumbnail_image: Image;
   title: string;
@@ -45,7 +44,6 @@ function galleryItemResult(res: GalleryItemAPIResult): GalleryItem {
 
   return {
     id: res.id,
-    originalImage: res.original_image,
     largeImage: res.large_image,
     thumbnailImage: res.thumbnail_image,
     title: res.title,
