@@ -1,14 +1,9 @@
 import {
   Component,
   Input,
-  OnDestroy,
-  OnInit,
 } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { GalleryItem } from '@models/image';
-import { url } from '@models/shared';
-import { ImageService } from '@services/image/image.service';
 
 
 @Component({
@@ -16,45 +11,8 @@ import { ImageService } from '@services/image/image.service';
   styleUrls: ['./gallery-item.component.scss'],
   templateUrl: './gallery-item.component.html',
 })
-export class GalleryItemComponent implements OnInit, OnDestroy {
-
-  public imageResourceURL: SafeResourceUrl;
-
-  private createdObjectURL: url;
-  private urlCreator: any = window.URL || (window as any).webkitURL;
+export class GalleryItemComponent {
 
   @Input()
   public galleryItem: GalleryItem;
-
-  constructor(
-    private imageService: ImageService,
-    private sanitizer: DomSanitizer
-  ) {}
-
-  public ngOnInit(): void {
-
-    this.imageService.getImage(
-      this.galleryItem.thumbnailImage.url
-    ).subscribe(
-      (imageBlob: Blob) => {
-
-        this.createdObjectURL = this.urlCreator.createObjectURL(imageBlob);
-
-        this.imageResourceURL = this.sanitizer.bypassSecurityTrustResourceUrl(
-          this.createdObjectURL
-        );
-      },
-      (_err: Error) => {
-        // We ignore the error, this means the image
-        // will appear to be stuck loading
-      }
-    );
-  }
-
-  public ngOnDestroy(): void {
-
-    if (this.createdObjectURL) {
-      this.urlCreator.revokeObjectURL(this.createdObjectURL);
-    }
-  }
 }
