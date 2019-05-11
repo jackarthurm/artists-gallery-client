@@ -116,7 +116,7 @@
 .gallery-image {
   object-fit: scale-down;
   max-width: calc(100% + 1px);  // Fix for blank edge strip of pixels
-  max-height: 60vh;  // Leaving some fixed space for the margin
+  max-height: 85vh;  // Leaving some fixed space for the margin
 }
 
 .loading-container {

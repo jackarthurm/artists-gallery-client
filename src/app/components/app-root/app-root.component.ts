@@ -56,24 +56,6 @@ export class AppRootComponent implements OnInit {
     );
   }
 
-  public onSidenavSwipeRight(): void {
-
-    if (!this._showSmallScreenLayout) {
-      return;
-    }
-
-    this.sideNav.open();
-  }
-
-  public onSidenavSwipeLeft(): void {
-
-    if (!this._showSmallScreenLayout) {
-      return;
-    }
-
-    this.sideNav.close();
-  }
-
   get showSmallScreenLayout(): boolean {
     return this._showSmallScreenLayout;
   }

@@ -4,6 +4,7 @@
 
 gal-site-header {
   position: absolute;
+  z-index: 999;
   top: 0;
   left: 0;
   right: 0;
@@ -12,6 +13,7 @@ gal-site-header {
 
 gal-site-footer {
   position: absolute;
+  z-index: 999;
   bottom: 0;
   left: 0;
   right: 0;
@@ -20,6 +22,7 @@ gal-site-footer {
 
 mat-sidenav-container {
   position: absolute;
+  -webkit-overflow-scrolling: touch;
   top: 56px;
   bottom: 40px;
   left: 0;
