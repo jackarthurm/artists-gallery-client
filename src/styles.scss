@@ -13,8 +13,8 @@ body {
   align-items: center;
   justify-content: center;
   color: $gal-black;
-  min-width: 320px;
-  min-height: 320px;
+  min-width: $gal-min-width;
+  min-height: $gal-min-height;
 }
 
 .loading-spinner {

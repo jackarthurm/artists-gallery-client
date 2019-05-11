@@ -1,5 +1,7 @@
 <ng-container>
-  <div class="dialog-content">
+  <div class="dialog-content"
+       (swiperight)="previous()"
+       (swipeleft)="next()">
     <div *ngIf="!galleryItem" class="loading-container">
       <gal-loading-spinner class="spinner"></gal-loading-spinner>
     </div>
