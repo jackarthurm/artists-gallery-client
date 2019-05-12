@@ -67,6 +67,7 @@ body {
   mat-dialog-container {
     padding: 0;
     margin: 5px;
+    min-width: 250px;  // Must be a reasonable amount of space in which to fit the title and actions
     overflow-x: hidden;
     background-color: $gal-white;
 

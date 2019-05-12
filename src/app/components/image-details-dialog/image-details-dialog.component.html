@@ -31,10 +31,14 @@
     <mat-icon>close</mat-icon>
   </button>
   <div *ngIf="galleryItem" class="image-details-container">
-    <div class="image-actions">
-      <button mat-icon-button (click)="downloadImage()">
-        <mat-icon>get_app</mat-icon>
-      </button>
+    <div class="image-actions" id="image-actions-left">
+      <a [disabled]="!galleryItem" 
+         target="_blank"
+         mat-icon-button 
+         matTooltip="Open in new tab" 
+         href="{{ galleryItem.largeImage.url }}">
+        <mat-icon>open_in_new</mat-icon>
+      </a>
     </div>
     <div class="image-caption">
       <h1 class="mat-title image-caption-text"
@@ -46,12 +50,9 @@
         {{ galleryItem.createdDate?.getFullYear() }}
       </p>
     </div>
-    <div class="image-actions">
-      <button [disabled]="!galleryItem" 
-              mat-icon-button 
-              matTooltip="Open image file" 
-              (click)="downloadImage()">
-        <mat-icon>open_in_browser</mat-icon>
+    <div class="image-actions" id="image-actions-right">
+      <button mat-icon-button matTooltip="Share image">
+        <mat-icon>share</mat-icon>
       </button>
     </div>
   </div>

@@ -2,18 +2,29 @@
 @import 'theme.scss';
 
 
+.dialog-content {
+  text-align: center;  // Centers the image if it isn't wide enough to meet the minumum dialog width
+}
+
+mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .nav-click {
 
   position: absolute;
-  top: calc(50% - 30px);
+  bottom: calc(50% - 30px);
   width: 60px;
   height: 60px;
+  margin: 5px;
 
   mat-icon {
     color: $gal-white;
     font-size: 60px;
-    display: flex;
-    align-items: center;
   }
 
   :hover {
@@ -21,24 +32,22 @@
   }
 
   &.prev-button {
-    left: 2%;
+    left: calc(2vw - 15px);
   }
 
   &.next-button {
-    right: 2%;
+    right: calc(2vw - 15px);
   }
 
   &.close-button {
-    top: 0%;
-    right: 2%;
+    position: absolute;
+    top: 0;
+    right: 0;
 
     mat-icon {
       font-size: 40px;
       margin: 0;
-      padding: 20px;
-      width: 67%;
-      height: 67%;
-      justify-content: center;
+      padding: 0;
     }
 
     :hover {
@@ -50,46 +59,95 @@
 @media only screen and (max-width: 699px) {
 
   .nav-click {
-    top: calc(50% - 16px);
-    width: 32px;
-    height: 32px;
 
-    mat-icon {
-      font-size: 32px;
+    &.prev-button, &.next-button {
+
+      width: 40px;
+      height: 40px;
+
+      bottom: 2vw;
+
+      mat-icon {
+        font-size: 40px;
+      }
     }
 
     &.close-button {
 
-      top: 0%;
-      right: 0%;
-      margin-right: 32px;
+      width: 32px;
+      height: 32px;
+
+      right: 0;
+      top: 2vw;
+
+      mat-icon {
+        font-size: 32px;
+      }
+    }
+
+    &.prev-button {
+      left: 0;
+    }
+
+    &.next-button {
+      right: 0;
     }
   }
 }
 
 .image-details-container {
+  max-height: 15%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .image-caption {
+
+    max-width: 100%;
+
+    .image-caption-text {
+      text-align: center;
+
+      // Fade-in animation
+      opacity: 0;
+      animation: fade-in 0.5s ease-in forwards;
+      -webkit-animation: fade-in 0.5s ease-in forwards;
+      -moz-animation: fade-in 0.5s ease-in forwards;
+      -o-animation: fade-in 0.5s ease-in forwards;
+      -ms-animation: fade-in 0.5s ease-in forwards;
+    }
+  }
 
   .image-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
+
+  #image-actions-left {
+    margin-right: auto;
+    margin-left: 10%;
+  }
+
+  #image-actions-right {
+    margin-left: auto;
+    margin-right: 10%;
+  }
 }
 
-.image-caption-text {
-  text-align: center;
+// @media only screen and (max-width: 599px) {  // Shifts the actions to the bottom on small screens
 
-  // Fade-in animation
-  opacity: 0;
-  animation: fade-in 0.5s ease-in forwards;
-  -webkit-animation: fade-in 0.5s ease-in forwards;
-  -moz-animation: fade-in 0.5s ease-in forwards;
-  -o-animation: fade-in 0.5s ease-in forwards;
-  -ms-animation: fade-in 0.5s ease-in forwards;
-}
+//   .image-caption {
+
+//     flex: 0 0 100%;
+//     order: 1;
+//   }
+
+//   .image-actions {
+//     order: 2;
+//   }
+// }
 
 #gallery-image-title {
   margin: 8px 0 0 0;
@@ -116,7 +174,7 @@
 .gallery-image {
   object-fit: scale-down;
   max-width: calc(100% + 1px);  // Fix for blank edge strip of pixels
-  max-height: 85vh;  // Leaving some fixed space for the margin
+  max-height: 60vh;
 }
 
 .loading-container {
