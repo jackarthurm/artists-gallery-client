@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as HttpStatus from 'http-status-codes';
 import { Subscription } from 'rxjs';
@@ -24,6 +24,12 @@ function wrapIndexPeriodic(index: number, bound: number): number {
 }
 
 
+interface SocialMediaShareURLs {
+  facebook: url;
+  twitter: url;
+}
+
+
 @Component({
   selector: 'gal-image-details-dialog',
   styleUrls: ['./image-details-dialog.component.scss'],
@@ -32,7 +38,7 @@ function wrapIndexPeriodic(index: number, bound: number): number {
 export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   public galleryItem: GalleryItem;
-  public facebookShareURL: url;
+  public shareURLs: SocialMediaShareURLs;
 
   private galleryItemIndex: number;
   private galleryState: Array<uuid>;
@@ -40,16 +46,20 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
   private imageSubscription: Subscription;
 
   constructor(
+    activatedRoute: ActivatedRoute,
     private imageService: ImageService,
     private router: Router,
     private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
   ) {
 
-    this.facebookShareURL = `https://www.facebook.com/dialog/share
-?app_id=145634995501895
-&display=popup
-&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`;
+    // TODO: This needs refactoring using ActivatedRoute to make it less fragile
+    const shareURL: string = `${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2Fgallery%2F(image:${imageID})`;
+
+    this.shareURLs = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareURL}`,
+      twitter: `https://twitter.com/intent/tweet?url=${shareURL}&amp;hashtags=katealicemann`,
+    };
   }
 
   public ngOnInit(): void {
@@ -149,15 +159,6 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   public close(): void {
     this.dialogRef.close();
-  }
-
-  public downloadImage(): void {
-
-    if (!this.galleryItem) {
-      return;
-    }
-
-    location.href = this.galleryItem.largeImage.url;
   }
 
   private cancelRetrieveImageData(): void {
