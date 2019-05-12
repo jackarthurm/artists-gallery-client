@@ -1,3 +1,22 @@
+<mat-menu #shareMenu="matMenu">
+  <span class="share-menu-container">
+    <a class="icon-link"
+       href="{{ facebookShareURL }}">
+      <span class="icon-link-container">
+        <img class="media-logo" src="assets/facebook.svg" />
+        <p class="mat-body-1">Facebook</p>
+      </span>
+    </a>
+    <a class="icon-link"
+       href="{{ socialMediaLinks ? socialMediaLinks.instagram : '' }}">
+      <span class="icon-link-container">
+        <img class="media-logo" src="assets/instagram.svg" />
+        <p class="mat-body-1">Instagram</p>
+      </span>
+    </a>
+  </span>
+</mat-menu>
+
 <ng-container>
   <div class="dialog-content">
     <div *ngIf="!galleryItem" class="loading-container">
@@ -51,9 +70,12 @@
       </p>
     </div>
     <div class="image-actions" id="image-actions-right">
-      <button mat-icon-button matTooltip="Share image">
+      <button mat-icon-button 
+              matTooltip="Share image" 
+              [matMenuTriggerFor]="shareMenu">
         <mat-icon>share</mat-icon>
       </button>
     </div>
   </div>
 </ng-container>
+

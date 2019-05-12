@@ -10,6 +10,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
   MatSidenavModule,
   MatToolbarModule,
   MatTooltipModule,
@@ -82,6 +83,7 @@ import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spi
     MatInputModule,
     MatGridListModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
   providers: [
     ConfigService,

@@ -9,7 +9,7 @@ import { Key } from 'ts-key-enum';
 
 import { environment } from '@envs/environment';
 import { GalleryItem, GalleryPage } from '@models/image';
-import { uuid } from '@models/shared';
+import { url, uuid } from '@models/shared';
 import { ImageService } from '@services/image/image.service';
 import { getGalleryState, setGalleryState } from '@utils/gallery-state';
 
@@ -32,6 +32,7 @@ function wrapIndexPeriodic(index: number, bound: number): number {
 export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
 
   public galleryItem: GalleryItem;
+  public facebookShareURL: url;
 
   private galleryItemIndex: number;
   private galleryState: Array<uuid>;
@@ -43,7 +44,13 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     private router: Router,
     private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
-  ) {}
+  ) {
+
+    this.facebookShareURL = `https://www.facebook.com/dialog/share
+?app_id=145634995501895
+&display=popup
+&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`;
+  }
 
   public ngOnInit(): void {
 
