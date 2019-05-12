@@ -41,6 +41,8 @@ export class ImageDetailsComponent implements OnDestroy {
             backdropClass: 'darker-backdrop',
             data: imageID,
             panelClass: 'image-detail-dialog-panel',
+            maxWidth: '85vw',
+            maxHeight: '85vh',
           }
         );
 
