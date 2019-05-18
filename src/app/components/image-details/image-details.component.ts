@@ -47,8 +47,8 @@ export class ImageDetailsComponent implements OnDestroy {
         );
 
         dialogRef.afterClosed().subscribe(
-          () => router.navigate(
-            [`/${environment.routeURLs.galleryPage}`]
+          (result?: {notFound: boolean}) => router.navigate(
+            result && result.notFound ? [`/${environment.routeURLs.notFoundPage}`] : [`/${environment.routeURLs.galleryPage}`]
           )
         );
       }

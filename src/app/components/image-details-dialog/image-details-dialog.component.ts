@@ -1,7 +1,7 @@
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Router, ActivatedRoute } from '@angular/router';
 
 import * as HttpStatus from 'http-status-codes';
 import { Subscription } from 'rxjs';
@@ -21,6 +21,18 @@ function wrapIndexPeriodic(index: number, bound: number): number {
   // [0, 2 * bound] and finally apply another modulo operation
   // to bring the index within the range [0, bound]
   return (index % bound + bound) % bound;
+}
+
+
+function createImageShareURLs(imageID: uuid): SocialMediaShareURLs {
+
+  // TODO: This needs refactoring using ActivatedRoute to make it less fragile
+  const urlToShare: url = `${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2Fgallery%2F(image:${imageID})`;
+
+  return {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${urlToShare}`,
+    twitter: `https://twitter.com/intent/tweet?url=${urlToShare}&amp;hashtags=katealicemann`,
+  };
 }
 
 
@@ -46,21 +58,11 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
   private imageSubscription: Subscription;
 
   constructor(
-    activatedRoute: ActivatedRoute,
+    private location: Location,
     private imageService: ImageService,
-    private router: Router,
     private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
-  ) {
-
-    // TODO: This needs refactoring using ActivatedRoute to make it less fragile
-    const shareURL: string = `${environment.siteURL.schema}%3A%2F%2F${environment.siteURL.domain}%2Fgallery%2F(image:${imageID})`;
-
-    this.shareURLs = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareURL}`,
-      twitter: `https://twitter.com/intent/tweet?url=${shareURL}&amp;hashtags=katealicemann`,
-    };
-  }
+  ) {}
 
   public ngOnInit(): void {
 
@@ -96,19 +98,11 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('document:keypress', ['$event'])
-  public handleKeypressEvent(event: KeyboardEvent): void {
-    switch (event.key) {
-      case Key.Enter:
-        this.next();
-    }
-  }
-
   private notFound(): void {
 
-    this.router.navigate(
-      [`/${environment.routeURLs.notFoundPage}`]
-    );
+    this.dialogRef.close({
+      notFound: true,
+    });
   }
 
   private setImage(imageID: uuid): void {
@@ -123,6 +117,8 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
         this.galleryItemIndex = this.galleryState.findIndex(
           (id: uuid) => id === galleryItem.id
         );  // TODO: Handle error if index is not found
+
+        this.shareURLs = createImageShareURLs(galleryItem.id);
       },
       (err: HttpErrorResponse) => {
 
@@ -145,6 +141,9 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     );
 
     const newID: uuid = this.galleryState[newIndex];
+
+    // TODO: This needs refactoring using ActivatedRoute to make it less fragile
+    this.location.go(`/gallery/(image:${newID})`);
 
     this.setImage(newID);
   }
