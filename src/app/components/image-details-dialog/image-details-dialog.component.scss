@@ -216,6 +216,8 @@ mat-icon {
     color: inherit;
     display: flex;
 
+    height: 100%;
+
     .icon-link-container {
       display: flex;
       flex-direction: row;
@@ -224,8 +226,8 @@ mat-icon {
     }
 
     .media-logo {
-      height: 32px;
-      margin: 15px;
+      height: 25px;
+      margin: 16px;
 
       &.twitter-logo {  // Enlarge the twitter logo a bit as it has a built-in margin
         height: 40px;
@@ -257,7 +259,7 @@ mat-icon {
     }
 
     p {
-      font-weight: bold;
+      color: mat-color($gal-accent);
     }
   }
 }

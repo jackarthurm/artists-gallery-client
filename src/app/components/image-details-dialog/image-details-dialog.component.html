@@ -1,6 +1,7 @@
-<mat-menu #shareMenu="matMenu">
+<mat-menu #shareMenu="matMenu" class="media-links-menu-panel">
   <span class="share-menu-container">
-    <a class="icon-link"
+    <a mat-menu-item
+       class="icon-link"
        href="{{ shareURLs.facebook }}"
        target="_blank">
       <span class="icon-link-container">
@@ -8,7 +9,8 @@
         <p class="mat-body-1">Facebook</p>
       </span>
     </a>
-    <a class="icon-link"
+    <a mat-menu-item
+       class="icon-link"
        href="{{ shareURLs.twitter }}"
        target="_blank">
       <span class="icon-link-container">

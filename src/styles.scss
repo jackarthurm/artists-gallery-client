@@ -77,6 +77,14 @@ body {
   }
 }
 
+.media-links-menu-panel {
+
+  .mat-menu-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
 @keyframes rotator {
   0% {
     transform: rotate(0deg);
