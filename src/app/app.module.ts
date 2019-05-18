@@ -32,13 +32,13 @@ import { HomePageComponent } from '@components/home-page/home-page.component';
 import { ImageDetailsDialogComponent } from '@components/image-details-dialog/image-details-dialog.component';
 import { ImageDetailsComponent } from '@components/image-details/image-details.component';
 import { InfoDialogComponent } from '@components/info-dialog/info-dialog.component';
+import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spinner.component';
 import { MediaLinksBannerComponent } from '@components/media-links-banner/media-links-banner.component';
 import { NotFoundPageComponent } from '@components/not-found-page/not-found-page.component';
 import { SiteFooterComponent } from '@components/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@components/site-header/site-header.component';
 import { ConfigService } from '@services/config/config.service';
 import { SocialMediaLinks } from '@services/links/links.service';
-import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({

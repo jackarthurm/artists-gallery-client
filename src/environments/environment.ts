@@ -2,12 +2,14 @@ import { environment as prodEnv } from '@envs/environment.prod';
 import { Environment } from '@models/environment';
 
 
-const domain: string = 'localhost:8001';
+prodEnv.siteURL.domain = 'localhost:4200';
+
+const apiDomain: string = 'localhost:8001';
 
 prodEnv.production = false;
-prodEnv.imagesURL.domain = domain;
-prodEnv.contactURL.domain = domain;
-prodEnv.socialMediaLinksURL.domain = domain;
+prodEnv.imagesURL.domain = apiDomain;
+prodEnv.contactURL.domain = apiDomain;
+prodEnv.socialMediaLinksURL.domain = apiDomain;
 
 export const environment: Environment = prodEnv;
 

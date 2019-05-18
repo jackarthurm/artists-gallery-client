@@ -54,7 +54,7 @@ mat-list-item {
     }
   }
 
-  .nav-link:hover {
+  .nav-link:enabled:hover {
     color: mat-color($gal-accent);
   }
 }

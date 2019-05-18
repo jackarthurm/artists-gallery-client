@@ -1,6 +1,7 @@
 <mat-menu #shareMenu="matMenu" class="media-links-menu-panel">
   <span class="share-menu-container">
-    <a mat-menu-item
+    <a *ngIf="shareURLs && shareURLs.facebook"
+       mat-menu-item
        class="icon-link"
        href="{{ shareURLs.facebook }}"
        target="_blank">
@@ -9,7 +10,8 @@
         <p class="mat-body-1">Facebook</p>
       </span>
     </a>
-    <a mat-menu-item
+    <a *ngIf="shareURLs && shareURLs.twitter"
+       mat-menu-item
        class="icon-link"
        href="{{ shareURLs.twitter }}"
        target="_blank">
@@ -32,6 +34,7 @@
          aria-label="large picture of artwork" />
   </div>
   <button mat-icon-button
+          type="button"
           matTooltip="Go to previous image"
           aria-label="Go to previous image"
           class="nav-click prev-button"
@@ -39,6 +42,7 @@
     <mat-icon>navigate_before</mat-icon>
   </button>
   <button mat-icon-button
+          type="button"
           cdkFocusInitial
           matTooltip="Go to next image"
           aria-label="Go to next image"
@@ -47,6 +51,7 @@
     <mat-icon>navigate_next</mat-icon>
   </button>
   <button mat-icon-button
+          type="button"
           matTooltip="Close image view"
           aria-label="Close image view"
           class="nav-click close-button"
@@ -75,11 +80,12 @@
     </div>
     <div class="image-actions" id="image-actions-right">
       <button mat-icon-button 
+              type="button"
               matTooltip="Share image" 
-              [matMenuTriggerFor]="shareMenu">
+              [matMenuTriggerFor]="shareMenu"
+              [disabled]="!shareURLs">
         <mat-icon>share</mat-icon>
       </button>
     </div>
   </div>
 </ng-container>
-

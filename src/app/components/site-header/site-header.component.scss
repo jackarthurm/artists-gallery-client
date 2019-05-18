@@ -28,7 +28,7 @@
       color: $gal-black;
     }
 
-    .nav-link:hover {
+    .nav-link:enabled:hover {
       color: mat-color($gal-accent);
     }
   }
