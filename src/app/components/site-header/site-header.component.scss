@@ -2,6 +2,12 @@
 @import 'theme.scss';
 
 
+.nav-button {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
 .nav-list {
   width: 100%;
   display: flex;

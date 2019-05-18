@@ -1,12 +1,13 @@
 <mat-toolbar color="primary">
-  <ng-container *ngIf="navLinks.length; then navLinkList else navButton"
-                class="nav-links">
+  <ng-container *ngIf="navLinks.length; then navLinkList else navButton">
   </ng-container>
 </mat-toolbar>
 
 <ng-template #navButton>
 
-  <button mat-icon-button (click)="onMenuClicked($event)">
+  <button mat-icon-button 
+          (click)="onMenuClicked($event)" 
+          class="nav-button">
     <mat-icon>view_headline</mat-icon>
   </button>
 
