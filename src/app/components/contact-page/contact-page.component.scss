@@ -1,3 +1,4 @@
+@import '~@angular/material/theming';
 @import 'theme.scss';
 
 
@@ -20,6 +21,10 @@
 
 .submit-button, .spinner {
   float: right;
+}
+
+.submit-button:enabled:hover {
+  color: mat-color($gal-accent);
 }
 
 .header-icon-container {
