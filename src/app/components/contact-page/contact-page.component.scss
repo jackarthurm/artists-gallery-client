@@ -7,16 +7,13 @@
 }
 
 .contact-form-card {
-  min-width: 200px;
-  max-width: 500px;
   flex: 1;
-  margin: 30px;
   overflow: auto;
+  background-color: $gal-white;
 }
 
 .contact-page-container {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
 }
@@ -38,4 +35,20 @@ mat-form-field {
 mat-card-actions {
   margin-left: 0;
   margin-right: 0;
+}
+
+@media only screen and (max-width: 599px), (max-height: 500px) {
+
+  .contact-form-card {
+    border-radius: 0;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 599px) and (min-height: 500px) {
+
+  .contact-form-card {
+      margin: 30px;
+      max-width: 500px;
+  }
 }

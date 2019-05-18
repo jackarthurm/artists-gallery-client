@@ -4,7 +4,7 @@
 $gal-min-width: 320px;
 $gal-min-height: 320px;
 $gal-black: #282828;
-$gal-white: #f4f4f4;
+$gal-white: #fafafa;
 $gal-gray: gray;
 $gal-light-gray: #f4f4f4;
 
@@ -20,20 +20,20 @@ $typography: mat-typography-config(
 
 $gal-primary: mat-palette(
   (
-    50 : $gal-white,
-    100 : $gal-white,
-    200 : $gal-white,
-    300 : $gal-white,
-    400 : $gal-white,
-    500 : $gal-white,
-    600 : $gal-white,
-    700 : $gal-white,
-    800 : $gal-white,
-    900 : $gal-white,
-    A100 : $gal-white,
-    A200 : $gal-white,
-    A400 : $gal-white,
-    A700 : $gal-white,
+    50 : $gal-light-gray,
+    100 : $gal-light-gray,
+    200 : $gal-light-gray,
+    300 : $gal-light-gray,
+    400 : $gal-light-gray,
+    500 : $gal-light-gray,
+    600 : $gal-light-gray,
+    700 : $gal-light-gray,
+    800 : $gal-light-gray,
+    900 : $gal-light-gray,
+    A100 : $gal-light-gray,
+    A200 : $gal-light-gray,
+    A400 : $gal-light-gray,
+    A700 : $gal-light-gray,
     contrast: (
         50 : $gal-black,
         100 : $gal-black,
