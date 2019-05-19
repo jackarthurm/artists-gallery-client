@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 
+import { MetaService } from 'ng2-meta';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 
 import { MatSidenav } from '@angular/material';
@@ -34,7 +35,10 @@ export class AppRootComponent implements OnInit {
   @ViewChild('sideNav')
   public sideNav: MatSidenav;
 
-  constructor(private _breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private _breakpointObserver: BreakpointObserver,
+    private _metaService: MetaService
+  ) {}
 
   public ngOnInit(): void {
     this._breakpointObserver.observe(

@@ -12,6 +12,7 @@ import { GalleryItem, GalleryPage } from '@models/image';
 import { url, uuid } from '@models/shared';
 import { ImageService } from '@services/image/image.service';
 import { getGalleryState, setGalleryState } from '@utils/gallery-state';
+import { MetaService } from 'ng2-meta';
 
 
 function wrapIndexPeriodic(index: number, bound: number): number {
@@ -61,6 +62,7 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
     private location: Location,
     private imageService: ImageService,
     private dialogRef: MatDialogRef<ImageDetailsDialogComponent>,
+    private metaService: MetaService,
     @Inject(MAT_DIALOG_DATA) public imageID: uuid
   ) {}
 
@@ -118,6 +120,8 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
           (id: uuid) => id === galleryItem.id
         );  // TODO: Handle error if index is not found
 
+
+        this.updateMetaTagsForItem(galleryItem);
         this.shareURLs = createImageShareURLs(galleryItem.id);
       },
       (err: HttpErrorResponse) => {
@@ -131,6 +135,12 @@ export class ImageDetailsDialogComponent implements OnInit, OnDestroy {
         }
       }
     );
+  }
+
+  private updateMetaTagsForItem(galleryItem: GalleryItem): void {
+
+    this.metaService.setTitle('Detail page for ' + galleryItem.title);
+    this.metaService.setTag('og:image', galleryItem.largeImage.url);
   }
 
   private navigate(offset: number): void {
