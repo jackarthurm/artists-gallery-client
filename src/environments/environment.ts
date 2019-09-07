@@ -1,5 +1,8 @@
 import { environment as prodEnv } from '@envs/environment.prod';
-import { Environment } from '@models/environment';
+import {
+  Environment,
+  HTTPSchema
+  } from '@models/environment';
 
 
 prodEnv.siteURL.domain = 'localhost:4200';
@@ -10,6 +13,10 @@ prodEnv.production = false;
 prodEnv.imagesURL.domain = apiDomain;
 prodEnv.contactURL.domain = apiDomain;
 prodEnv.socialMediaLinksURL.domain = apiDomain;
+prodEnv.siteURL.schema = HTTPSchema.HTTPS;
+prodEnv.imagesURL.schema = HTTPSchema.HTTPS;
+prodEnv.contactURL.schema = HTTPSchema.HTTPS;
+prodEnv.socialMediaLinksURL.schema = HTTPSchema.HTTPS;
 
 export const environment: Environment = prodEnv;
 
