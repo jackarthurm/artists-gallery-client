@@ -17,22 +17,22 @@ const routeURLs: RouteURLConfig = {
 export const environment: Environment = {
   production: true,
   siteURL: {
-    schema: HTTPSchema.HTTP,
+    schema: HTTPSchema.HTTPS,
     domain: 'katealicemann.com',
     ext: '',
   },
   imagesURL: {
-    schema: HTTPSchema.HTTP,
+    schema: HTTPSchema.HTTPS,
     domain: 'admin.katealicemann.com',
     ext: '/api/gallery-items/',
   },
   contactURL: {
-    schema: HTTPSchema.HTTP,
+    schema: HTTPSchema.HTTPS,
     domain: 'admin.katealicemann.com',
     ext: '/api/contact/',
   },
   socialMediaLinksURL: {
-    schema: HTTPSchema.HTTP,
+    schema: HTTPSchema.HTTPS,
     domain: 'admin.katealicemann.com',
     ext: '/api/social-media-links/',
   },
