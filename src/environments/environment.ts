@@ -13,10 +13,10 @@ prodEnv.production = false;
 prodEnv.imagesURL.domain = apiDomain;
 prodEnv.contactURL.domain = apiDomain;
 prodEnv.socialMediaLinksURL.domain = apiDomain;
-prodEnv.siteURL.schema = HTTPSchema.HTTPS;
-prodEnv.imagesURL.schema = HTTPSchema.HTTPS;
-prodEnv.contactURL.schema = HTTPSchema.HTTPS;
-prodEnv.socialMediaLinksURL.schema = HTTPSchema.HTTPS;
+prodEnv.siteURL.schema = HTTPSchema.HTTP;
+prodEnv.imagesURL.schema = HTTPSchema.HTTP;
+prodEnv.contactURL.schema = HTTPSchema.HTTP;
+prodEnv.socialMediaLinksURL.schema = HTTPSchema.HTTP;
 
 export const environment: Environment = prodEnv;
 
