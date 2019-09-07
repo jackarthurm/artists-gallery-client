@@ -6,6 +6,7 @@ import { retry } from 'rxjs/operators';
 
 import { environment } from '@envs/environment';
 import { url } from '@models/shared';
+import { makeURL } from '@app/models/environment';
 
 
 export interface SocialMediaLinks {
@@ -29,10 +30,7 @@ export class LinksService {
     });
 
     return this.http.get<SocialMediaLinks>(
-
-      `${environment.socialMediaLinksURL.schema}://
-${environment.socialMediaLinksURL.domain}
-${environment.socialMediaLinksURL.ext}`,
+      makeURL(environment.socialMediaLinksURL),
       {
         headers,
         responseType: 'json',

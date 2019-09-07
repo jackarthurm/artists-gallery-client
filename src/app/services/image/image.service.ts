@@ -115,9 +115,7 @@ export class ImageService {
     });
 
     return this.http.get<GalleryItemListAPIResult>(
-      `${environment.imagesURL.schema}://
-${environment.imagesURL.domain}
-${environment.imagesURL.ext}`,
+      makeURL(environment.imagesURL),
       {
         headers,
         params: {
